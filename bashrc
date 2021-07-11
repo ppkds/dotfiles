@@ -101,8 +101,8 @@ fi
     alias bashrc='source ~/.bashrc'
     alias top='htop'
     alias neofetch='clear && echo && neofetch'
-    alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -vw tmpfs'
-    alias sysinfo='neofetch && echo -Memory- && free && echo && echo -Disk- && echo && df | grep -v /dev/loop | grep -vw tmpfs'
+    alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
+#     alias sysinfo='neofetch && echo -Memory- && free && echo && echo -Disk- && echo && df | grep -v /dev/loop | grep -vw tmpfs'
     alias wget='wget -c'
 #    alias weechat='weechat-curses'      # custom alias for weechat
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
@@ -130,8 +130,8 @@ if ! shopt -oq posix; then
 fi
 
 # WSL2 display setup for Xserver
-# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-# export LIBGL_ALWAYS_INDIRECT=1
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
 
 # Echo blankline before command prompt
-# PS1="\n$PS1"
+PS1="\n$PS1"
