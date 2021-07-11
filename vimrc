@@ -4,7 +4,7 @@
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
 "  +----------------------------------------------+
 "
-" EDIT COMMENTS :-
+" EDIT HISTORY :-
 " Sun 23 Aug 2020 10:26:53 PM CDT - Deleted reduntant configs to optimize filesize
 " Sun 23 Aug 2020 03:29:41 AM CDT - Updated to include plugin manager vim-plug, added NERDTree, lightline & commented out statusline syntax + custom highlight colors
 " Sat 12 Sep 2020 11:18:41 PM CDT - Updated to install colorschemes using plugin manager
@@ -31,6 +31,7 @@ call plug#end()
 colorscheme onehalfdark     " Set colorscheme to onehalfdark
 
 " **** Misc. Configuration ****
+" let mapleader = "-"        " Vim default is '\'
 
 " **** NerdCommenter settings *****
 let g:NERDSpaceDelims = 1               " Add spaces after comment
@@ -41,11 +42,12 @@ let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty l
 let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
 
 " **** lightline plugin ****
+" \ 'colorscheme': 'onehalfdark', - alternate colorscheme
 let g:lightline = {
-    \ 'colorscheme': 'onehalfdark',
+    \ 'colorscheme': 'wombat',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'relativepath', 'readonly', 'modified' ] ],
-    \   'right': [ [ 'bufnum'], [ 'filetype', 'fileformat', 'fileencoding' ], [ 'lineinfo', 'percent', 'filesize' ] ], 
+    \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'modified', 'relativepath' ] ],
+    \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
     \           },
     \ 'tabline': {
     \   'left': [ [ 'tabs' ] ],
@@ -62,6 +64,7 @@ let g:lightline = {
     \   'filesize': 'FileSize',
     \   },
     \ }
+
  
 " **** Functions ****
 " == Calculate filesize - determines filesize rounded to 1 decimal 
@@ -151,12 +154,19 @@ endif
     noremap <leader>a o# PPKDS - ppkds@outlook.com - <ESC>:r !date<CR>kJA<ESC><ESC>
     noremap <leader>m o# PPKDS<ESC>
     noremap <leader>d <ESC>:r !date<CR>kJA<ESC>
+
+" == Comment out current line (bash/exrc/c/c++, Vim)
+    noremap <leader>c 0i# <ESC>
+    noremap <leader>C 0i" <ESC>
+    
 " == Copy and comment out current line (bash/exrc, Vim)
     noremap <leader>n YP0i# <ESC><CR>
     noremap <leader>N YP0i" <ESC><CR>
+
 " ==  Read vi .exrc & .bashrc setting files / set .exrc source file
     noremap <leader>e :e $HOME/.bashrc<CR>
     noremap <leader>v :so ~/.vim/vimrc<CR>
+
 " == #!bin/bash standard header
     noremap <leader>t 1GO#!/bin/bash <CR># <CR># <CR># <CR># ppkds@outlook.com - <ESC>:r!date<CR>kJo#<CR><ESC>60a#<ESC>
 
@@ -166,13 +176,38 @@ endif
     noremap <leader>s sav                                   " save as...
     " noremap <C-F2> :e                                       " edit new/existing file - gvim
     " noremap <C-S-F2> <C-g>                                  " display file details - gvim
+
 " == Search highlighting
     noremap <leader>h :noh<CR>                              " disable search highlighting
+
 " == Map for plugins
     nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
     nmap <leader>t :TagbarToggle<CR>                        " Toggle TagBar
+
 " ---- Toggle line wrapping & display status----
     noremap <leader>r :set wrap! wrap?<CR>                  " Toggle wrap and display staus
+
 " == Toggle line numbers & display status
     noremap <F12> :set number!<CR>                          " Toggle line # and display status
     noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line # and display status
+
+" == Special characters in vim 
+
+" == In vim special key/unicode characters entered by  + special key or using  + unocode HEX
+" == Useful statusline glyphs; kept for reference 
+"   ॐ   " Aum ( u0950)
+"   ∅   " ReadOnly flag symbol ( u2205)
+"   ⎌   " 'Modified' flag symbol 1 ( u238c)
+"      " 'Modified' flag symbol 2 ( u00B1)
+"   ☰   " Lines symbol ( u2630)
+"   ㏑  " Lines symbol ( u33D1)
+"   ¦   " Alternate pipe symbol ( u00A6)
+"   ⎇   " Git branch character ( u2387)
+"   ⌥   " Git branch character ( u2325)
+
+" == Other special key display
+"   ^M = <CR>
+"   ^[ = ESC
+"   ^? = BACKSPACE
+"   ^I = TAB
+"   ^V = ^v
