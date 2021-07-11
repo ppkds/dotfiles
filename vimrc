@@ -114,9 +114,9 @@ endif
     " set cursorcolumn            " Highligt cursor column
     set number                  " Display line numbers
     set ignorecase              " Ignore case when searching
-    set hlsearch	            " highlight search matches
+    set hlsearch	        " highlight search matches
     set smartcase               " Smart case matching
-    set incsearch	            " Search while typing
+    set incsearch	        " Search while typing
     set wrapscan                " Wrap search to beginning of file
     set showmatch               " Display the match for a search pattern when typing
     set shell=/bin/bash         " Set shell as /bin/bash
@@ -160,7 +160,7 @@ endif
 " == #!bin/bash standard header
     noremap <leader>t 1GO#!/bin/bash <CR># <CR># <CR># <CR># ppkds@outlook.com - <ESC>:r!date<CR>kJo#<CR><ESC>60a#<ESC>
 
-" **** Map Fn Keys ****
+" **** Map shortcut Keys ****
 " == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
     noremap <leader>w :w<CR>                                " save file
     noremap <leader>s sav                                   " save as...
@@ -168,7 +168,7 @@ endif
     " noremap <C-S-F2> <C-g>                                  " display file details
 " == Search highlighting
     noremap <leader>h :noh<CR>                              " disable search highlighting
-" == Map for pluginds
+" == Map for plugins
     nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
     nmap <leader>t :TagbarToggle<CR>                        " Toggle TagBar
 " ---- Toggle line wrapping & display status----
