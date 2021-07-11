@@ -113,8 +113,8 @@ fi
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Use alias definitions file if it exists
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f $HOME/.bashrc_aliases ]; then
+    . $HOME/.bashrc_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -129,8 +129,13 @@ if ! shopt -oq posix; then
 fi
 
 # WSL2 display setup for Xserver
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-export LIBGL_ALWAYS_INDIRECT=1
+if [ -f $HOME/.export_mod ]; then
+    source $HOME/.export_mod
+fi
+
+# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+# export LIBGL_ALWAYS_INDIRECT=1
 
 # Echo blankline before command prompt
 PS1="\n$PS1"
+
