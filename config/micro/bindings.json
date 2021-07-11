@@ -1,6 +1,7 @@
 {
     "Alt-/": "lua:comment.comment",
-    "F5": "lua:wc.wordCount",
     "CtrlC": "Copy",
+    "CtrlUnderscore": "lua:comment.comment",
     "CtrlV": "Paste",
+    "F5": "lua:wc.wordCount"
 }

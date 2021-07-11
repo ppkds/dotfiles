@@ -107,6 +107,7 @@ fi
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
     alias cat="batcat"
     alias cls='clear'
+    alias cd-git='cd ~/Dev/Git'
 #    alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
 
 # Add an "alert" alias for long running commands
