@@ -92,7 +92,7 @@ fi
     alias apt='sudo apt'
     alias df='df -hT'
     alias free='free -ht'
-#   alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
+#    alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
     alias pwgen='pwgen -y 10'
     alias cp='cp -iv'
     alias rm='rm -v'
@@ -104,11 +104,11 @@ fi
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -vw tmpfs'
     alias sysinfo='neofetch && echo -Memory- && free && echo && echo -Disk- && echo && df | grep -v /dev/loop | grep -vw tmpfs'
     alias wget='wget -c'
-    alias weechat='weechat-curses'      # custom alias for weechat
+#    alias weechat='weechat-curses'      # custom alias for weechat
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
     alias cat="batcat"
     alias cls='clear'
-    alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
+#    alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
 
 # Add an "alert" alias for long running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -129,7 +129,7 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# WSL2 display setup
+# WSL2 display setup for Xserver
 # export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 # export LIBGL_ALWAYS_INDIRECT=1
 
