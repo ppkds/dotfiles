@@ -134,4 +134,4 @@ fi
 # export LIBGL_ALWAYS_INDIRECT=1
 
 # Echo blankline after command prompt
-# PS1=$"\nPS1"
+# PS1="\n$PS1"
