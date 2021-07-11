@@ -128,11 +128,12 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# WSL2 display setup for Xserver
+# WSL2 display setup for  VcXsrv Xserver
 if [ -f $HOME/.export_mod ]; then
     source $HOME/.export_mod
 fi
 
+# following used in .export_mod
 # export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 # export LIBGL_ALWAYS_INDIRECT=1
 
