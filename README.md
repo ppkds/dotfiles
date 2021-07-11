@@ -1,2 +1,4 @@
 # dotfiles
-dotfiles and configs
+dotfiles and configs for potability
+
+
