@@ -1,4 +1,4 @@
 # dotfiles
-dotfiles and configs for potability
+dotfiles and configs for portability
 
 
