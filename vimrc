@@ -160,12 +160,12 @@ endif
 " == #!bin/bash standard header
     noremap <leader>t 1GO#!/bin/bash <CR># <CR># <CR># <CR># ppkds@outlook.com - <ESC>:r!date<CR>kJo#<CR><ESC>60a#<ESC>
 
-" **** Map shortcut Keys ****
+" **** Shortcut Keys (default leader in vim is '\' ****
 " == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
     noremap <leader>w :w<CR>                                " save file
     noremap <leader>s sav                                   " save as...
-    " noremap <C-F2> :e                                       " edit new/existing file
-    " noremap <C-S-F2> <C-g>                                  " display file details
+    " noremap <C-F2> :e                                       " edit new/existing file - gvim
+    " noremap <C-S-F2> <C-g>                                  " display file details - gvim
 " == Search highlighting
     noremap <leader>h :noh<CR>                              " disable search highlighting
 " == Map for plugins
