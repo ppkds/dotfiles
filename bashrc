@@ -103,10 +103,11 @@ fi
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
 #     alias sysinfo='neofetch && echo -Memory- && free && echo && echo -Disk- && echo && df | grep -v /dev/loop | grep -vw tmpfs'
     alias wget='wget -c'
-#    alias weechat='weechat-curses'      # custom alias for weechat
+    alias weechat='weechat-curses'      # custom alias for weecha
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
     alias cat="batcat"
     alias cls='clear'
+    alias python='clear && python3'
     alias cd-git='cd ~/Dev/Git'
 #    alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
 

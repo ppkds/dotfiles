@@ -1,6 +1,4 @@
 {
-    "bookmark": true,
-    "clipboard": "internal",
     "colorcolumn": 132,
     "colorscheme": "one-dark",
     "diffgutter": true,
@@ -10,7 +8,7 @@
     "filemanager.openonstart": false,
     "filemanager.showdotfiles": true,
     "filemanager.showignored": true,
-    "initlua": true,
+    "ignorecase": false,
     "mkparents": true,
     "pluginchannels": [
         "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
@@ -19,7 +17,6 @@
     "savecursor": true,
     "softwrap": true,
     "statusformatl": "$(filename) $(modified) $(status.paste) ",
-    "statusformatr": "| $(line):$(col) | $(opt:filetype) | $(opt:encoding) | $(opt:fileformat) | keybinds:Alt-g help:^G ",
-    "tabstospaces": true,
-    "wordwrap": true
+    "statusformatr": "| $(line):$(col) | $(opt:filetype) | $(opt:encoding) | $(opt:fileformat) | keybinds:Alt-g help:^G "
 }
+:q
