@@ -101,7 +101,7 @@ fi
     alias top='htop'
     alias neofetch='clear && echo && neofetch'
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
-#     alias sysinfo='neofetch && echo -Memory- && free && echo && echo -Disk- && echo && df | grep -v /dev/loop | grep -vw tmpfs'
+#    alias sysinfo='neofetch && echo -Memory- && free && echo && echo -Disk- && echo && df | grep -v /dev/loop | grep -vw tmpfs'
     alias wget='wget -c'
     alias weechat='weechat-curses'      # custom alias for weecha
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
