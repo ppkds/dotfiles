@@ -20,10 +20,11 @@ Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
-Plug 'itchyny/vim-gitbranch'
+
+Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 call plug#end()
-" Plug 'tpope/vim-fugitive'
+" Plug 'itchyny/vim-gitbranch' / 'gitbranch': 'gitbranch#name',
 
 " **** Set colorscheme ****
 " colorscheme corvine       " Set colorscheme to corvine
@@ -64,7 +65,7 @@ let g:lightline = {
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
-    \   'gitbranch': 'gitbranch#name',
+    \   'gitbranch': 'FugitiveHead',
     \   },
     \}
 
