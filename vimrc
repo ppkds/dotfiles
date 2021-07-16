@@ -1,4 +1,4 @@
-"   ॐ   
+"   ॐ
 "  +----------------------------------------------+
 "  | vimrc: Pappukant Dansale : ppkds@outlook.com |
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
@@ -20,8 +20,10 @@ Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
+Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 call plug#end()
+" Plug 'tpope/vim-fugitive'
 
 " **** Set colorscheme ****
 " colorscheme corvine       " Set colorscheme to corvine
@@ -46,7 +48,7 @@ let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check se
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'modified', 'relativepath' ] ],
+    \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ],
     \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
     \           },
     \ 'tabline': {
@@ -55,19 +57,20 @@ let g:lightline = {
     \           },
     \ 'inactive': {
 	\   'left': [ [ 'filename' ] ],
-    \   'right': [ [ 'lineinfo' ], [ 'percent' ] ] 
+    \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
     \   'lineinfo': "%{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
+    \   'gitbranch': 'gitbranch#name',
     \   },
-    \ }
+    \}
 
- 
+
 " **** Functions ****
-" == Calculate filesize - determines filesize rounded to 1 decimal 
+" == Calculate filesize - determines filesize rounded to 1 decimal
 function! FileSize()
     let bytes = getfsize(expand("%:p"))
         if (bytes >= 1024)
@@ -125,13 +128,13 @@ endif
     set shell=/bin/bash         " Set shell as /bin/bash
     set nowritebackup           " Do not save .sh~ files
     set noswapfile              " Do not create swap files
-    set scrolloff=3             " Keep 3 lines visible at top & bottom of edit screen 
+    set scrolloff=3             " Keep 3 lines visible at top & bottom of edit screen
     set directory=/tmp          " Set temp directory
     set errorbells              " Set error bell on
     set warn                    " Warn no write since last change
     set hidden                  " Hide buffers when they are abandoned
-    set splitright              " Open vsplit to right 
-    set splitbelow              " Open split below 
+    set splitright              " Open vsplit to right
+    set splitbelow              " Open split below
     set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
     set autowrite               " Automatically save before commands like :next and :make
     syntax enable               " Enable Syntax
@@ -158,7 +161,7 @@ endif
 " == Comment out current line (bash/exrc/c/c++, Vim)
     noremap <leader>c 0i# <ESC>
     noremap <leader>C 0i" <ESC>
-    
+
 " == Copy and comment out current line (bash/exrc, Vim)
     noremap <leader>n YP0i# <ESC><CR>
     noremap <leader>N YP0i" <ESC><CR>
@@ -191,10 +194,10 @@ endif
     noremap <F12> :set number!<CR>                          " Toggle line # and display status
     noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line # and display status
 
-" == Special characters in vim 
+" == Special characters in vim
 
 " == In vim special key/unicode characters entered by  + special key or using  + unocode HEX
-" == Useful statusline glyphs; kept for reference 
+" == Useful statusline glyphs; kept for reference
 "   ॐ   " Aum ( u0950)
 "   ∅   " ReadOnly flag symbol ( u2205)
 "   ⎌   " 'Modified' flag symbol 1 ( u238c)
