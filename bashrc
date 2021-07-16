@@ -101,7 +101,7 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# WSL2 display setup for  VcXsrv Xserver
+# Use display setup for WSL2 VcXsrv Xserver in WSL environment
 if [ -f $HOME/.export_mod ]; then
     source $HOME/.export_mod
 fi
