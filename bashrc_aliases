@@ -1,0 +1,28 @@
+# ls aliases
+    alias la='ls -A'
+    alias lla='ls -alFh'
+    alias ll='ls -lFh'
+
+# other aliases
+    alias apt='sudo apt'
+    alias df='df -hT'
+    alias free='free -ht'
+#    alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
+    alias pwgen='pwgen -y 10'
+    alias cp='cp -iv'
+    alias rm='rm -v'
+    alias mv='mv -i'
+    alias mkdir='mkdir -pv'
+    alias bashrc='source ~/.bashrc'
+    alias top='htop'
+    alias neofetch='clear && echo && neofetch'
+    alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
+#    alias sysinfo='neofetch && echo -Memory- && free && echo && echo -Disk- && echo && df | grep -v /dev/loop | grep -vw tmpfs'
+    alias wget='wget -c'
+    alias weechat='weechat-curses'      # custom alias for weecha
+    alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
+    alias cat="batcat"
+    alias cls='clear'
+    alias python='clear && python3'
+    alias cd-git='cd /home/ppkds/Documents/GitHub'
+#    alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
