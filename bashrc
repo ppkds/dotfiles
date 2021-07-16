@@ -82,35 +82,6 @@ fi
 # colored GCC warnings and errors
 # export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# ls aliases
-    alias la='ls -A'
-    alias lla='ls -alFh'
-    alias ll='ls -lFh'
-
-# other aliases
-    alias apt='sudo apt'
-    alias df='df -hT'
-    alias free='free -ht'
-#    alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
-    alias pwgen='pwgen -y 10'
-    alias cp='cp -iv'
-    alias rm='rm -v'
-    alias mv='mv -i'
-    alias mkdir='mkdir -pv'
-    alias bashrc='source ~/.bashrc'
-    alias top='htop'
-    alias neofetch='clear && echo && neofetch'
-    alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
-#    alias sysinfo='neofetch && echo -Memory- && free && echo && echo -Disk- && echo && df | grep -v /dev/loop | grep -vw tmpfs'
-    alias wget='wget -c'
-    alias weechat='weechat-curses'      # custom alias for weecha
-    alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
-    alias cat="batcat"
-    alias cls='clear'
-    alias python='clear && python3'
-    alias cd-git='cd ~/Dev/Git'
-#    alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
-
 # Add an "alert" alias for long running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
@@ -141,4 +112,3 @@ fi
 
 # Echo blankline before command prompt
 PS1="\n$PS1"
-

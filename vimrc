@@ -45,9 +45,9 @@ let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty l
 let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
 
 " **** lightline plugin ****
-" \ 'colorscheme': 'onehalfdark', - alternate colorscheme
+" \ 'colorscheme': 'onehalfdark', 'wombat' - alternate colorscheme
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'onehalfdark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ],
     \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
