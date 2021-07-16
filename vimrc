@@ -48,7 +48,7 @@ let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check se
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ],
+    \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'gitbranch', 'relativepath', 'modified' ] ],
     \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
     \           },
     \ 'tabline': {
