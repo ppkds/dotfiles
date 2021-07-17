@@ -46,7 +46,7 @@ let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check se
 " **** lightline plugin ****
 " \ 'colorscheme': 'onehalfdark', 'wombat' - alternate colorscheme
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'onehalfdark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'gitbranch', 'relativepath', 'modified' ] ],
     \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],

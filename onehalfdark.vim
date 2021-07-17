@@ -16,8 +16,10 @@ let s:magenta = [ '#c678dd', 176 ]
 let s:blue = [ '#61afef', 75 ]
 let s:cyan = [ '#56b6c2', 73 ]
 let s:green = [ '#98c379', 114 ]
+ 
 " Added custom color for tabs
-let s:tabyellow = [ '#ffff00', 11 ]
+" let s:tabyellow = [ '#ffff00', 11 ]
+let s:tabyellow = [ '#ffc300', 11 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
