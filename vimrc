@@ -1,6 +1,6 @@
 "   ॐ
 "  +----------------------------------------------+
-"  | vimrc: Pappukant Dansale : ppkds@outlook.com |
+"  | vimrc: Pappukant Dansale                     |
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
 "  +----------------------------------------------+
 "
