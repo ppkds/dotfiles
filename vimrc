@@ -1,6 +1,6 @@
 "   ॐ
 "  +----------------------------------------------+
-"  | vimrc: Pappukant Dansale : ppkds@outlook.com |
+"  | vimrc: Pappukant Dansale                     |
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
 "  +----------------------------------------------+
 "
@@ -35,7 +35,7 @@ colorscheme onehalfdark     " Set colorscheme to onehalfdark
 " **** Misc. Configuration ****
 " let mapleader = "-"        " Vim default is '\'
 
-" **** NerdCommenter settings *****
+" **** NerdCommenter settings ***** <leader>cc
 let g:NERDSpaceDelims = 1               " Add spaces after comment
 let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
 let g:NERDCompactSexyComs = 1           " Use compact syntax for prettified multi-line comments
@@ -97,16 +97,16 @@ function! FileSize()
 endfunction
 
 "  **** Set startup defaults ****
-    set nowrap                  " Set wrap off
+    set laststatus=2            " Set Status line to always on
+    set noshowmode              " Do not indicate input/replace mode on command line
 if &compatible
     set nocompatible            " Set nocompatible mode - avoiding side-effects if nocompatible has laready been set
 endif
-    set noshowmode              " Do not indicate input/replace mode on command line
-    set laststatus=2            " Set Status line to always on
     set breakindent             " Set line wrapping to indent
     set sidescroll=5            " Set sidescroll to scroll screen sideways 5 charaters at screen edge
     set linebreak               " Set linebreak at word boundary
     set listchars=precedes:<,extends:>
+    set nowrap                  " Set wrap off
     " set textwidth=0             " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
     " set wrapmargin=0            " Set wrapmargin to 0
     set smartindent             " Smart indent
@@ -142,8 +142,7 @@ endif
 
 " **** ab_(breviations) & autocorrect ****
 " == Shortforms
-    ab __ppkds Pappukant Dansale : ppkds@outlook.com
-    ab __mail ppkds@outlook.com
+    ab __ppkds Pappukant Dansale
 " == Auto-correct common spelling errors
     ab Teh The
     ab teh the
@@ -154,13 +153,13 @@ endif
 
 " **** Map shortcut keys ****
 " == Insert various commonly used phrases and strings
-    noremap <leader>a o# PPKDS - ppkds@outlook.com - <ESC>:r !date<CR>kJA<ESC><ESC>
-    noremap <leader>m o# PPKDS<ESC>
-    noremap <leader>d <ESC>:r !date<CR>kJA<ESC>
+    noremap <leader>a o# Pappukant Dansale - <ESC>:r !date<CR>kJA<ESC><ESC>
+    noremap <leader>n o# Pappukant Dansale<ESC>
+    noremap <leader>D <ESC>:r !date<CR>kJA<ESC>
 
 " == Comment out current line (bash/exrc/c/c++, Vim)
-    noremap <leader>c 0i# <ESC>
-    noremap <leader>C 0i" <ESC>
+    " noremap <leader>c 0i# <ESC>
+    " noremap <leader>C 0i" <ESC>
 
 " == Copy and comment out current line (bash/exrc, Vim)
     noremap <leader>n YP0i# <ESC><CR>
@@ -171,7 +170,7 @@ endif
     noremap <leader>v :so ~/.vim/vimrc<CR>
 
 " == #!bin/bash standard header
-    noremap <leader>t 1GO#!/bin/bash <CR># <CR># <CR># <CR># ppkds@outlook.com - <ESC>:r!date<CR>kJo#<CR><ESC>60a#<ESC>
+    noremap <leader>T 1GO#!/bin/bash <CR># <CR># <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR><ESC>60a#<ESC>
 
 " **** Shortcut Keys (default leader in vim is '\' ****
 " == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
