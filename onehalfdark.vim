@@ -12,15 +12,14 @@ let s:mono2 = [ '#5d677a', 243 ]
 let s:mono3 = [ '#dcdfe4', 255 ]
 let s:mono4 = [ '#9e9e9e', 247 ]
 
-let s:yellow = [ '#e5c07b', 180 ]
-let s:red = [ '#e06c75', 168 ]
-let s:magenta = [ '#c678dd', 176 ]
 let s:blue = [ '#61afef', 75 ]
 let s:cyan = [ '#56b6c2', 73 ]
 let s:green = [ '#98c379', 114 ]
+let s:magenta = [ '#c678dd', 176 ]
+let s:red = [ '#e06c75', 168 ]
  
-" Added custom color for  active tab on tabline
-let s:yellow = [ '#ffd75f', 221 ]
+" Custom colors
+let s:yellow = [ '#ffd75f', 221 ] " for active tab in tabline
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
