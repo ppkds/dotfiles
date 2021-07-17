@@ -2,5 +2,5 @@
     "Alt-/": "lua:comment.comment",
     "CtrlC": "Copy",
     "CtrlUnderscore": "lua:comment.comment",
-    "CtrlV": "Paste",
+    "CtrlV": "Paste"
 }
