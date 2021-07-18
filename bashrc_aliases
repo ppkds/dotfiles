@@ -1,28 +1,43 @@
+# Unused aliases
+    # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
+    # alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
+    # alias sysinfo='resources && echo && cat .bashrc_aliases | grep -v "sysinfo" | grep -wn "df|free|neofetch"'
+    # alias edit-git-dotfiles='vim -p ~/Dev/Git/dotfiles/bashrc ~/Dev/Git/dotfiles/bashrc_aliases ~/Dev/Git/dotfiles/config/micro/bindings.json ~/Dev/Git/dotfiles/config/micro/settings.json ~/Dev/Git/dotfiles/config/neofetch/config.conf ~/Dev/Git/dotfiles/export_mod ~/Dev/Git/dotfiles/onehalfdark.vim ~/Dev/Git/dotfiles/vimrc ~/Dev/Git/dotfiles/README.md'
+ 
 # ls aliases
     alias la='ls -A'
     alias lla='ls -alFh'
     alias ll='ls -lFh'
 
-# other aliases
+# File and Directory aliases
+    alias mv='mv -i'
+    alias cp='cp -iv'
+    alias rm='rm -v'
+    alias mkdir='mkdir -pv'
+
+# Convinience aliasies
     alias apt='sudo apt'
     alias bashrc='source ~/.bashrc'
     alias cat="batcat"
     alias cd-git='cd /home/ppkds/Dev/Git/'
     alias cls='clear'
-    alias cp='cp -iv'
     alias df='df -hT'
+    alias edit-git-dotfiles='vim -p    \
+            ~/Dev/Git/dotfiles/bashrc                       \
+            ~/Dev/Git/dotfiles/bashrc_aliases               \
+            ~/Dev/Git/dotfiles/config/micro/bindings.json   \
+            ~/Dev/Git/dotfiles/config/micro/settings.json   \
+            ~/Dev/Git/dotfiles/config/neofetch/config.conf  \
+            ~/Dev/Git/dotfiles/export_mod                   \
+            ~/Dev/Git/dotfiles/onehalfdark.vim              \
+            ~/Dev/Git/dotfiles/vimrc                        \
+            ~/Dev/Git/dotfiles/README.md' 
     alias free='free -ht'
-    alias mkdir='mkdir -pv'
-    alias mv='mv -i'
     alias neofetch='clear && echo && neofetch'
     alias pwgen='pwgen -y 10'
     alias python='clear && python3'
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
-    alias rm='rm -v'
-    # alias sysinfo='resources && echo && cat .bashrc_aliases | grep -v "sysinfo" | grep -wn "df|free|neofetch"'
     alias top='htop'
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
     alias weechat='weechat-curses'      # custom alias for weecha
     alias wget='wget -c'
-#    alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
-#    alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
