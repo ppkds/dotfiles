@@ -1,4 +1,3 @@
-"   ॐ
 "  +----------------------------------------------+
 "  | vimrc: Pappukant Dansale                     |
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
@@ -12,16 +11,16 @@
 
 " **** Activate vim-plug to initiate plugins ****
 call plug#begin()
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'preservim/NERDTree'
-Plug 'preservim/tagbar'
-Plug 'preservim/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
-Plug 'tpope/vim-fugitive'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/NERDTree'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/tagbar'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 call plug#end()
 " Plug 'itchyny/vim-gitbranch' / 'gitbranch': 'gitbranch#name',
 
@@ -36,12 +35,12 @@ colorscheme onehalfdark     " Set colorscheme to onehalfdark
 " let mapleader = "-"        " Vim default is '\'
 
 " **** NerdCommenter settings ***** <leader>cc
-let g:NERDSpaceDelims = 1               " Add spaces after comment
-let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
+let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
 let g:NERDCompactSexyComs = 1           " Use compact syntax for prettified multi-line comments
 let g:NERDDefaultAlign = 'left'         " Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
+let g:NERDSpaceDelims = 1               " Add spaces after comment
 let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
+let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
 
 " **** lightline plugin ****
 " \ 'colorscheme': 'onehalfdark', 'wombat' - alternate colorscheme
@@ -102,54 +101,54 @@ endfunction
 if &compatible
     set nocompatible            " Set nocompatible mode - avoiding side-effects if nocompatible has laready been set
 endif
-    set breakindent             " Set line wrapping to indent
-    set sidescroll=5            " Set sidescroll to scroll screen sideways 5 charaters at screen edge
-    set linebreak               " Set linebreak at word boundary
-    set listchars=precedes:<,extends:>
-    set nowrap                  " Set wrap off
+    " set cursorcolumn            " Highligt cursor column
+    " set syntax=on               " Set Syntax on
     " set textwidth=0             " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
     " set wrapmargin=0            " Set wrapmargin to 0
-    set smartindent             " Smart indent
     set autoindent              " Use indent of previous line
+    set autowrite               " Automatically save before commands like :next and :make
     set backspace=indent,eol,start
-    set smarttab                " Set Smarttab
-    set shiftwidth=4            " Set shift width to 4 characters
-    set tabstop=4               " Set tab width to 4 characters
-    set expandtab               " Convert tab to spaces
+    set breakindent             " Set line wrapping to indent
     set cursorline              " Highlight cursor line
-    " set cursorcolumn            " Highligt cursor column
-    set number                  " Display line numbers
-    set ignorecase              " Ignore case when searching
-    set hlsearch	        " highlight search matches
-    set smartcase               " Smart case matching
-    set incsearch	        " Search while typing
-    set wrapscan                " Wrap search to beginning of file
-    set showmatch               " Display the match for a search pattern when typing
-    set shell=/bin/bash         " Set shell as /bin/bash
-    set nowritebackup           " Do not save .sh~ files
-    set noswapfile              " Do not create swap files
-    set scrolloff=3             " Keep 3 lines visible at top & bottom of edit screen
     set directory=/tmp          " Set temp directory
     set errorbells              " Set error bell on
-    set warn                    " Warn no write since last change
+    set expandtab               " Convert tab to spaces
     set hidden                  " Hide buffers when they are abandoned
-    set splitright              " Open vsplit to right
-    set splitbelow              " Open split below
+    set hlsearch	        " highlight search matches
+    set ignorecase              " Ignore case when searching
+    set incsearch	        " Search while typing
+    set linebreak               " Set linebreak at word boundary
+    set listchars=precedes:<,extends:>
     set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
-    set autowrite               " Automatically save before commands like :next and :make
+    set noswapfile              " Do not create swap files
+    set nowrap                  " Set wrap off
+    set nowritebackup           " Do not save .sh~ files
+    set number                  " Display line numbers
+    set scrolloff=3             " Keep 3 lines visible at top & bottom of edit screen
+    set shell=/bin/bash         " Set shell as /bin/bash
+    set shiftwidth=4            " Set shift width to 4 characters
+    set showmatch               " Display the match for a search pattern when typing
+    set sidescroll=5            " Set sidescroll to scroll screen sideways 5 charaters at screen edge
+    set smartcase               " Smart case matching
+    set smartindent             " Smart indent
+    set smarttab                " Set Smarttab
+    set splitbelow              " Open split below
+    set splitright              " Open vsplit to right
+    set tabstop=4               " Set tab width to 4 characters
+    set warn                    " Warn no write since last change
+    set wrapscan                " Wrap search to beginning of file
     syntax enable               " Enable Syntax
-    " set syntax=on               " Set Syntax on
 
 " **** ab_(breviations) & autocorrect ****
 " == Shortforms
     ab __ppkds Pappukant Dansale
 " == Auto-correct common spelling errors
-    ab Teh The
-    ab teh the
-    ab Kinldy Kindly
-    ab kinldy kindly
     ab Convinience Convenience
+    ab Kinldy Kindly
+    ab Teh The
     ab convinience convenience
+    ab kinldy kindly
+    ab teh the
 
 " **** Map shortcut keys ****
 " == Insert various commonly used phrases and strings
@@ -165,7 +164,7 @@ endif
     noremap <leader>n YP0i# <ESC><CR>
     noremap <leader>N YP0i" <ESC><CR>
 
-" ==  Read vi .exrc & .bashrc setting files / set .exrc source file
+" ==  Source vi .exrc & .bashrc setting files / set .exrc source file
     noremap <leader>e :e $HOME/.bashrc<CR>
     noremap <leader>v :so ~/.vim/vimrc<CR>
 
@@ -182,7 +181,7 @@ endif
 " == Search highlighting
     noremap <leader>h :noh<CR>                              " disable search highlighting
 
-" == Map for plugins
+" == Mappings for commonly used plugins 
     nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
     nmap <leader>t :TagbarToggle<CR>                        " Toggle TagBar
 
@@ -197,15 +196,15 @@ endif
 
 " == In vim special key/unicode characters entered by  + special key or using  + unocode HEX
 " == Useful statusline glyphs; kept for reference
+"   ¦   " Alternate pipe symbol ( u00A6)
 "   ॐ   " Aum ( u0950)
 "   ∅   " ReadOnly flag symbol ( u2205)
+"   ⌥   " Git branch character ( u2325)
+"   ⎇   " Git branch character ( u2387)
 "   ⎌   " 'Modified' flag symbol 1 ( u238c)
-"      " 'Modified' flag symbol 2 ( u00B1)
 "   ☰   " Lines symbol ( u2630)
 "   ㏑  " Lines symbol ( u33D1)
-"   ¦   " Alternate pipe symbol ( u00A6)
-"   ⎇   " Git branch character ( u2387)
-"   ⌥   " Git branch character ( u2325)
+"      " 'Modified' flag symbol 2 ( u00B1)
 
 " == Other special key display
 "   ^M = <CR>
