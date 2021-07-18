@@ -19,7 +19,7 @@
     alias apt='sudo apt'
     alias bashrc='source ~/.bashrc'
     alias cat="batcat"
-    alias cd-git='cd /home/ppkds/Dev/Git/'
+    # alias cd-git='cd /home/ppkds/Dev/Git/'    "Obsoleted -- updated to use : shopt -s cdable_vars : option in bashrc
     alias cls='clear'
     alias df='df -hT'
     alias edit-git-dotfiles='vim -p    \

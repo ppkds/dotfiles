@@ -12,23 +12,42 @@ esac
 PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Set Locale
-# LANG=/usr/lib/locale/en_US
+LANG=/usr/lib/locale/en_US
 
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
+# Convenience options
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+## Directory shell options
+shopt -s cdable_vars
+export dotfiles="/home/ppkds/Dev/Git/dotfiles"
+export gitprojects="/home/ppkds/Dev/Git"
 
-# for setting history length
-HISTSIZE=1000
-HISTFILESIZE=2000
+## Save multi-line commands as one command
+shopt -s cmdhist
 
-# check the window size after each command and if necessary update the values of LINES and COLUMNS.
+## Correct spelling errors during tab-completion
+shopt -s dirspell 2> /dev/null
+
+## Correct spelling errors in arguments supplied to cd
+shopt -s cdspell 2> /dev/null
+
+## check the window size after each command and if necessary update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
-# shopt -s globstar
+# The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
+shopt -s globstar
+
+## Automatically trim long paths in the prompt
+PROMPT_DIRTRIM=2
+
+## Don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+# Set history length
+HISTSIZE=10000
+HISTFILESIZE=20000
+
+# Record each line as it gets issued
+PROMPT_COMMAND='history -a'
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
