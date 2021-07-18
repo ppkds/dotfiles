@@ -2,7 +2,7 @@
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
     # alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
     # alias sysinfo='resources && echo && cat .bashrc_aliases | grep -v "sysinfo" | grep -wn "df|free|neofetch"'
-    # alias edit-git-dotfiles='vim -p ~/Dev/Git/dotfiles/bashrc ~/Dev/Git/dotfiles/bashrc_aliases ~/Dev/Git/dotfiles/config/micro/bindings.json ~/Dev/Git/dotfiles/config/micro/settings.json ~/Dev/Git/dotfiles/config/neofetch/config.conf ~/Dev/Git/dotfiles/export_mod ~/Dev/Git/dotfiles/onehalfdark.vim ~/Dev/Git/dotfiles/vimrc ~/Dev/Git/dotfiles/README.md'
+    # alias edit-git-dotfiles='vim -p /home/ppkds/Dev/Git/dotfiles/bashrc /home/ppkds/Dev/Git/dotfiles/bashrc_aliases /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf /home/ppkds/Dev/Git/dotfiles/export_mod /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim /home/ppkds/Dev/Git/dotfiles/vimrc /home/ppkds/Dev/Git/dotfiles/README.md'
  
 # ls aliases
     alias la='ls -A'
@@ -23,15 +23,15 @@
     alias cls='clear'
     alias df='df -hT'
     alias edit-git-dotfiles='vim -p    \
-            ~/Dev/Git/dotfiles/bashrc                       \
-            ~/Dev/Git/dotfiles/bashrc_aliases               \
-            ~/Dev/Git/dotfiles/config/micro/bindings.json   \
-            ~/Dev/Git/dotfiles/config/micro/settings.json   \
-            ~/Dev/Git/dotfiles/config/neofetch/config.conf  \
-            ~/Dev/Git/dotfiles/export_mod                   \
-            ~/Dev/Git/dotfiles/onehalfdark.vim              \
-            ~/Dev/Git/dotfiles/vimrc                        \
-            ~/Dev/Git/dotfiles/README.md' 
+            /home/ppkds/Dev/Git/dotfiles/bashrc                       \
+            /home/ppkds/Dev/Git/dotfiles/bashrc_aliases               \
+            /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json   \
+            /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json   \
+            /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf  \
+            /home/ppkds/Dev/Git/dotfiles/export_mod                   \
+            /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim              \
+            /home/ppkds/Dev/Git/dotfiles/vimrc                        \
+            /home/ppkds/Dev/Git/dotfiles/README.md' 
     alias free='free -ht'
     alias neofetch='clear && echo && neofetch'
     alias pwgen='pwgen -y 10'
