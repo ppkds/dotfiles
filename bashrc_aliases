@@ -2,12 +2,14 @@
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
     # alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
     # alias sysinfo='resources && echo && cat .bashrc_aliases | grep -v "sysinfo" | grep -wn "df|free|neofetch"'
+    # alias cd-git='cd /home/ppkds/Dev/Git/'    "Obsoleted -- updated to use : shopt -s cdable_vars : option in bashrc
     # alias edit-git-dotfiles='vim -p /home/ppkds/Dev/Git/dotfiles/bashrc /home/ppkds/Dev/Git/dotfiles/bashrc_aliases /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf /home/ppkds/Dev/Git/dotfiles/export_mod /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim /home/ppkds/Dev/Git/dotfiles/vimrc /home/ppkds/Dev/Git/dotfiles/README.md'
  
 # ls aliases
-    alias la='ls -A'
-    alias lla='ls -alFh'
-    alias ll='ls -lFh'
+    # alias ls='exa --group-directories-first'
+    alias la='ls -Ah'
+    alias ll='ls -CF -lh'
+    alias lla='ls -alCFh'
 
 # File and Directory aliases
     alias mv='mv -i'
@@ -19,7 +21,6 @@
     alias apt='sudo apt'
     alias bashrc='source ~/.bashrc'
     alias cat="batcat"
-    # alias cd-git='cd /home/ppkds/Dev/Git/'    "Obsoleted -- updated to use : shopt -s cdable_vars : option in bashrc
     alias cls='clear'
     alias df='df -hT'
     alias edit-git-dotfiles='vim -p    \
@@ -39,5 +40,5 @@
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
     alias top='htop'
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
-    alias weechat='weechat-curses'      # custom alias for weecha
+    alias weechat='weechat-curses'      # custom alias for weechat
     alias wget='wget -c'
