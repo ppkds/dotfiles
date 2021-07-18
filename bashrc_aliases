@@ -31,7 +31,7 @@
             /home/ppkds/Dev/Git/dotfiles/export_mod                   \
             /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim              \
             /home/ppkds/Dev/Git/dotfiles/vimrc                        \
-            /home/ppkds/Dev/Git/dotfiles/README.md' 
+            /home/ppkds/Dev/Git/dotfiles/README.md'
     alias free='free -ht'
     alias neofetch='clear && echo && neofetch'
     alias pwgen='pwgen -y 10'
