@@ -1,5 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# ‡•ê
+# ‡
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 
 # If not running interactively, don't do anything
@@ -20,6 +20,10 @@ LANG=/usr/lib/locale/en_US
 shopt -s cdable_vars
 export dotfiles="/home/ppkds/Dev/Git/dotfiles"
 export gitprojects="/home/ppkds/Dev/Git"
+export documents="/home/ppkds/Documents"
+export downloads="/home/ppkds/Downloads"
+export pictures="/home/ppkds/Pictures"
+export videos="/home/ppkds/video"
 
 ## Save multi-line commands as one command
 shopt -s cmdhist
