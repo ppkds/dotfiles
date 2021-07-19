@@ -1,3 +1,3 @@
 # dotfiles
 
-dotfiles for quick configuraiton & portability
+dotfiles for quick configuration & portability
