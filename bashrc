@@ -24,7 +24,7 @@ export gitprojects="/home/ppkds/Dev/Git"
 export documents="/home/ppkds/Documents"
 export downloads="/home/ppkds/Downloads"
 export pictures="/home/ppkds/Pictures"
-export videos="/home/ppkds/video"
+export videos="/home/ppkds/videos"
 
 ## Save multi-line commands as one command
 shopt -s cmdhist
