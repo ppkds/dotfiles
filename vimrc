@@ -111,6 +111,7 @@ endif
     set breakindent             " Set line wrapping to indent
     set cursorline              " Highlight cursor line
     set directory=/tmp          " Set temp directory
+    set encoding=utf-8          " Set default encoding to UTF-8
     set errorbells              " Set error bell on
     set expandtab               " Convert tab to spaces
     set hidden                  " Hide buffers when they are abandoned

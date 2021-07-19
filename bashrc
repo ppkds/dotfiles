@@ -1,5 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# ‡
+# ‡•ê 
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 
 # If not running interactively, don't do anything
@@ -12,7 +12,8 @@ esac
 PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Set Locale
-LANG=/usr/lib/locale/en_US
+# LANG=/usr/lib/locale/en_US
+LANG=en_US.utf-8
 
 # Convenience options
 
