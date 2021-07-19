@@ -13,7 +13,7 @@ PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Set Locale
 # LANG=/usr/lib/locale/en_US
-LANG=en_US.utf-8
+# LANG=en_US.utf-8
 
 # Convenience options
 
