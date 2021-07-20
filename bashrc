@@ -1,6 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # ॐ 
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
+# Modified : Pappukant Dansale - Mon 19 Jul 2021 08:52:10 PM CDT
 
 # If not running interactively, don't do anything
 case $- in
@@ -92,6 +93,9 @@ else
 fi
 unset color_prompt force_color_prompt
 
+# Echo blankline before command prompt
+PS1="\n$PS1"
+
 # enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -114,6 +118,15 @@ if [ -f $HOME/.bashrc_aliases ]; then
     . $HOME/.bashrc_aliases
 fi
 
+# Use display setup for WSL2 VcXsrv Xserver in WSL environment
+if [ -f $HOME/.export_mod ]; then
+    source $HOME/.export_mod
+fi
+#
+# Export_mod files example
+# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+# export LIBGL_ALWAYS_INDIRECT=1
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -125,14 +138,3 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# Use display setup for WSL2 VcXsrv Xserver in WSL environment
-if [ -f $HOME/.export_mod ]; then
-    source $HOME/.export_mod
-fi
-
-# Export_mod files example
-# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-# export LIBGL_ALWAYS_INDIRECT=1
-
-# Echo blankline before command prompt
-PS1="\n$PS1"
