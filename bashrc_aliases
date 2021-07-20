@@ -1,4 +1,4 @@
-# Unused aliases
+# Unused / Obsoleted aliases
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
     # alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
     # alias sysinfo='resources && echo && cat .bashrc_aliases | grep -v "sysinfo" | grep -wn "df|free|neofetch"'

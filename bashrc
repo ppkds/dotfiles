@@ -13,12 +13,10 @@ esac
 PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Set Locale
-# LANG=/usr/lib/locale/en_US
+# LANG=/usr/lib/locale/en_US                " or use below
 # LANG=en_US.utf-8
 
-# Convenience options
-
-## Directory shell options
+# Shell Directory options
 shopt -s cdable_vars
 export dotfiles="/home/ppkds/Dev/Git/dotfiles"
 export gitprojects="/home/ppkds/Dev/Git"
@@ -27,25 +25,25 @@ export downloads="/home/ppkds/Downloads"
 export pictures="/home/ppkds/Pictures"
 export videos="/home/ppkds/Videos"
 
-## Save multi-line commands as one command
+# Save multi-line commands as one command
 shopt -s cmdhist
 
-## Correct spelling errors during tab-completion
+# Correct spelling errors during tab-completion
 shopt -s dirspell 2> /dev/null
 
-## Correct spelling errors in arguments supplied to cd
+# Correct spelling errors in arguments supplied to cd
 shopt -s cdspell 2> /dev/null
 
-## check the window size after each command and if necessary update the values of LINES and COLUMNS.
+# check the window size after each command and if necessary update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
-## Automatically trim long paths in the prompt
+# Automatically trim long paths in the prompt
 PROMPT_DIRTRIM=2
 
-## Don't put duplicate lines or lines starting with space in the history.
+# Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
 # Set history length
