@@ -3,7 +3,7 @@
     # alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
     # alias sysinfo='resources && echo && cat .bashrc_aliases | grep -v "sysinfo" | grep -wn "df|free|neofetch"'
     # alias cd-git='cd /home/ppkds/Dev/Git/'    "Obsoleted -- updated to use : shopt -s cdable_vars : option in bashrc
-    # alias edit-git-dotfiles='vim -p /home/ppkds/Dev/Git/dotfiles/bashrc /home/ppkds/Dev/Git/dotfiles/bashrc_aliases /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf /home/ppkds/Dev/Git/dotfiles/export_mod /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim /home/ppkds/Dev/Git/dotfiles/vimrc /home/ppkds/Dev/Git/dotfiles/README.md'
+    # alias edit-git-dotfiles='vim -p /home/ppkds/Dev/Git/dotfiles/bashrc /home/ppkds/Dev/Git/dotfiles/bashrc_aliases /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf /home/ppkds/Dev/Git/dotfiles/export_mod /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim /home/ppkds/Dev/Git/dotfiles/vimrc /home/ppkds/Dev/Git/dotfiles/README.md /home/ppkds/Dev/Git/dotfiles/LICENSE'
  
 # ls aliases
     # alias ls='exa --group-directories-first'
@@ -32,6 +32,7 @@
             /home/ppkds/Dev/Git/dotfiles/export_mod                   \
             /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim              \
             /home/ppkds/Dev/Git/dotfiles/vimrc                        \
+            /home/ppkds/Dev/Git/dotfiles/LICENSE                      \
             /home/ppkds/Dev/Git/dotfiles/README.md'
     alias free='free -ht'
     alias neofetch='clear && echo && neofetch'

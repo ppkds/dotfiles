@@ -3,7 +3,7 @@
 " Author: sonph
 " License: MIT License
 " Last Change: 2019/12/01
-" Modified: Pappukant Dansale - Sat Jul 17 17:30:29 CDT 2021
+" Modified: Pappukant Dansale - Mon 19 Jul 2021 08:40:52 PM CDT
 " =============================================================================
 
 let s:mono0 = [ '#282c34', 236 ]
