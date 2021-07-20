@@ -18,10 +18,10 @@ PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Shell Directory options
 shopt -s cdable_vars
-export dotfiles="/home/ppkds/Dev/Git/dotfiles"
-export gitprojects="/home/ppkds/Dev/Git"
 export documents="/home/ppkds/Documents"
+export dotfiles="/home/ppkds/Dev/Git/dotfiles"
 export downloads="/home/ppkds/Downloads"
+export gitprojects="/home/ppkds/Dev/Git"
 export pictures="/home/ppkds/Pictures"
 export videos="/home/ppkds/Videos"
 
