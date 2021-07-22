@@ -50,7 +50,7 @@ HISTCONTROL=ignoreboth
 HISTSIZE=10000
 HISTFILESIZE=20000
 
-# Record each line as it gets issued
+# Record each line as it gets issued 
 PROMPT_COMMAND='history -a'
 
 # make less more friendly for non-text input files
