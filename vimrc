@@ -84,6 +84,7 @@ function! FileSize()
         if bytes <= 0
             return '0'
         endif
+
         if (exists('gbytes'))
             return printf("%.1f", gbytes) . 'g'
         elseif (exists('mbytes'))
