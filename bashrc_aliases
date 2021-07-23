@@ -35,6 +35,7 @@
             /home/ppkds/Dev/Git/dotfiles/LICENSE                      \
             /home/ppkds/Dev/Git/dotfiles/README.md'
     alias free='free -ht'
+    alias links='links2'
     alias neofetch='clear && echo && neofetch'
     alias pwgen='pwgen -y 10'
     alias python='clear && python3'

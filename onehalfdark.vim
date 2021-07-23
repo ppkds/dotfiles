@@ -39,9 +39,9 @@ let s:p.insert.left = [ [ s:mono0, s:green ], [ s:mono3, s:mono2 ] ]
 let s:p.insert.middle = [ [ s:mono4, s:mono1 ] ]
 let s:p.insert.right = [ [ s:mono0, s:green ], [ s:mono0, s:mono2 ] ]
 
-let s:p.replace.left = [ [ s:mono0, s:red ], [ s:mono3, s:mono2 ] ]
+let s:p.replace.left = [ [ s:mono3, s:red ], [ s:mono3, s:mono2 ] ]
 let s:p.replace.middle = [ [ s:mono4, s:mono1 ] ]
-let s:p.replace.right = [ [ s:mono0, s:red ], [ s:mono0, s:mono2 ] ]
+let s:p.replace.right = [ [ s:mono3, s:red ], [ s:mono0, s:mono2 ] ]
 
 let s:p.visual.left = [ [ s:mono0, s:gold ], [ s:mono3, s:mono2 ] ]
 let s:p.visual.middle = [ [ s:mono4, s:mono1 ] ]
