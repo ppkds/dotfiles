@@ -116,9 +116,9 @@ endif
     set errorbells              " Set error bell on
     set expandtab               " Convert tab to spaces
     set hidden                  " Hide buffers when they are abandoned
-    set hlsearch	        " highlight search matches
+    set hlsearch	            " highlight search matches
     set ignorecase              " Ignore case when searching
-    set incsearch	        " Search while typing
+    set incsearch	            " Search while typing
     set linebreak               " Set linebreak at word boundary
     set listchars=precedes:<,extends:>
     set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
