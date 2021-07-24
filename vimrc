@@ -59,7 +59,7 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': "%{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': "%{printf('☰ %2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
