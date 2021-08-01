@@ -59,7 +59,7 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': "%{printf('☰ %2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': "%{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
@@ -191,8 +191,8 @@ endif
     noremap <leader>r :set wrap! wrap?<CR>                  " Toggle wrap and display staus
 
 " == Toggle line numbers & display status
-    noremap <F12> :set number!<CR>                          " Toggle line # and display status
-    noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line # and display status
+    noremap <F12> :set number!<CR>                          " Toggle line #
+    noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line #
 
 " == Special characters in vim
 
