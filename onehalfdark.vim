@@ -23,8 +23,8 @@ let s:gold = [ '#ffd75f', 221 ] " for active tab in tabline
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
-let s:p.normal.left = [ [ s:mono0, s:blue ], [ s:mono3, s:mono2 ] ]
 "let s:p.normal.middle = [ [ s:blue, s:mono1 ] ]    " Coloured middle characters disabled for mono characters below
+let s:p.normal.left = [ [ s:mono0, s:blue ], [ s:mono3, s:mono2 ] ]
 let s:p.normal.middle = [ [ s:mono4, s:mono1 ] ]
 let s:p.normal.right = [ [ s:mono0, s:blue ], [ s:mono0, s:mono2 ] ]
 
