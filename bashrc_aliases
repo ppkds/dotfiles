@@ -7,9 +7,9 @@
  
 # ls aliases
     # alias ls='exa --group-directories-first'
-    alias la='ls -Ahl --group-directories-first'
-    alias ll='ls -CF -lh --group-directories-first'
-    alias lla='ls -alCFh --group-directories-first'
+    alias la='ls -ahl --group-directories-first'
+    alias ll='ls -F -lh --group-directories-first'
+    alias lla='ls -alFh --group-directories-first'
 
 # File and Directory aliases
     alias mv='mv -i'

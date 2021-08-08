@@ -32,7 +32,7 @@ shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied 
 shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
 shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 
-PROMPT_DIRTRIM=2                # Automatically trim long paths in the prompt
+PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 
 # History Options 
 HISTSIZE=10000
