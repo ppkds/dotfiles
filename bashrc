@@ -34,9 +34,8 @@ shopt -s globstar               # The pattern "**" used in a pathname expansion 
 
 PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 
-# History Options 
-HISTSIZE=10000
-HISTFILESIZE=20000              
+HISTSIZE=10000                  # History size
+HISTFILESIZE=20000              # History file size
 HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
 PROMPT_COMMAND='history -a'     # Record each line as it gets issued 
 
@@ -81,7 +80,7 @@ unset color_prompt force_color_prompt
 # Echo blankline before command prompt
 PS1="\n$PS1"
 
-# enable color support of ls
+# enable color support of common commands
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias dir='dir --color=auto'
