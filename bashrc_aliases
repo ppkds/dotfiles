@@ -6,10 +6,13 @@
     # alias edit-git-dotfiles='vim -p /home/ppkds/Dev/Git/dotfiles/bashrc /home/ppkds/Dev/Git/dotfiles/bashrc_aliases /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf /home/ppkds/Dev/Git/dotfiles/export_mod /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim /home/ppkds/Dev/Git/dotfiles/vimrc /home/ppkds/Dev/Git/dotfiles/README.md /home/ppkds/Dev/Git/dotfiles/LICENSE'
  
 # ls aliases
-    # alias ls='exa --group-directories-first'
     alias la='ls -ahl --group-directories-first'
     alias ll='ls -F -lh --group-directories-first'
     alias lla='ls -alFh --group-directories-first'
+
+# exa aliases
+    alias ls='exa -lh --group-directories-first'
+
 
 # File and Directory aliases
     alias mv='mv -i'

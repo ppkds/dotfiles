@@ -37,7 +37,7 @@ PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 HISTSIZE=10000                  # History size
 HISTFILESIZE=20000              # History file size
 HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
-PROMPT_COMMAND='history -a'     # Record each line as it gets issued 
+PROMPT_COMMAND='history -a'     # Append each command to history as it is issued 
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
