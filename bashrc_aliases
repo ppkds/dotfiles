@@ -22,7 +22,7 @@
 # Convinience aliasies
     alias apt='sudo apt'
     alias bashrc='source ~/.bashrc'
-    alias cat="batcat"
+    # alias cat="batcat"
     alias cls='clear'
     alias df='df -hT'
     alias edit-git-dotfiles='vim -p    \
