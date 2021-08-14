@@ -18,13 +18,13 @@ PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Shell options
 shopt -s cdable_vars            # Directory shortcuts
-export documents="/home/ppkds/Documents"
-export dotfiles="/home/ppkds/Dev/Git/dotfiles"
-export downloads="/home/ppkds/Downloads"
-export gitprojects="/home/ppkds/Dev/Git"
-export pictures="/home/ppkds/Pictures"
-export practice='/home/ppkds/Dev/Practice'
-export videos="/home/ppkds/Videos"
+export documents="$HOME/Documents"
+export dotfiles="$HOME/Dev/Git/dotfiles"
+export downloads="$HOME/Downloads"
+export gitprojects="$HOME/Dev/Git"
+export pictures="$HOME/Pictures"
+export practice="$HOME/Dev/Practice"
+export videos="$HOME/Videos"
 
 # export PAGER="most"           # man colour display 
 # export PAGER="less"           # Default manpager

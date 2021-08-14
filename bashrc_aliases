@@ -2,8 +2,8 @@
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
     # alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
     # alias sysinfo='resources && echo && cat .bashrc_aliases | grep -v "sysinfo" | grep -wn "df|free|neofetch"'
-    # alias cd-git='cd /home/ppkds/Dev/Git/'    "Obsoleted -- updated to use : shopt -s cdable_vars option in bashrc
-    # alias edit-git-dotfiles='vim -p /home/ppkds/Dev/Git/dotfiles/bashrc /home/ppkds/Dev/Git/dotfiles/bashrc_aliases /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf /home/ppkds/Dev/Git/dotfiles/export_mod /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim /home/ppkds/Dev/Git/dotfiles/vimrc /home/ppkds/Dev/Git/dotfiles/README.md /home/ppkds/Dev/Git/dotfiles/LICENSE'
+    # alias cd-git='cd $HOME/Dev/Git/'    "Obsoleted -- updated to use : shopt -s cdable_vars option in bashrc
+    # alias edit-git-dotfiles='vim -p $HOME/Dev/Git/dotfiles/bashrc $HOME/Dev/Git/dotfiles/bashrc_aliases $HOME/Dev/Git/dotfiles/LESS_TERMCAP $HOME/Dev/Git/dotfiles/config/micro/bindings.json $HOME/Dev/Git/dotfiles/config/micro/settings.json $HOME/Dev/Git/dotfiles/config/neofetch/config.conf $HOME/Dev/Git/dotfiles/export_mod $HOME/Dev/Git/dotfiles/onehalfdark.vim $HOME/Dev/Git/dotfiles/vimrc $HOME/Dev/Git/dotfiles/LICENSE $HOME/Dev/Git/dotfiles/README.md'
  
 # ls aliases
     alias ll='ls -F -lh'
@@ -25,24 +25,25 @@
     # alias cat="batcat"
     alias cls='clear'
     alias df='df -hT'
-    alias edit-git-dotfiles='vim -p    \
-            /home/ppkds/Dev/Git/dotfiles/bashrc                         \
-            /home/ppkds/Dev/Git/dotfiles/bashrc_aliases                 \
-            /home/ppkds/Dev/Git/dotfiles/LESS_TERMCAP                   \
-            /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json     \
-            /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json     \
-            /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf    \
-            /home/ppkds/Dev/Git/dotfiles/export_mod                     \
-            /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim                \
-            /home/ppkds/Dev/Git/dotfiles/vimrc                          \
-            /home/ppkds/Dev/Git/dotfiles/LICENSE                        \
-            /home/ppkds/Dev/Git/dotfiles/README.md'
+    alias edit-git-dotfiles='vim -p \
+            $HOME/Dev/Git/dotfiles/handystuff/whatismyip.sh \
+            $HOME/Dev/Git/dotfiles/bashrc \
+            $HOME/Dev/Git/dotfiles/bashrc_aliases \
+            $HOME/Dev/Git/dotfiles/config/micro/bindings.json \
+            $HOME/Dev/Git/dotfiles/config/micro/settings.json \
+            $HOME/Dev/Git/dotfiles/config/neofetch/config.conf \
+            $HOME/Dev/Git/dotfiles/export_mod \
+            $HOME/Dev/Git/dotfiles/onehalfdark.vim \
+            $HOME/Dev/Git/dotfiles/vimrc \
+            $HOME/Dev/Git/dotfiles/LESS_TERMCAP \
+            $HOME/Dev/Git/dotfiles/LICENSE \
+            $HOME/Dev/Git/dotfiles/README.md'
     alias free='free -ht'
     alias links='links2'
     alias neofetch='clear && echo && neofetch'
+    alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
     alias pwgen='pwgen -y 10'
     alias python='clear && python3'
-    alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
     alias top='htop'
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
     alias weechat='weechat-curses'      # custom alias for weechat

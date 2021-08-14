@@ -170,7 +170,7 @@ endif
 
 " ==  Source vi .exrc & .bashrc setting files / set .exrc source file
     noremap <leader>e :e $HOME/.bashrc<CR>
-    noremap <leader>v :so ~/.vim/vimrc<CR>
+    noremap <leader>v :so $HOME/.vim/vimrc<CR>
 
 " == #!bin/bash standard header
     noremap <leader>T 1GO#!/bin/bash <CR># <CR># <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR><ESC>60a#<ESC>
