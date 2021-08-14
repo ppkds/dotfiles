@@ -26,15 +26,16 @@
     alias cls='clear'
     alias df='df -hT'
     alias edit-git-dotfiles='vim -p    \
-            /home/ppkds/Dev/Git/dotfiles/bashrc                       \
-            /home/ppkds/Dev/Git/dotfiles/bashrc_aliases               \
-            /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json   \
-            /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json   \
-            /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf  \
-            /home/ppkds/Dev/Git/dotfiles/export_mod                   \
-            /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim              \
-            /home/ppkds/Dev/Git/dotfiles/vimrc                        \
-            /home/ppkds/Dev/Git/dotfiles/LICENSE                      \
+            /home/ppkds/Dev/Git/dotfiles/bashrc                         \
+            /home/ppkds/Dev/Git/dotfiles/bashrc_aliases                 \
+            /home/ppkds/Dev/Git/dotfiles/LESS_TERMCAP                   \
+            /home/ppkds/Dev/Git/dotfiles/config/micro/bindings.json     \
+            /home/ppkds/Dev/Git/dotfiles/config/micro/settings.json     \
+            /home/ppkds/Dev/Git/dotfiles/config/neofetch/config.conf    \
+            /home/ppkds/Dev/Git/dotfiles/export_mod                     \
+            /home/ppkds/Dev/Git/dotfiles/onehalfdark.vim                \
+            /home/ppkds/Dev/Git/dotfiles/vimrc                          \
+            /home/ppkds/Dev/Git/dotfiles/LICENSE                        \
             /home/ppkds/Dev/Git/dotfiles/README.md'
     alias free='free -ht'
     alias links='links2'
