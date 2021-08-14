@@ -1,7 +1,7 @@
   #!/bin/bash
 
-    # tput_colors - Demonstrate color combinations.
-
+    # tput_colors - Display color combinations
+    
     for fg_color in {0..7}; do
         set_foreground=$(tput setaf $fg_color)
         for bg_color in {0..7}; do
