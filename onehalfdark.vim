@@ -17,7 +17,7 @@ let s:cyan = [ '#56b6c2', 73 ]
 let s:green = [ '#98c379', 114 ]
 let s:magenta = [ '#c678dd', 176 ]
 let s:red = [ '#e06c75', 168 ]
- 
+
 " Custom colors
 let s:gold = [ '#ffd75f', 221 ] " for active tab in tabline
 

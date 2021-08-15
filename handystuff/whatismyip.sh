@@ -5,8 +5,8 @@
 # Updated: Sat Aug 14 17:04:36 CDT 2021                     #
 #############################################################
 
-# Get external IP 
-# Other sites | https://checkip.amazonaws.com | https://ipinfo.io/ip | 
+# Get external IP
+# Other sites | https://checkip.amazonaws.com | https://ipinfo.io/ip |
 externalip=$(curl -s https://icanhazip.com)
 # Get internal IP
 # Internalip=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2 "/" $4}')	# Use this to display subnet mask

@@ -68,7 +68,6 @@ let g:lightline = {
     \   },
     \}
 
-
 " **** Functions ****
 " == Calculate filesize - determines filesize rounded to 1 decimal
 function! FileSize()
@@ -185,7 +184,7 @@ endif
 " == Search highlighting
     noremap <leader>h :noh<CR>                              " disable search highlighting
 
-" == Mappings for commonly used plugins 
+" == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
     nmap <leader>t :TagbarToggle<CR>                        " Toggle TagBar
 
