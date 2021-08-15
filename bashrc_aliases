@@ -36,9 +36,5 @@
     alias edit-git-files='vim -p \
             $HOME/Dev/Git/dotfiles/bashrc \
             $HOME/Dev/Git/dotfiles/bashrc_aliases \
-            $HOME/Dev/Git/dotfiles/config/bat/config \
-            $HOME/Dev/Git/dotfiles/config/micro/settings.json \
-            $HOME/Dev/Git/dotfiles/handystuff/whatismyip.sh \
-            $HOME/Dev/Git/dotfiles/onehalfdark.vim \
             $HOME/Dev/Git/dotfiles/vimrc'
     alias weechat='weechat-curses'
