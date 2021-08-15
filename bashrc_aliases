@@ -21,6 +21,7 @@
 # Convinience aliasies
     alias apt='sudo apt'
     alias bashrc='source ~/.bashrc'
+    alias cat='bat'
     alias cls='clear'
     alias df='df -hT'
     alias free='free -ht'
