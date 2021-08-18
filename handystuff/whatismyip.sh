@@ -12,7 +12,7 @@ externalip=$(curl -s https://icanhazip.com)
 internalip=$(hostname -I) 																# Use this to display without subnet mask
 # Get Gateway IP - updated: Mon Sep 03 11:59:41 CDT 2018
 routerip=$(ip r | grep 'default' | awk '{print "Gateway: " $3}')
-# Get Conneclient device - updated: Sat Aug 14 17:04:36 CDT 2021
+# Get Connected client device - updated: Sat Aug 14 17:04:36 CDT 2021
 connectedclientdevice=$(ip r | grep 'default' | awk '{print $5}')
 
 # Echo output to stdout
