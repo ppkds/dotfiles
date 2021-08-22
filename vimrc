@@ -12,7 +12,6 @@
 " **** Activate vim-plug to initiate plugins ****
 call plug#begin()
 Plug 'dense-analysis/ale'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/NERDTree'
@@ -23,6 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 call plug#end()
 " Plug 'itchyny/vim-gitbranch' / 'gitbranch': 'gitbranch#name',
+" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " **** Set colorscheme ****
 " colorscheme corvine       " Set colorscheme to corvine
@@ -49,7 +49,7 @@ let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'gitbranch', 'relativepath', 'modified' ] ],
-    \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
+    \   'right': [ [ 'bufnum'], [ 'lineinfo', 'percent', 'filesize'], ['filetype', 'fileencoding', 'fileformat' ] ],
     \           },
     \ 'tabline': {
     \   'left': [ [ 'tabs' ] ],

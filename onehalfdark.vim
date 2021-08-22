@@ -26,7 +26,7 @@ let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': 
 "let s:p.normal.middle = [ [ s:blue, s:mono1 ] ]    " Coloured middle characters disabled for mono characters below
 let s:p.normal.left = [ [ s:mono0, s:blue ], [ s:mono3, s:mono2 ] ]
 let s:p.normal.middle = [ [ s:mono4, s:mono1 ] ]
-let s:p.normal.right = [ [ s:mono0, s:blue ], [ s:mono0, s:mono2 ] ]
+let s:p.normal.right = [ [ s:mono0, s:blue ], [ s:mono3, s:mono2 ] ]
 
 let s:p.normal.error = [ [ s:mono0, s:red ] ]
 let s:p.normal.warning = [ [ s:mono0, s:gold ] ]
