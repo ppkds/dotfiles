@@ -99,9 +99,9 @@ endfunction
 "  **** Set startup defaults ****
     set laststatus=2            " Set Status line to always on
     set noshowmode              " Do not indicate input/replace mode on command line
-if &compatible
-    set nocompatible            " Set nocompatible mode - avoiding side-effects if nocompatible has laready been set
-endif
+    if &compatible
+        set nocompatible        " Set nocompatible mode - avoiding side-effects if nocompatible has laready been set
+    endif
     " set cursorcolumn            " Highligt cursor column
     " set syntax=on               " Set Syntax on
     " set textwidth=0             " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
