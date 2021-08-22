@@ -17,16 +17,16 @@ let s:cyan = [ '#56b6c2', 73 ]
 let s:green = [ '#98c379', 114 ]
 let s:magenta = [ '#c678dd', 176 ]
 let s:red = [ '#e06c75', 168 ]
- 
+
 " Custom colors
 let s:gold = [ '#ffd75f', 221 ] " for active tab in tabline
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
-let s:p.normal.left = [ [ s:mono0, s:blue ], [ s:mono3, s:mono2 ] ]
 "let s:p.normal.middle = [ [ s:blue, s:mono1 ] ]    " Coloured middle characters disabled for mono characters below
+let s:p.normal.left = [ [ s:mono0, s:blue ], [ s:mono3, s:mono2 ] ]
 let s:p.normal.middle = [ [ s:mono4, s:mono1 ] ]
-let s:p.normal.right = [ [ s:mono0, s:blue ], [ s:mono0, s:mono2 ] ]
+let s:p.normal.right = [ [ s:mono0, s:blue ], [ s:mono3, s:mono2 ] ]
 
 let s:p.normal.error = [ [ s:mono0, s:red ] ]
 let s:p.normal.warning = [ [ s:mono0, s:gold ] ]
@@ -39,9 +39,9 @@ let s:p.insert.left = [ [ s:mono0, s:green ], [ s:mono3, s:mono2 ] ]
 let s:p.insert.middle = [ [ s:mono4, s:mono1 ] ]
 let s:p.insert.right = [ [ s:mono0, s:green ], [ s:mono0, s:mono2 ] ]
 
-let s:p.replace.left = [ [ s:mono0, s:red ], [ s:mono3, s:mono2 ] ]
+let s:p.replace.left = [ [ s:mono3, s:red ], [ s:mono3, s:mono2 ] ]
 let s:p.replace.middle = [ [ s:mono4, s:mono1 ] ]
-let s:p.replace.right = [ [ s:mono0, s:red ], [ s:mono0, s:mono2 ] ]
+let s:p.replace.right = [ [ s:mono3, s:red ], [ s:mono0, s:mono2 ] ]
 
 let s:p.visual.left = [ [ s:mono0, s:gold ], [ s:mono3, s:mono2 ] ]
 let s:p.visual.middle = [ [ s:mono4, s:mono1 ] ]

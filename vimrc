@@ -12,7 +12,6 @@
 " **** Activate vim-plug to initiate plugins ****
 call plug#begin()
 Plug 'dense-analysis/ale'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/NERDTree'
@@ -23,6 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 call plug#end()
 " Plug 'itchyny/vim-gitbranch' / 'gitbranch': 'gitbranch#name',
+" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " **** Set colorscheme ****
 " colorscheme corvine       " Set colorscheme to corvine
@@ -44,11 +44,12 @@ let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommen
 
 " **** lightline plugin ****
 " \ 'colorscheme': 'onehalfdark', 'wombat' - alternate colorscheme
+" \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'gitbranch', 'relativepath', 'modified' ] ],
-    \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
+    \   'right': [ [ 'bufnum'], [ 'lineinfo', 'percent', 'filesize'], ['filetype', 'fileencoding', 'fileformat' ] ],
     \           },
     \ 'tabline': {
     \   'left': [ [ 'tabs' ] ],
@@ -67,7 +68,6 @@ let g:lightline = {
     \   },
     \}
 
-
 " **** Functions ****
 " == Calculate filesize - determines filesize rounded to 1 decimal
 function! FileSize()
@@ -84,6 +84,7 @@ function! FileSize()
         if bytes <= 0
             return '0'
         endif
+
         if (exists('gbytes'))
             return printf("%.1f", gbytes) . 'g'
         elseif (exists('mbytes'))
@@ -98,9 +99,9 @@ endfunction
 "  **** Set startup defaults ****
     set laststatus=2            " Set Status line to always on
     set noshowmode              " Do not indicate input/replace mode on command line
-if &compatible
-    set nocompatible            " Set nocompatible mode - avoiding side-effects if nocompatible has laready been set
-endif
+    if &compatible
+        set nocompatible        " Set nocompatible mode - avoiding side-effects if nocompatible has laready been set
+    endif
     " set cursorcolumn            " Highligt cursor column
     " set syntax=on               " Set Syntax on
     " set textwidth=0             " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
@@ -115,9 +116,9 @@ endif
     set errorbells              " Set error bell on
     set expandtab               " Convert tab to spaces
     set hidden                  " Hide buffers when they are abandoned
-    set hlsearch	        " highlight search matches
+    set hlsearch	            " highlight search matches
     set ignorecase              " Ignore case when searching
-    set incsearch	        " Search while typing
+    set incsearch	            " Search while typing
     set linebreak               " Set linebreak at word boundary
     set listchars=precedes:<,extends:>
     set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
@@ -125,6 +126,7 @@ endif
     set nowrap                  " Set wrap off
     set nowritebackup           " Do not save .sh~ files
     set number                  " Display line numbers
+    set relativenumber          " Display relative line numbers
     set scrolloff=3             " Keep 3 lines visible at top & bottom of edit screen
     set shell=/bin/bash         " Set shell as /bin/bash
     set shiftwidth=4            " Set shift width to 4 characters
@@ -167,7 +169,7 @@ endif
 
 " ==  Source vi .exrc & .bashrc setting files / set .exrc source file
     noremap <leader>e :e $HOME/.bashrc<CR>
-    noremap <leader>v :so ~/.vim/vimrc<CR>
+    noremap <leader>v :so $HOME/.vim/vimrc<CR>
 
 " == #!bin/bash standard header
     noremap <leader>T 1GO#!/bin/bash <CR># <CR># <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR><ESC>60a#<ESC>
@@ -182,7 +184,7 @@ endif
 " == Search highlighting
     noremap <leader>h :noh<CR>                              " disable search highlighting
 
-" == Mappings for commonly used plugins 
+" == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
     nmap <leader>t :TagbarToggle<CR>                        " Toggle TagBar
 
@@ -190,8 +192,8 @@ endif
     noremap <leader>r :set wrap! wrap?<CR>                  " Toggle wrap and display staus
 
 " == Toggle line numbers & display status
-    noremap <F12> :set number!<CR>                          " Toggle line # and display status
-    noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line # and display status
+    noremap <F12> :set number!<CR>                          " Toggle line #
+    noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line #
 
 " == Special characters in vim
 

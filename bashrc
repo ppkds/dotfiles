@@ -1,5 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# ॐ 
+# ॐ
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 # Modified : Pappukant Dansale - Mon 19 Jul 2021 08:52:10 PM CDT
 
@@ -13,45 +13,36 @@ esac
 PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Set Locale
-# LANG=/usr/lib/locale/en_US                " or use below
+# LANG=/usr/lib/locale/en_US    # or use option below
 # LANG=en_US.utf-8
 
-# Shell Directory options
-shopt -s cdable_vars
-export documents="/home/ppkds/Documents"
-export dotfiles="/home/ppkds/Dev/Git/dotfiles"
-export downloads="/home/ppkds/Downloads"
-export gitprojects="/home/ppkds/Dev/Git"
-export pictures="/home/ppkds/Pictures"
-export videos="/home/ppkds/Videos"
+# Shell options
+shopt -s cdable_vars            # Directory shortcuts
+export documents="$HOME/Documents"
+export dotfiles="$HOME/Dev/Git/dotfiles"
+export downloads="$HOME/Downloads"
+export gitprojects="$HOME/Dev/Git"
+export pictures="$HOME/Pictures"
+export practice="$HOME/Dev/Practice"
+export videos="$HOME/Videos"
 
-# Save multi-line commands as one command
-shopt -s cmdhist
+# export PAGER="less"           # Default manpager
+# export PAGER="most"           # man colour display with less alternative
+[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
 
-# Correct spelling errors during tab-completion
-shopt -s dirspell 2> /dev/null
+shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
+shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
+shopt -s cmdhist                # Save multi-line commands as one command
+shopt -s dirspell 2> /dev/null  # Correct spelling errors during tab-completion
+shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 
-# Correct spelling errors in arguments supplied to cd
-shopt -s cdspell 2> /dev/null
+PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 
-# check the window size after each command and if necessary update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+HISTSIZE=10000                  # History size
+HISTFILESIZE=20000              # History file size
+HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
+PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
 
-# The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
-shopt -s globstar
-
-# Automatically trim long paths in the prompt
-PROMPT_DIRTRIM=2
-
-# Don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-
-# Set history length
-HISTSIZE=10000
-HISTFILESIZE=20000
-
-# Record each line as it gets issued
-PROMPT_COMMAND='history -a'
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -81,10 +72,10 @@ fi
 # Enable color prompt for shell. Green for standard user, red for superuser
 if [ "$color_prompt" = yes ]; then
     if [[ ${EUID} == 0 ]]; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$ \[\033[00m\] '
     else
 #       PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]\[\033[01;34m\] \w \$\[\033[00m\] '
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]\[\033[01;34m\] \w \$ \[\033[00m\] '
     fi
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
@@ -94,14 +85,14 @@ unset color_prompt force_color_prompt
 # Echo blankline before command prompt
 PS1="\n$PS1"
 
-# enable color support of ls
+# enable color support of common commands
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias dir='dir --color=auto'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias grep='grep --color=auto -iE'
-    alias ls='ls  --color=auto -ChF'
+    alias ls='ls  --color=auto -ChF --group-directories-first'
     alias vdir='vdir --color=auto'
 fi
 
@@ -117,17 +108,14 @@ if [ -f $HOME/.bashrc_aliases ]; then
 fi
 
 # Use display setup for WSL2 VcXsrv Xserver in WSL environment
+    # Export_mod files example
+        # export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+        # export LIBGL_ALWAYS_INDIRECT=1
 if [ -f $HOME/.export_mod ]; then
     source $HOME/.export_mod
 fi
-#
-# Export_mod files example
-# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-# export LIBGL_ALWAYS_INDIRECT=1
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# Enable programmable completion features (you don't need to enable this, if it's already enabled in /etc/bash.bashrc and /etc/profile sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
