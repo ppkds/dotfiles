@@ -155,9 +155,9 @@ endfunction
 
 " **** Map shortcut keys ****
 " == Insert various commonly used phrases and strings
-    noremap <leader>a o# Pappukant Dansale - <ESC>:r !date<CR>kJA<ESC><ESC>
-    noremap <leader>n o# Pappukant Dansale<ESC>
-    noremap <leader>D <ESC>:r !date<CR>kJA<ESC>
+    noremap <leader>ppkd o Pappukant Dansale - <ESC>:r !date<CR>kJA<ESC><ESC>
+    noremap <leader>ppk o Pappukant Dansale<ESC>
+    noremap <leader>dt <ESC>:r !date<CR>kJA<ESC>
 
 " == Comment out current line (bash/exrc/c/c++, Vim)
     " noremap <leader>c 0i# <ESC>
@@ -177,7 +177,7 @@ endfunction
 " **** Shortcut Keys (default leader in vim is '\' ****
 " == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
     noremap <leader>w :w<CR>                                " save file
-    noremap <leader>s sav                                   " save as...
+    " noremap <leader>s :sav                                  " save as...
     " noremap <C-F2> :e                                       " edit new/existing file - gvim
     " noremap <C-S-F2> <C-g>                                  " display file details - gvim
 

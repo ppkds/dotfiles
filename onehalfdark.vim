@@ -3,7 +3,7 @@
 " Author: sonph
 " License: MIT License
 " Last Change: 2019/12/01
-" Modified: Pappukant Dansale - Mon 19 Jul 2021 08:40:52 PM CDT
+" Modified: Pappukant Dansale - Sun Aug 22 21:42:27 CDT 2021
 " =============================================================================
 
 let s:mono0 = [ '#282c34', 236 ]
@@ -48,7 +48,8 @@ let s:p.visual.middle = [ [ s:mono4, s:mono1 ] ]
 let s:p.visual.right = [ [ s:mono0, s:gold ], [ s:mono0, s:mono2 ] ]
 
 let s:p.tabline.left = [ [ s:mono4, s:mono1] ]
-let s:p.tabline.tabsel = [ [ s:mono0, s:gold] ]
+" let s:p.tabline.tabsel = [ [ s:mono0, s:gold] ]
+let s:p.tabline.tabsel = [ [ s:gold, s:mono1] ]
 let s:p.tabline.middle = [ [ s:mono2, s:mono1] ]
 let s:p.tabline.right = [ [ s:mono1, s:mono2 ] ]
 
