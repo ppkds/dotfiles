@@ -147,10 +147,10 @@ endfunction
     ab __ppkds Pappukant Dansale
 " == Auto-correct common spelling errors
     ab Convinience Convenience
-    ab Kinldy Kindly
-    ab Teh The
     ab convinience convenience
+    ab Kinldy Kindly
     ab kinldy kindly
+    ab Teh The
     ab teh the
 
 " **** Map shortcut keys ****
