@@ -53,7 +53,7 @@
     "splitright": true,
     "status": true,
     "statusformatl": "$(filename) $(modified) $(status.paste) ",
-    "statusformatr": "| $(line):$(col) | $(opt:filetype) | $(opt:encoding) | $(opt:fileformat) | keybinds:M-g help:^G ",
+    "statusformatr": "| $(line):$(col) | $(opt:filetype) | $(opt:encoding) | $(opt:fileformat) | keybinds:M-g help:^g ",
     "statusline": true,
     "sucmd": "sudo",
     "syntax": true,
