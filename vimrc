@@ -176,8 +176,8 @@ endfunction
     " noremap <leader>C 0i" <ESC>
 
 " == Copy and comment out current line (bash/exrc, Vim)
-    noremap <leader>n YP0i# <ESC><CR>
-    noremap <leader>N YP0i" <ESC><CR>
+    noremap <leader>nlb YP0i# <ESC><CR>
+    noremap <leader>nlv YP0i" <ESC><CR>
 
 " ==  Source vi .exrc & .bashrc setting files / set .exrc source file
     noremap <leader>e :e $HOME/.bashrc<CR>
