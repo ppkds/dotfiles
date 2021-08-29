@@ -10,6 +10,18 @@
 " Sun 11 Oct 2020 03:26:44 PM CDT - Updated with ueful plugins and obsoleted redundant vimrc settings
 
 " **** Activate vim-plug to initiate plugins ****
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+"
+" Call plugins
 call plug#begin()
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
