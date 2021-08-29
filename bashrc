@@ -18,12 +18,16 @@ PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Shell options
 shopt -s cdable_vars            # Directory shortcuts
+export desktop="$HOME/Desktop"
 export documents="$HOME/Documents"
 export dotfiles="$HOME/Dev/Git/dotfiles"
 export downloads="$HOME/Downloads"
 export gitprojects="$HOME/Dev/Git"
+export music="$HOME/Music"
 export pictures="$HOME/Pictures"
 export practice="$HOME/Dev/Practice"
+export public="$HOME/Public"
+export templates="$HOME/Templates"
 export videos="$HOME/Videos"
 
 # export PAGER="less"           # Default manpager
