@@ -2,6 +2,7 @@
 # http://slickslice.sourceforge.net/
 # Copyright 2007,2008 mojoholder
 # Distributed under the terms of the GNU General Public License, v2 or later
+# text 0,0 'slicksliced! - powered by imagemagick & mplayer - running on linux  '
 
 VERSION="0.9"
 
@@ -467,13 +468,10 @@ MOVIENAME=`basename "$FULLPATHNAME"`
 COUNTER=$FIRSTFRAME
 MASK="000000"
 TIMEMASK="00"
-# TEMPDIR="/tmp/slickslicetmp-$USER/$MOVIENAME/"
-TEMPDIR="$TMPDIR/slickslicetmp-$USER/$MOVIENAME/"              # Use TMPDIR environment variable 
+TEMPDIR="/tmp/slickslicetmp-$USER/$MOVIENAME/"
 
 mkdir -p "$TEMPDIR" &> /dev/null
-# chmod og-rwx "/tmp/slickslicetmp-$USER/"
-chmod og-rwx "$TMPDIR/slickslicetmp-$USER/"                    # Use TMPDIR environment variable 
-
+chmod og-rwx "/tmp/slickslicetmp-$USER/"
 rm "$TEMPDIR/"* -Rf &> /dev/null
 pushd "$TEMPDIR" &> /dev/null
 
