@@ -13,10 +13,10 @@
 
 
 # File and Directory aliases
-    alias mv='mv -i'
     alias cp='cp -iv'
-    alias rm='rm -v'
     alias mkdir='mkdir -pv'
+    alias mv='mv -i'
+    alias rm='rm -Iv'
 
 # Convinience aliasies
     alias apt='sudo apt'
