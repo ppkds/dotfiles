@@ -2,25 +2,25 @@
 "  | vimrc: Pappukant Dansale                     |
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
 "  +----------------------------------------------+
-"
+
 " EDIT HISTORY :-
 " Sun 23 Aug 2020 10:26:53 PM CDT - Deleted reduntant configs to optimize filesize
 " Sun 23 Aug 2020 03:29:41 AM CDT - Updated to include plugin manager vim-plug, added NERDTree, lightline & commented out statusline syntax + custom highlight colors
 " Sat 12 Sep 2020 11:18:41 PM CDT - Updated to install colorschemes using plugin manager
 " Sun 11 Oct 2020 03:26:44 PM CDT - Updated with ueful plugins and obsoleted redundant vimrc settings
 
-" **** Activate vim-plug to initiate plugins ****
-" Install vim-plug if not found
+" **** Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-" Run PlugInstall if there are missing plugins
+" **** Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
-"
+
+" **** Activate vim-plug to initiate plugins ****
 " Call plugins
 call plug#begin()
 Plug 'dense-analysis/ale'
@@ -37,10 +37,6 @@ call plug#end()
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 " **** Set colorscheme ****
-" colorscheme corvine       " Set colorscheme to corvine
-" colorscheme dracula       " Set colorscheme to dracula
-" set background=dark       "... for dracula dark version
-" set background=light      "... for dracula light version
 colorscheme onehalfdark     " Set colorscheme to onehalfdark
 
 " **** Misc. Configuration ****
