@@ -31,7 +31,6 @@ export templates="$HOME/Templates"
 export videos="$HOME/Videos"
 
 # export PAGER="less"           # Default manpager
-# export PAGER="most"           # man colour display with less alternative
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
 
 shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
