@@ -52,7 +52,7 @@ set boldtext
 # set cutfromcursor
 
 ## Do not use the line below the title bar, leaving it entirely blank.
-set emptyline
+# set emptyline
 
 ## Set the target width for automatic hard-wrapping and for justifying
 ## paragraphs.  If the specified value is 0 or less, the wrapping point
@@ -119,7 +119,7 @@ set positionlog
 ## paragraphs.  They cannot contain blank characters.  Only closing
 ## punctuation, optionally followed by closing brackets, can end
 ## sentences.
-set punct "!.?"
+# set punct "!.?"
 
 ## Do quick status-bar blanking.  Status-bar messages will disappear after
 ## 1 keystroke instead of 26.  Note that "constantshow" overrides this.
@@ -127,7 +127,7 @@ set punct "!.?"
 
 ## The regular expression that matches quoting characters in email
 ## or line-comment introducers in source code.  The default is:
-# set quotestr "^([ 	]*([!#%:;>|}]|//))+"
+set quotestr "^([ 	]*([!#%:;>|}]|//))+"
 
 ## Try to work around a mismatching terminfo terminal description.
 # set rawsequences
@@ -183,18 +183,18 @@ set tabstospaces
 ## of tabs and spaces.  187 in ISO 8859-1 (0000BB in Unicode) and 183 in
 ## ISO-8859-1 (0000B7 in Unicode) seem to be good values for these.
 ## The default when in a UTF-8 locale:
-# set whitespace "»·"
+set whitespace "»·"
 ## The default otherwise:
 # set whitespace ">."
 
 ## Detect word boundaries differently by treating punctuation
 ## characters as parts of words.
-set wordbounds
+# set wordbounds
 
 ## The characters (besides alphanumeric ones) that should be considered
 ## as parts of words.  This option does not have a default value.  When
 ## set, it overrides option 'set wordbounds'.
-set wordchars "<_>.,!?;"
+# set wordchars "<_>.,!?; "
 
 ## Let an unmodified Backspace or Delete erase the marked region (instead
 ## of a single character, and without affecting the cutbuffer).
@@ -293,3 +293,94 @@ bind M-R redo main
 bind ^U undo main
 bind ^E redo main
 set multibuffer
+# improved syntax from https://github.com/scopatz/nanorc --- curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+include "~/.nano/apacheconf.nanorc"
+include "~/.nano/arduino.nanorc"
+include "~/.nano/asciidoc.nanorc"
+include "~/.nano/asm.nanorc"
+include "~/.nano/awk.nanorc"
+include "~/.nano/c.nanorc"
+include "~/.nano/clojure.nanorc"
+include "~/.nano/cmake.nanorc"
+include "~/.nano/coffeescript.nanorc"
+include "~/.nano/colortest.nanorc"
+include "~/.nano/conf.nanorc"
+include "~/.nano/csharp.nanorc"
+include "~/.nano/css.nanorc"
+include "~/.nano/cython.nanorc"
+include "~/.nano/dot.nanorc"
+include "~/.nano/dotenv.nanorc"
+include "~/.nano/email.nanorc"
+include "~/.nano/Dockerfile.nanorc"
+include "~/.nano/etc-hosts.nanorc"
+include "~/.nano/fish.nanorc"
+include "~/.nano/fortran.nanorc"
+include "~/.nano/gentoo.nanorc"
+include "~/.nano/git.nanorc"
+include "~/.nano/gitcommit.nanorc"
+include "~/.nano/glsl.nanorc"
+include "~/.nano/go.nanorc"
+include "~/.nano/gradle.nanorc"
+include "~/.nano/groff.nanorc"
+include "~/.nano/haml.nanorc"
+include "~/.nano/haskell.nanorc"
+include "~/.nano/html.nanorc"
+include "~/.nano/html.j2.nanorc"
+include "~/.nano/ical.nanorc"
+include "~/.nano/ini.nanorc"
+include "~/.nano/inputrc.nanorc"
+include "~/.nano/jade.nanorc"
+include "~/.nano/java.nanorc"
+include "~/.nano/javascript.nanorc"
+include "~/.nano/js.nanorc"
+include "~/.nano/json.nanorc"
+include "~/.nano/keymap.nanorc"
+include "~/.nano/kickstart.nanorc"
+include "~/.nano/kotlin.nanorc"
+include "~/.nano/ledger.nanorc"
+include "~/.nano/lisp.nanorc"
+include "~/.nano/lua.nanorc"
+include "~/.nano/makefile.nanorc"
+include "~/.nano/man.nanorc"
+include "~/.nano/markdown.nanorc"
+include "~/.nano/mpdconf.nanorc"
+include "~/.nano/mutt.nanorc"
+include "~/.nano/nanorc.nanorc"
+include "~/.nano/nginx.nanorc"
+include "~/.nano/nmap.nanorc"
+include "~/.nano/ocaml.nanorc"
+include "~/.nano/patch.nanorc"
+include "~/.nano/peg.nanorc"
+include "~/.nano/perl.nanorc"
+include "~/.nano/perl6.nanorc"
+include "~/.nano/php.nanorc"
+include "~/.nano/pkg-config.nanorc"
+include "~/.nano/pkgbuild.nanorc"
+include "~/.nano/po.nanorc"
+include "~/.nano/pov.nanorc"
+include "~/.nano/privoxy.nanorc"
+include "~/.nano/puppet.nanorc"
+include "~/.nano/pug.nanorc"
+include "~/.nano/python.nanorc"
+include "~/.nano/reST.nanorc"
+include "~/.nano/rpmspec.nanorc"
+include "~/.nano/ruby.nanorc"
+include "~/.nano/rust.nanorc"
+include "~/.nano/scala.nanorc"
+include "~/.nano/sed.nanorc"
+include "~/.nano/sh.nanorc"
+include "~/.nano/sls.nanorc"
+include "~/.nano/sql.nanorc"
+include "~/.nano/svn.nanorc"
+include "~/.nano/swift.nanorc"
+include "~/.nano/systemd.nanorc"
+include "~/.nano/tcl.nanorc"
+include "~/.nano/tex.nanorc"
+include "~/.nano/vala.nanorc"
+include "~/.nano/verilog.nanorc"
+include "~/.nano/vi.nanorc"
+include "~/.nano/xml.nanorc"
+include "~/.nano/xresources.nanorc"
+include "~/.nano/yaml.nanorc"
+include "~/.nano/yum.nanorc"
+include "~/.nano/zsh.nanorc"
