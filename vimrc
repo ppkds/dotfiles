@@ -37,10 +37,10 @@ call plug#end()
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 " **** Set colorscheme ****
-colorscheme onehalfdark     " Set colorscheme to onehalfdark
+colorscheme onehalfdark                 " Set colorscheme to onehalfdark
 
 " **** Misc. Configuration ****
-" let mapleader = "-"        " Vim default is '\'
+let mapleader = '\'                     " Vim default is '\'
 
 " **** NerdCommenter settings ***** <leader>cc
 let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
