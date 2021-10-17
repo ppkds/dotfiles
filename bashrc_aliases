@@ -32,6 +32,7 @@
     alias pwgen='pwgen -y 10'
     alias python='clear && python3'
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
+    # alias resources='neofetch && echo && echo - Memory - && free && echo && duf'
     alias top='htop'
     alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
     # alias weechat='weechat-curses'
