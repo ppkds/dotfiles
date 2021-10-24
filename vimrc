@@ -68,12 +68,12 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': " %{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': "☰ %{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
     \   'gitbranch': 'FugitiveHead',
-    \   'branch' : 'Lightlinegit',
+    \   'branch' : 'Lightlinegitbranch',
     \   },
     \}
 
@@ -105,16 +105,16 @@ function! FileSize()
         endif
 endfunction
 
-function! Lightlinegit()
+function! Lightlinegitbranch()
     let l:branch = fugitive#head()
-    return l:branch ==# '' ? '' : ' ' . l:branch
+    return l:branch ==# '' ? '' : 'ψ  ' . l:branch
 endfunction
 
 "  **** Set startup defaults ****
     set laststatus=2            " Set Status line to always on
     set noshowmode              " Do not indicate input/replace mode on command line
     if &compatible
-        set nocompatible        " Set nocompatible mode - avoiding side-effects if nocompatible has laready been set
+        set nocompatible        " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
     endif
     " set cursorcolumn            " Highligt cursor column
     " set syntax=on               " Set Syntax on
@@ -211,19 +211,22 @@ endfunction
 
 " == Special characters in vim
 
-" == In vim special key/unicode characters entered by  + special key or using  + unocode HEX
+" == In vim special key/unicode characters are entered in ***insert mode*** by  + special key or using  + unocode HEX
 " == Useful statusline glyphs; kept for reference
 "   ¦   " Alternate pipe symbol ( u00A6)
 "   ॐ   " Aum ( u0950)
+"   ⎌   " 'Modified' flag symbol 1 ( u238c)
 "   ∅   " ReadOnly flag symbol ( u2205)
 "   ⌥   " Git branch character ( u2325)
-"   ⎇  " Git branch character ( u2387)
-"   Ψ   " Git branch character
-"   ⎌   " 'Modified' flag symbol 1 ( u238c)
-"   ☰   " Lines symbol ( u2630)
-"   ㏑   " Lines symbol ( u33D1)
-"      " Lines symbol( u00B1)
+"   ⎇   " Git branch character ( u2387)
+"   Ψ   " Git branch character ( u03a8)
+"   ψ   " Git branch character ( u03c8)
+"   ⍦   " Git branch character ( u2366)
+"   ⑂   " Git branch character ( u2442)
 "      " Gitbranch symbol ( E0A0 in Nerdfont 5.2)
+"   ☰   " Lines symbol ( u2630)
+"   ㏑  " Lines symbol ( u33D1)
+"      " Lines symbol( u00B1 in Nerdfont 5.2)
 
 " == Other special key display
 "   ^M = <CR>
