@@ -56,7 +56,7 @@ let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommen
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'gitbranch', 'relativepath', 'modified' ] ],
+    \   'left': [ [ 'mode', 'paste' ], [ 'branch', 'relativepath', 'modified', 'readonly' ] ],
     \   'right': [ [ 'bufnum'], [ 'lineinfo', 'percent', 'filesize'], ['filetype', 'fileencoding', 'fileformat' ] ],
     \           },
     \ 'tabline': {
@@ -68,11 +68,12 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': "%{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': " %{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
     \   'gitbranch': 'FugitiveHead',
+    \   'branch' : 'Lightlinegit',
     \   },
     \}
 
@@ -102,6 +103,11 @@ function! FileSize()
         else
             return bytes . 'b'
         endif
+endfunction
+
+function! Lightlinegit()
+    let l:branch = fugitive#head()
+    return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
 "  **** Set startup defaults ****
@@ -211,11 +217,13 @@ endfunction
 "   ॐ   " Aum ( u0950)
 "   ∅   " ReadOnly flag symbol ( u2205)
 "   ⌥   " Git branch character ( u2325)
-"   ⎇   " Git branch character ( u2387)
+"   ⎇  " Git branch character ( u2387)
+"   Ψ   " Git branch character
 "   ⎌   " 'Modified' flag symbol 1 ( u238c)
 "   ☰   " Lines symbol ( u2630)
-"   ㏑  " Lines symbol ( u33D1)
-"      " 'Modified' flag symbol 2 ( u00B1)
+"   ㏑   " Lines symbol ( u33D1)
+"      " Lines symbol( u00B1)
+"      " Gitbranch symbol ( E0A0 in Nerdfont 5.2)
 
 " == Other special key display
 "   ^M = <CR>
