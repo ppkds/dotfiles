@@ -68,7 +68,7 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': "☰ %{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': " %{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
@@ -107,7 +107,7 @@ endfunction
 
 function! Lightlinegitbranch()
     let l:branch = fugitive#head()
-    return l:branch ==# '' ? '' : 'ψ  ' . l:branch
+    return l:branch ==# '' ? '' : '  ' . l:branch
 endfunction
 
 "  **** Set startup defaults ****
@@ -223,10 +223,12 @@ endfunction
 "   ψ   " Git branch character ( u03c8)
 "   ⍦   " Git branch character ( u2366)
 "   ⑂   " Git branch character ( u2442)
-"      " Gitbranch symbol ( E0A0 in Nerdfont 5.2)
+"      " Gitbranch symbol ( E0A0 in Nerdfont 5.2 and CaskaydiaCode NF)
 "   ☰   " Lines symbol ( u2630)
+"      " Lines symbol ( uF4A6 in CaskaydiaCode NF)
 "   ㏑  " Lines symbol ( u33D1)
 "      " Lines symbol( u00B1 in Nerdfont 5.2)
+"      " Lines symbol( uE0A1 in CaskaydiaCode NF)
 
 " == Other special key display
 "   ^M = <CR>
