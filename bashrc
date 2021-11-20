@@ -114,9 +114,9 @@ fi
     # Export_mod files example
         # export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
         # export LIBGL_ALWAYS_INDIRECT=1
-if [ -f $HOME/.export_mod ]; then
-    source $HOME/.export_mod
-fi
+# if [ -f $HOME/.export_mod ]; then
+#     source $HOME/.export_mod
+# fi
 
 # Enable programmable completion features (you don't need to enable this, if it's already enabled in /etc/bash.bashrc and /etc/profile sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
