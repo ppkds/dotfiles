@@ -1,8 +1,5 @@
 # Unused / Obsoleted aliases
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
-    # alias onivim='~/AppImages/Onivim2-x86_64-master.AppImage'
-    # alias sysinfo='resources && echo && cat .bashrc_aliases | grep -v "sysinfo" | grep -wn "df|free|neofetch"'
-    # alias cd-git='cd $HOME/Dev/Git/'    "Obsoleted -- updated to use : shopt -s cdable_vars option in bashrc
 
 # ls aliases
     alias ll='ls -F -lh'
