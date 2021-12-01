@@ -30,17 +30,16 @@ export public="$HOME/Public"
 export templates="$HOME/Templates"
 export videos="$HOME/Videos"
 
-# export PAGER="less"           # Default manpager
-[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
-
 shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
 shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
 shopt -s cmdhist                # Save multi-line commands as one command
 shopt -s dirspell 2> /dev/null  # Correct spelling errors during tab-completion
 shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 
-PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
+# export PAGER="less"           # Default manpager
+[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
 
+PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 HISTSIZE=10000                  # History size
 HISTFILESIZE=20000              # History file size
 HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
