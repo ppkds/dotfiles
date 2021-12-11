@@ -36,6 +36,7 @@ shopt -s cmdhist                # Save multi-line commands as one command
 shopt -s dirspell 2> /dev/null  # Correct spelling errors during tab-completion
 shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 
+# Set man options
 # export PAGER="less"           # Default manpager
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
 
