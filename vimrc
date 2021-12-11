@@ -80,24 +80,26 @@ let g:lightline = {
 " **** Functions ****
 " == Calculate filesize - determines filesize rounded to 1 decimal
 function! FileSize()
+    let base2 = 1024.000
+    let base10 = 1000.000
     let bytes = getfsize(expand("%:p"))
         if (bytes >= 1024)
-            let kbytes = bytes / 1024.0
+            let kbytes = bytes / base2
         endif
         if (exists('kbytes') && kbytes >= 1024)
-            let mbytes = kbytes / 1024.0
+            let mbytes = kbytes / base2
         endif
         if (exists('mbytes') && mbytes >= 1024)
-            let gbytes = mbytes / 1024.0
+            let gbytes = mbytes / base2
         endif
         if bytes <= 0
             return '0'
         endif
 
         if (exists('gbytes'))
-            return printf("%.1f", gbytes) . 'g'
+            return printf("%.3f", gbytes) . 'g'
         elseif (exists('mbytes'))
-            return printf("%.1f", mbytes) . 'm'
+            return printf("%.2f", mbytes) . 'm'
         elseif (exists('kbytes'))
             return printf("%.1f", kbytes) . 'k'
         else
