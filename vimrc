@@ -27,8 +27,6 @@ call plug#begin()
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
 call plug#end()
-" Plug 'itchyny/vim-gitbranch' / 'gitbranch': 'gitbranch#name',
-" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " **** Set colorscheme ****
 colorscheme onehalfdark                 " Set colorscheme to onehalfdark
