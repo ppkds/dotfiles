@@ -43,9 +43,6 @@ let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check se
 let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
 
 " **** lightline plugin ****
-" \ 'colorscheme': 'onehalfdark', 'wombat' - alternate colorscheme
-" \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
-" \   'gitbranch': 'FugitiveHead',
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
@@ -70,7 +67,7 @@ let g:lightline = {
     \}
 
 " **** Functions ****
-" == Calculate filesize - determines filesize rounded to 1 decimal
+" == Calculate filesize - determines filesize rounded to x (3) decimal places
 function! FileSize()
     let base2 = 1024.000
     let base10 = 1000.000
