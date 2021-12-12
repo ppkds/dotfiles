@@ -67,10 +67,10 @@ let g:lightline = {
     \}
 
 " **** Functions ****
-" == Calculate filesize - determines filesize rounded to x (3) decimal places
+" == Calculate filesize - determines filesize rounded to x decimal places
 function! FileSize()
-    let base2 = 1024.000
-    let base10 = 1000.000
+    let base2 = 1024.0
+    let base10 = 1000.0
     let bytes = getfsize(expand("%:p"))
         if (bytes >= 1024)
             let kbytes = bytes / base2
@@ -90,7 +90,7 @@ function! FileSize()
         elseif (exists('mbytes'))
             return printf("%.2f", mbytes) . 'm'
         elseif (exists('kbytes'))
-            return printf("%.1f", kbytes) . 'k'
+            return printf("%.2f", kbytes) . 'k'
         else
             return bytes . 'b'
         endif
@@ -182,14 +182,17 @@ endfunction
     " noremap <C-F2> :e                                       " edit new/existing file - gvim
     " noremap <C-S-F2> <C-g>                                  " display file details - gvim
 
-" == Search highlighting
+" == Disable search highlighting
     noremap <leader>h :noh<CR>                              " disable search highlighting
+
+" == Toggle set spell
+    noremap <leader>s :set spell!<CR>                       " Toggle spellcheck
 
 " == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
     nmap <leader>t :TagbarToggle<CR>                        " Toggle TagBar
 
-" ---- Toggle line wrapping & display status----
+" == Toggle line wrapping & display status
     noremap <leader>r :set wrap! wrap?<CR>                  " Toggle wrap and display status
 
 " == Toggle line numbers & display status
