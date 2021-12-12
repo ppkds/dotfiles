@@ -164,10 +164,6 @@ endfunction
     noremap <leader>ppk o Pappukant Dansale<ESC>
     noremap <leader>dt <ESC>:r !date<CR>kJA<ESC>
 
-" == Comment out current line (bash/exrc/c/c++, Vim)
-    " noremap <leader>c 0i# <ESC>
-    " noremap <leader>C 0i" <ESC>
-
 " == Copy and comment out current line (bash/exrc, Vim)
     noremap <leader>nlb YP0i# <ESC><CR>
     noremap <leader>nlv YP0i" <ESC><CR>
@@ -200,30 +196,3 @@ endfunction
     noremap <F12> :set number!<CR>                          " Toggle line #
     noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line #
 
-" == Special characters in vim
-
-" == In vim special key/unicode characters are entered in ***insert mode*** by  + special key or using  + unocode HEX
-" == Useful statusline glyphs; kept for reference
-"   ¦   " Alternate pipe symbol ( u00A6)
-"   ॐ   " Aum ( u0950)
-"   ⎌   " 'Modified' flag symbol 1 ( u238c)
-"   ∅   " ReadOnly flag symbol ( u2205)
-"   ⌥   " Git branch character ( u2325)
-"   ⎇   " Git branch character ( u2387)
-"   Ψ   " Git branch character ( u03a8)
-"   ψ   " Git branch character ( u03c8)
-"   ⍦   " Git branch character ( u2366)
-"   ⑂   " Git branch character ( u2442)
-"      " Gitbranch symbol ( E0A0 in Nerdfont 5.2 and CaskaydiaCode NF)
-"   ☰   " Lines symbol ( u2630)
-"      " Lines symbol ( uF4A6 in CaskaydiaCode NF)
-"   ㏑  " Lines symbol ( u33D1)
-"      " Lines symbol( u00B1 in Nerdfont 5.2)
-"      " Lines symbol( uE0A1 in CaskaydiaCode NF)
-
-" == Other special key display
-"   ^M = <CR>
-"   ^[ = ESC
-"   ^? = BACKSPACE
-"   ^I = TAB
-"   ^V = ^v
