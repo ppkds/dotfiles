@@ -86,7 +86,7 @@ function! FileSize()
         endif
 
         if (exists('gbytes'))
-            return printf("%.3f", gbytes) . 'g'
+            return printf("%.2f", gbytes) . 'g'
         elseif (exists('mbytes'))
             return printf("%.2f", mbytes) . 'm'
         elseif (exists('kbytes'))
