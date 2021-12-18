@@ -30,17 +30,17 @@ export public="$HOME/Public"
 export templates="$HOME/Templates"
 export videos="$HOME/Videos"
 
-# export PAGER="less"           # Default manpager
-[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
-
 shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
 shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
 shopt -s cmdhist                # Save multi-line commands as one command
 shopt -s dirspell 2> /dev/null  # Correct spelling errors during tab-completion
 shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 
-PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
+# Set man options
+# export PAGER="less"           # Default manpager
+[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
 
+PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 HISTSIZE=10000                  # History size
 HISTFILESIZE=20000              # History file size
 HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
@@ -114,9 +114,9 @@ fi
     # Export_mod files example
         # export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
         # export LIBGL_ALWAYS_INDIRECT=1
-if [ -f $HOME/.export_mod ]; then
-    source $HOME/.export_mod
-fi
+# if [ -f $HOME/.export_mod ]; then
+#     source $HOME/.export_mod
+# fi
 
 # Enable programmable completion features (you don't need to enable this, if it's already enabled in /etc/bash.bashrc and /etc/profile sources /etc/bash.bashrc).
 if ! shopt -oq posix; then

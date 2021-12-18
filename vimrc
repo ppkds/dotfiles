@@ -3,38 +3,30 @@
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
 "  +----------------------------------------------+
 
-" EDIT HISTORY :-
-" Sun 23 Aug 2020 10:26:53 PM CDT - Deleted reduntant configs to optimize filesize
-" Sun 23 Aug 2020 03:29:41 AM CDT - Updated to include plugin manager vim-plug, added NERDTree, lightline & commented out statusline syntax + custom highlight colors
-" Sat 12 Sep 2020 11:18:41 PM CDT - Updated to install colorschemes using plugin manager
-" Sun 11 Oct 2020 03:26:44 PM CDT - Updated with ueful plugins and obsoleted redundant vimrc settings
-
 " **** Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " **** Automatically install missing pugins defined in Call Plugins section using PlugInstall command
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
+    \| PlugInstall --sync | source $MYVIMRC
+    \| endif
 
 " **** Activate vim-plug to initiate plugins ****
 " Call plugins
 call plug#begin()
-Plug 'dense-analysis/ale'
-Plug 'itchyny/lightline.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'preservim/NERDTree'
-Plug 'preservim/nerdcommenter'
-Plug 'preservim/tagbar'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
+    Plug 'dense-analysis/ale'
+    Plug 'itchyny/lightline.vim'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'preservim/NERDTree'
+    Plug 'preservim/nerdcommenter'
+    Plug 'preservim/tagbar'
+    Plug 'sonph/onehalf', {'rtp': 'vim/'}
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-surround'
 call plug#end()
-" Plug 'itchyny/vim-gitbranch' / 'gitbranch': 'gitbranch#name',
-" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " **** Set colorscheme ****
 colorscheme onehalfdark                 " Set colorscheme to onehalfdark
@@ -51,8 +43,6 @@ let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check se
 let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
 
 " **** lightline plugin ****
-" \ 'colorscheme': 'onehalfdark', 'wombat' - alternate colorscheme
-" \   'right': [ [ 'bufnum'], ['filetype', 'fileencoding', 'fileformat' ], [ 'lineinfo', 'percent', 'filesize'] ],
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
@@ -68,38 +58,39 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': "☰ %{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': " %{printf('%2d/%-2d:%2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
-    \   'gitbranch': 'FugitiveHead',
     \   'branch' : 'Lightlinegitbranch',
     \   },
     \}
 
 " **** Functions ****
-" == Calculate filesize - determines filesize rounded to 1 decimal
+" == Calculate filesize - determines filesize rounded to x decimal places
 function! FileSize()
+    let base2 = 1024.0
+    let base10 = 1000.0
     let bytes = getfsize(expand("%:p"))
         if (bytes >= 1024)
-            let kbytes = bytes / 1024.0
+            let kbytes = bytes / base2
         endif
         if (exists('kbytes') && kbytes >= 1024)
-            let mbytes = kbytes / 1024.0
+            let mbytes = kbytes / base2
         endif
         if (exists('mbytes') && mbytes >= 1024)
-            let gbytes = mbytes / 1024.0
+            let gbytes = mbytes / base2
         endif
         if bytes <= 0
             return '0'
         endif
 
         if (exists('gbytes'))
-            return printf("%.1f", gbytes) . 'g'
+            return printf("%.2f", gbytes) . 'g'
         elseif (exists('mbytes'))
-            return printf("%.1f", mbytes) . 'm'
+            return printf("%.2f", mbytes) . 'm'
         elseif (exists('kbytes'))
-            return printf("%.1f", kbytes) . 'k'
+            return printf("%.2f", kbytes) . 'k'
         else
             return bytes . 'b'
         endif
@@ -107,7 +98,7 @@ endfunction
 
 function! Lightlinegitbranch()
     let l:branch = fugitive#head()
-    return l:branch ==# '' ? '' : 'ψ  ' . l:branch
+    return l:branch ==# '' ? '' : '  ' . l:branch
 endfunction
 
 "  **** Set startup defaults ****
@@ -173,10 +164,6 @@ endfunction
     noremap <leader>ppk o Pappukant Dansale<ESC>
     noremap <leader>dt <ESC>:r !date<CR>kJA<ESC>
 
-" == Comment out current line (bash/exrc/c/c++, Vim)
-    " noremap <leader>c 0i# <ESC>
-    " noremap <leader>C 0i" <ESC>
-
 " == Copy and comment out current line (bash/exrc, Vim)
     noremap <leader>nlb YP0i# <ESC><CR>
     noremap <leader>nlv YP0i" <ESC><CR>
@@ -195,42 +182,20 @@ endfunction
     " noremap <C-F2> :e                                       " edit new/existing file - gvim
     " noremap <C-S-F2> <C-g>                                  " display file details - gvim
 
-" == Search highlighting
+" == Disable search highlighting
     noremap <leader>h :noh<CR>                              " disable search highlighting
+
+" == Toggle set spell
+    noremap <leader>s :set spell!<CR>                       " Toggle spellcheck
 
 " == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
     nmap <leader>t :TagbarToggle<CR>                        " Toggle TagBar
 
-" ---- Toggle line wrapping & display status----
-    noremap <leader>r :set wrap! wrap?<CR>                  " Toggle wrap and display staus
+" == Toggle line wrapping & display status
+    noremap <leader>r :set wrap! wrap?<CR>                  " Toggle wrap and display status
 
 " == Toggle line numbers & display status
     noremap <F12> :set number!<CR>                          " Toggle line #
     noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line #
 
-" == Special characters in vim
-
-" == In vim special key/unicode characters are entered in ***insert mode*** by  + special key or using  + unocode HEX
-" == Useful statusline glyphs; kept for reference
-"   ¦   " Alternate pipe symbol ( u00A6)
-"   ॐ   " Aum ( u0950)
-"   ⎌   " 'Modified' flag symbol 1 ( u238c)
-"   ∅   " ReadOnly flag symbol ( u2205)
-"   ⌥   " Git branch character ( u2325)
-"   ⎇   " Git branch character ( u2387)
-"   Ψ   " Git branch character ( u03a8)
-"   ψ   " Git branch character ( u03c8)
-"   ⍦   " Git branch character ( u2366)
-"   ⑂   " Git branch character ( u2442)
-"      " Gitbranch symbol ( E0A0 in Nerdfont 5.2)
-"   ☰   " Lines symbol ( u2630)
-"   ㏑  " Lines symbol ( u33D1)
-"      " Lines symbol( u00B1 in Nerdfont 5.2)
-
-" == Other special key display
-"   ^M = <CR>
-"   ^[ = ESC
-"   ^? = BACKSPACE
-"   ^I = TAB
-"   ^V = ^v
