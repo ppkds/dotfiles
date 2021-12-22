@@ -16,19 +16,25 @@ PATH=$PATH:/usr/lib/i386-linux-gnu
 # LANG=/usr/lib/locale/en_US    # or use option below
 # LANG=en_US.utf-8
 
-# Shell options
+# Set shell options
+PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
+HISTSIZE=10000                  # History size
+HISTFILESIZE=20000              # History file size
+HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
+PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
+
 shopt -s cdable_vars            # Directory shortcuts
-export desktop="$HOME/Desktop"
-export documents="$HOME/Documents"
-export dotfiles="$HOME/Dev/Git/dotfiles"
-export downloads="$HOME/Downloads"
-export git="$HOME/Dev/Git"
-export music="$HOME/Music"
-export pictures="$HOME/Pictures"
-export practice="$HOME/Dev/Practice"
-export public="$HOME/Public"
-export templates="$HOME/Templates"
-export videos="$HOME/Videos"
+    export desktop="$HOME/Desktop"
+    export documents="$HOME/Documents"
+    export dotfiles="$HOME/Dev/Git/dotfiles"
+    export downloads="$HOME/Downloads"
+    export git="$HOME/Dev/Git"
+    export music="$HOME/Music"
+    export pictures="$HOME/Pictures"
+    export practice="$HOME/Dev/Practice"
+    export public="$HOME/Public"
+    export templates="$HOME/Templates"
+    export videos="$HOME/Videos"
 
 shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
 shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
@@ -37,15 +43,8 @@ shopt -s dirspell 2> /dev/null  # Correct spelling errors during tab-completion
 shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 
 # Set man options
-# export PAGER="less"           # Default manpager
+# export PAGER="less"                           # Default manpager
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
-
-PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
-HISTSIZE=10000                  # History size
-HISTFILESIZE=20000              # History file size
-HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
-PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
-
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -77,7 +76,6 @@ if [ "$color_prompt" = yes ]; then
     if [[ ${EUID} == 0 ]]; then
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
     else
-#       PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]\[\033[01;34m\] \w \$ \[\033[00m\] '
     fi
 else
