@@ -13,12 +13,18 @@
 "   ψ   " Git branch character ( u03c8)
 "   ⍦   " Git branch character ( u2366)
 "   ⑂   " Git branch character ( u2442)
-"      " Gitbranch symbol ( E0A0 in Nerdfont 5.2 and CaskaydiaCode NF)
+"      " Gitbranch symbol ( E0A0 in Nerdfont 5.2 and CaskaydiaCove NF)
+"      " Gitbranch symbol ( F418 in Nerdfont 5.2 and CaskaydiaCove NF)
 "   ☰   " Lines symbol ( u2630)
-"      " Lines symbol ( uF4A6 in CaskaydiaCode NF)
+"      " Lines symbol ( uF4A6 in CaskaydiaCove NF)
 "   ㏑  " Lines symbol ( u33D1)
-"      " Lines symbol( u00B1 in Nerdfont 5.2)
-"      " Lines symbol( uE0A1 in CaskaydiaCode NF)
+"      " Lines symbol ( u00B1 in Nerdfont 5.2)
+"      " Lines symbol ( uE0A1 in CaskaydiaCove NF)
+"      " Column symbol (^V uE0A3 in CaskaydiaCove NF)
+"      " Android (^V uE70E in CaskaydiaCove NF)
+"      " DOS / Windows (^V uE70F in CaskaydiaCove NF)
+"      " Mac (^V uE711 in CaskaydiaCove NF)
+"      " Unix / Linux (^V E712 in CaskaydiaCove NF)
 
 " == Other special key display
 "   ^M = <CR>
