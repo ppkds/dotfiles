@@ -31,7 +31,7 @@
     alias python='clear && python3'
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
     alias top='htop'
-    alias weather='echo && curl wttr.in/{,London,Chicago,Mumbai}?format=3 && echo'
+    alias weather='echo && curl wttr.in/{,Chicago,London,Mumbai,"New York"}?format=3 && echo'
     alias weechat='weechat-curses'
     alias wget='wget -c'
     alias edit-gitfiles='vim -p \
