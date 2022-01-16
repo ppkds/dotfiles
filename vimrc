@@ -46,7 +46,7 @@ let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommen
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'branch', 'relativepath', 'modified', 'readonly' ] ],
+    \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'relativepath', 'modified', 'readonly' ] ],
     \   'right': [ [ 'bufnum'], [ 'lineinfo', 'percent', 'filesize'], ['filetype', 'fileencoding', 'fileformat' ] ],
     \           },
     \ 'tabline': {
@@ -62,7 +62,7 @@ let g:lightline = {
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
-    \   'branch' : 'Lightlinegitbranch',
+    \   'gitbranch' : 'Lightlinegitbranch',
     \   },
     \}
 
