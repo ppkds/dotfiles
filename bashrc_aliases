@@ -20,7 +20,7 @@
     alias bashrc='source ~/.bashrc'
     alias cat='bat'
     alias cls='clear'
-    alias df='df -hT | grep -v ^none | ( read header ; echo "$header" ; sort -k 1)'
+    alias df='df -hT'
     alias free='free -ht'
     alias links='links2'
     alias lsb_release='lsb_release -cdir'
