@@ -23,7 +23,7 @@ HISTFILESIZE=20000              # History file size
 HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
 PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
 
-shopt -s cdable_vars            # Directory shortcuts
+shopt -s cdable_vars            # Directory aliases
     export desktop="$HOME/Desktop"
     export documents="$HOME/Documents"
     export dotfiles="$HOME/Dev/Git/dotfiles"
