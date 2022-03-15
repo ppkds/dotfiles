@@ -26,7 +26,7 @@
     alias lsb_release='lsb_release -cdir'
     alias neofetch='clear && echo && neofetch'
     alias nth='name-that-hash'
-    alias os-version='cat -l cfg /etc/os-release'
+    alias os-release='cat -l cfg /etc/os-release'
     alias pwgen='pwgen -y 10'
     alias python='clear && python3'
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop | grep -v tmpfs'
