@@ -131,7 +131,7 @@ endfunction
     set nowrap                  " Set wrap off
     set nowritebackup           " Do not save .sh~ files
     set number                  " Display line numbers
-    set relativenumber          " Display relative line numbers
+    " set relativenumber          " Display relative line numbers
     set scrolloff=3             " Keep 3 lines visible at top & bottom of edit screen
     set shell=/bin/bash         " Set shell as /bin/bash
     set shiftwidth=4            " Set shift width to 4 characters
