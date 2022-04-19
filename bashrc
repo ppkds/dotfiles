@@ -17,11 +17,11 @@ PATH=$PATH:/usr/lib/i386-linux-gnu
 # LANG=en_US.utf-8
 
 # Set shell options
-PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
-HISTSIZE=10000                  # History size
-HISTFILESIZE=20000              # History file size
 HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
+HISTFILESIZE=20000              # History file size
+HISTSIZE=10000                  # History size
 PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
+PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 
 shopt -s cdable_vars            # Directory aliases
     export desktop="$HOME/Desktop"
