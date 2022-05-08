@@ -2,5 +2,7 @@
     "Alt-/": "lua:comment.comment",
     "CtrlC": "Copy",
     "CtrlUnderscore": "lua:comment.comment",
-    "CtrlV": "Paste"
+    "CtrlV": "Paste",
+    "F5": "lua:wc.wordCount",
+    "F6": "command-edit:gorename "
 }
