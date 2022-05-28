@@ -145,6 +145,7 @@ endfunction
     set tabstop=4               " Set tab width to 4 characters
     set warn                    " Warn no write since last change
     set wrapscan                " Wrap search to beginning of file
+    set spelllang=en_us         " Set spell language
     syntax enable               " Enable Syntax
 
 " **** ab_(breviations) & autocorrect ****
