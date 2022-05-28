@@ -108,6 +108,7 @@ endfunction
         set nocompatible        " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
     endif
     " set cursorcolumn            " Highligt cursor column
+    " set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
     " set relativenumber          " Display relative line numbers
     " set syntax=on               " Set Syntax on
     " set textwidth=0             " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
@@ -127,7 +128,7 @@ endfunction
     set incsearch	            " Search while typing
     set linebreak               " Set linebreak at word boundary
     set listchars=precedes:<,extends:>
-    set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
+    set mousemodel=popup_setpos " Set right mouse button to popup menu at the click
     set noswapfile              " Do not create swap files
     set nowrap                  " Set wrap off
     set nowritebackup           " Do not save .sh~ files
@@ -140,12 +141,12 @@ endfunction
     set smartcase               " Smart case matching
     set smartindent             " Smart indent
     set smarttab                " Set Smarttab
+    set spelllang=en            " Set spell language to English all versions
     set splitbelow              " Open split below
     set splitright              " Open vsplit to right
     set tabstop=4               " Set tab width to 4 characters
     set warn                    " Warn no write since last change
     set wrapscan                " Wrap search to beginning of file
-    set spelllang=en_us         " Set spell language
     syntax enable               " Enable Syntax
 
 " **** ab_(breviations) & autocorrect ****
@@ -187,7 +188,7 @@ endfunction
     noremap <leader>h :noh<CR>                              " disable search highlighting
 
 " == Toggle set spell
-    noremap <leader>s :set spell!<CR>                       " Toggle spellcheck
+    noremap <leader>s :setlocal spell!<CR>                  " Toggle spellcheck
 
 " == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
