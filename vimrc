@@ -18,15 +18,16 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " Call plugins
 call plug#begin()
     Plug 'dense-analysis/ale'
+    Plug 'tpope/vim-fugitive'
     Plug 'itchyny/lightline.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'preservim/NERDTree'
     Plug 'preservim/nerdcommenter'
     Plug 'preservim/tagbar'
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
-    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
 call plug#end()
+"     Plug 'tpope/vim-fugitive'
 
 " **** Set colorscheme ****
 colorscheme onehalfdark                 " Set colorscheme to onehalfdark
@@ -97,7 +98,8 @@ function! FileSize()
 endfunction
 
 function! Lightlinegitbranch()
-    let l:branch = fugitive#head()
+    let l:branch = FugitiveHead()
+    " let l:branch = fugitive#head()
     return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
