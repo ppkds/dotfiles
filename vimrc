@@ -99,7 +99,7 @@ endfunction
 
 function! Lightlinegitbranch()
     let l:branch = FugitiveHead()
-    " let l:branch = fugitive#head()
+    " let l:branch = fugitive#head()    " Broken Original
     return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
