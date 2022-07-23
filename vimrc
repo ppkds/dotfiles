@@ -27,7 +27,6 @@ call plug#begin()
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'tpope/vim-surround'
 call plug#end()
-"     Plug 'tpope/vim-fugitive'
 
 " **** Set colorscheme ****
 colorscheme onehalfdark                 " Set colorscheme to onehalfdark
