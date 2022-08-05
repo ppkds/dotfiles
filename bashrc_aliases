@@ -18,7 +18,7 @@
 # Convinience aliasies
     alias apt='sudo apt'
     alias bashrc='source ~/.bashrc'
-    alias cat='batcat'
+    alias cat='bat'
     alias cls='clear'
     alias df='df -hT | grep -v ^none | ( read header ; echo "$header" ; sort -k 1)'
     alias free='free -ht'
