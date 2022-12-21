@@ -105,15 +105,15 @@ endfunction
 "  **** Set startup defaults ****
     set laststatus=2            " Set Status line to always on
     set noshowmode              " Do not indicate input/replace mode on command line
-    if &compatible
-        set nocompatible        " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
-    endif
-    " set cursorcolumn            " Highligt cursor column
-    " set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
-    " set relativenumber          " Display relative line numbers
-    " set syntax=on               " Set Syntax on
-    " set textwidth=0             " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
-    " set wrapmargin=0            " Set wrapmargin to 0
+        if &compatible          " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
+            set nocompatible
+        endif
+    " set cursorcolumn          " Highligt cursor column
+    " set mouse=a               " Enable mouse usage (all modes) - if 'vim' installed
+    " set relativenumber        " Display relative line numbers
+    " set syntax=on             " Set Syntax on
+    " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
+    " set wrapmargin=0          " Set wrapmargin to 0
     set autoindent              " Use indent of previous line
     set autowrite               " Automatically save before commands like :next and :make
     set backspace=indent,eol,start
@@ -124,9 +124,9 @@ endfunction
     set errorbells              " Set error bell on
     set expandtab               " Convert tab to spaces
     set hidden                  " Hide buffers when they are abandoned
-    set hlsearch	            " highlight search matches
+    set hlsearch                " highlight search matches
     set ignorecase              " Ignore case when searching
-    set incsearch	            " Search while typing
+    set incsearch               " Search while typing
     set linebreak               " Set linebreak at word boundary
     set listchars=precedes:<,extends:>
     set mousemodel=popup_setpos " Set right mouse button to popup menu at the click
