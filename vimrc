@@ -96,6 +96,7 @@ function! FileSize()
         endif
 endfunction
 
+" == Determine git branch 
 function! Lightlinegitbranch()
     let l:branch = FugitiveHead()
     " let l:branch = fugitive#head()    " Broken Original
@@ -149,6 +150,10 @@ endfunction
     set warn                    " Warn no write since last change
     set wrapscan                " Wrap search to beginning of file
     syntax enable               " Enable Syntax
+
+" **** Autocommands ****
+    autocmd BufWinLeave * mkview            " save folds on exit
+    autocmd BufWinEnter * silent loadview   " autoload folds on start
 
 " **** ab_(breviations) & autocorrect ****
 " == Shortforms
