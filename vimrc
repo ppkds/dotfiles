@@ -152,8 +152,8 @@ endfunction
     syntax enable               " Enable Syntax
 
 " **** Autocommands ****
-    autocmd BufWinLeave * mkview            " save folds on exit
-    autocmd BufWinEnter * silent loadview   " autoload folds on start
+    autocmd BufWinLeave mkview            " save folds on exit
+    autocmd BufWinEnter silent loadview   " autoload folds on start
 
 " **** ab_(breviations) & autocorrect ****
 " == Shortforms
