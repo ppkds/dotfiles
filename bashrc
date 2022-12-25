@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # ॐ
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
-# Modified : Pappukant Dansale - Mon 19 Jul 2021 08:52:10 PM CDT
+# Created: Sun 19 Feb 2012
 
 # If not running interactively, don't do anything
 case $- in
