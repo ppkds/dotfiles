@@ -18,11 +18,9 @@ connectedclientdevice=$(ip r | grep 'default' | awk '{print $5}')
 
 # Echo output to stdout
 echo
-echo --------
-echo "Connection: ${connectedclientdevice} || Gateway: ${routerip}"
-echo --------
-echo "Internal IP":" ${internalip}"
-echo "External IP":" ${externalip}"
-echo --------
+echo "Gateway IP    : ${routerip}"
+echo "Internal IP   : ${internalip}"
+echo "External IP   : ${externalip}"
+echo "Interface     : ${connectedclientdevice}"
 echo
 exit 0
