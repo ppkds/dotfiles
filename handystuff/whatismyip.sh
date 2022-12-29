@@ -21,6 +21,6 @@ echo
 echo "Gateway IP    : ${routerip}"
 echo "Internal IP   : ${internalip}"
 echo "External IP   : ${externalip}"
-echo "Interface     : ${connectedclientdevice}"
+echo "Interface     : ${clientdevice}"
 echo
 exit 0
