@@ -14,7 +14,7 @@ internalip=$(ip r | grep 'scope' | awk '{print $9}')
 # Get Gateway IP - updated: Mon Sep 03 11:59:41 CDT 2018
 routerip=$(ip r | grep 'default' | awk '{print $3}')
 # Get Connected client device - updated: Sat Aug 14 17:04:36 CDT 2021
-connectedclientdevice=$(ip r | grep 'default' | awk '{print $5}')
+clientdevice=$(ip r | grep 'default' | awk '{print $5}')
 
 # Echo output to stdout
 echo
