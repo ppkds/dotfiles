@@ -47,7 +47,7 @@ let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'relativepath', 'modified', 'readonly' ] ],
-    \   'right': [ [ 'bufnum'], [ 'lineinfo', 'percent', 'filesize'], ['filetype', 'fileencoding', 'fileformat' ] ],
+    \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'num_words', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
     \           },
     \ 'tabline': {
     \   'left': [ [ 'tabs' ] ],
@@ -58,11 +58,12 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': " %{printf('%2d/%-2d : %2d ', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': " %{printf('%2d/%-2d : %2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
-    \   'gitbranch' : 'Lightlinegitbranch',
+    \   'gitbranch': 'Lightlinegitbranch',
+    \   'num_words': 'WordCount'
     \   },
     \}
 
@@ -102,6 +103,18 @@ function! Lightlinegitbranch()
     " let l:branch = fugitive#head()    " Broken Original
     return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
+
+" == Determine word count :: from: https://vim.fandom.com/wiki/Word_count
+function WordCount()
+let g:word_count=wordcount().words
+    if has_key(wordcount(),'visual_words')
+        let g:word_count=wordcount().visual_words."/".wordcount().words     "This counts selected words in VISUAL mode
+    else
+        let g:word_count=wordcount().cursor_words."/".wordcount().words     "This counts words in other modes
+    endif
+    return g:word_count
+endfunction
+
 
 "  **** Set startup defaults ****
     set laststatus=2            " Set Status line to always on
