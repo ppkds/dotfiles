@@ -2,6 +2,7 @@
 "  | vimrc: Pappukant Dansale                     |
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
 "  +----------------------------------------------+
+"   
 
 " **** Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -39,15 +40,15 @@ let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty l
 let g:NERDCompactSexyComs = 1           " Use compact syntax for prettified multi-line comments
 let g:NERDDefaultAlign = 'left'         " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDSpaceDelims = 1               " Add spaces after comment
-let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
 let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
+let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
 
 " **** lightline plugin ****
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'relativepath', 'modified', 'readonly' ] ],
-    \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
+    \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'num_chrwrd', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
     \           },
     \ 'tabline': {
     \   'left': [ [ 'tabs' ] ],
@@ -58,18 +59,14 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': "%{printf('%2d/%-2d : %2d', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': "%{printf('%2d/%-d : %2d', line('.'), line('$'), col('.'))}",
+    \   'num_chrwrd': "%{printf('%d c : %d w', wordcount().chars, wordcount().words)}"
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
     \   'gitbranch': 'Lightlinegitbranch',
-    \   'num_words': 'WordCount',
-    \   'num_chars': 'CharCount'
     \   },
     \}
-"   
-    "   To be worked on for right side \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'num_chars'." / ".'num_words', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
-    "                                  \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'num_chars', 'num_words', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
    
 " **** Functions ****
 " == Calculate filesize - determines filesize rounded to x decimal places
@@ -78,47 +75,35 @@ function! FileSize()
     let base10 = 1000.0
     let bytes = getfsize(expand("%:p"))
         if (bytes >= 1024)
-            let kbytes = bytes / base2
+            let kbytes = bytes / base10
         endif
-        if (exists('kbytes') && kbytes >= base2)
-            let mbytes = kbytes / base2
+        if (exists('kbytes') && kbytes >= base10)
+            let mbytes = kbytes / base10
         endif
-        if (exists('mbytes') && mbytes >= base2)
-            let gbytes = mbytes / base2
+        if (exists('mbytes') && mbytes >= base10)
+            let gbytes = mbytes / base10
         endif
         if bytes <= 0
             return '0'
         endif
 
         if (exists('gbytes'))
-            return printf("%.2f", gbytes) . 'Gi'
+            return printf("%.2f", gbytes) . 'g'
         elseif (exists('mbytes'))
-            return printf("%.2f", mbytes) . 'Mi'
+            return printf("%.2f", mbytes) . 'm'
         elseif (exists('kbytes'))
-            return printf("%.2f", kbytes) . 'Ki'
+            return printf("%.2f", kbytes) . 'k'
         else
             return bytes . 'b'
         endif
+        " use Ki / Mi / Gi for base2 Kebibytes notation
 endfunction
 
 " == Determine git branch 
 function! Lightlinegitbranch()
     let l:branch = FugitiveHead()
-    " let l:branch = fugitive#head()    " Broken Original
     return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
-
-" == Determine word count :: modified from: https://vim.fandom.com/wiki/Word_count
-function WordCount()
-let word_count=wordcount().words
-    return word_count.' w'
-endfunction
-
-function CharCount()
-let char_count=wordcount().chars
-    return char_count.' c'
-endfunction
-
 
 "  **** Set startup defaults ****
     set laststatus=2            " Set Status line to always on
