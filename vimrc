@@ -47,7 +47,7 @@ let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'relativepath', 'modified', 'readonly' ] ],
-    \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'num_words', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
+    \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
     \           },
     \ 'tabline': {
     \   'left': [ [ 'tabs' ] ],
@@ -58,15 +58,19 @@ let g:lightline = {
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': " %{printf('%2d/%-2d : %2d', line('.'), line('$'), col('.'))}",
+    \   'lineinfo': "%{printf('%2d/%-2d : %2d', line('.'), line('$'), col('.'))}",
     \   },
     \ 'component_function': {
     \   'filesize': 'FileSize',
     \   'gitbranch': 'Lightlinegitbranch',
-    \   'num_words': 'WordCount'
+    \   'num_words': 'WordCount',
+    \   'num_chars': 'CharCount'
     \   },
     \}
-
+"   
+    "   To be worked on for right side \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'num_chars'." / ".'num_words', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
+    "                                  \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'num_chars', 'num_words', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
+   
 " **** Functions ****
 " == Calculate filesize - determines filesize rounded to x decimal places
 function! FileSize()
@@ -104,15 +108,15 @@ function! Lightlinegitbranch()
     return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
-" == Determine word count :: from: https://vim.fandom.com/wiki/Word_count
+" == Determine word count :: modified from: https://vim.fandom.com/wiki/Word_count
 function WordCount()
-let g:word_count=wordcount().words
-    if has_key(wordcount(),'visual_words')
-        let g:word_count=wordcount().visual_words."/".wordcount().words     "This counts selected words in VISUAL mode
-    else
-        let g:word_count=wordcount().cursor_words."/".wordcount().words     "This counts words in other modes
-    endif
-    return g:word_count
+let word_count=wordcount().words
+    return word_count.' w'
+endfunction
+
+function CharCount()
+let char_count=wordcount().chars
+    return char_count.' c'
 endfunction
 
 
