@@ -75,24 +75,24 @@ function! FileSize()
     let base10 = 1000.0
     let bytes = getfsize(expand("%:p"))
         if (bytes >= 1024)
-            let kbytes = bytes / base10
+            let kbytes = bytes / base2
         endif
-        if (exists('kbytes') && kbytes >= base10)
-            let mbytes = kbytes / base10
+        if (exists('kbytes') && kbytes >= base2)
+            let mbytes = kbytes / base2
         endif
-        if (exists('mbytes') && mbytes >= base10)
-            let gbytes = mbytes / base10
+        if (exists('mbytes') && mbytes >= base2)
+            let gbytes = mbytes / base2
         endif
         if bytes <= 0
             return '0'
         endif
 
         if (exists('gbytes'))
-            return printf("%.2f", gbytes) . 'g'
+            return printf("%.2f", gbytes) . 'Gi'
         elseif (exists('mbytes'))
-            return printf("%.2f", mbytes) . 'm'
+            return printf("%.2f", mbytes) . 'Mi'
         elseif (exists('kbytes'))
-            return printf("%.2f", kbytes) . 'k'
+            return printf("%.2f", kbytes) . 'Ki'
         else
             return bytes . 'b'
         endif
