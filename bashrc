@@ -28,7 +28,7 @@ shopt -s cdable_vars            # Directory aliases
     export documents="$HOME/Documents"
     export dotfiles="$HOME/Dev/Git/dotfiles"
     export downloads="$HOME/Downloads"
-    export git="$HOME/Dev/Git"
+    export gitfiles="$HOME/Dev/Git"
     export music="$HOME/Music"
     export pictures="$HOME/Pictures"
     export practice="$HOME/Dev/Practice"
