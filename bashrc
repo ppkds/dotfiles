@@ -24,17 +24,18 @@ PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
 PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 
 shopt -s cdable_vars            # Directory aliases
-    export desktop="$HOME/Desktop"
-    export documents="$HOME/Documents"
+    export desktopfolder="$HOME/Desktop"
+    export devfolder="$HOME/Dev"
+    export documentfolder="$HOME/Documents"
     export dotfiles="$HOME/Dev/Git/dotfiles"
-    export downloads="$HOME/Downloads"
-    export gitfiles="$HOME/Dev/Git"
-    export music="$HOME/Music"
-    export pictures="$HOME/Pictures"
-    export practice="$HOME/Dev/Practice"
-    export public="$HOME/Public"
-    export templates="$HOME/Templates"
-    export videos="$HOME/Videos"
+    export downloadfolder="$HOME/Downloads"
+    export gitfolder="$HOME/Dev/Git"
+    export musicfolder="$HOME/Music"
+    export picturesfolder="$HOME/Pictures"
+    export practicefolder="$HOME/Dev/Practice"
+    export publicfolder="$HOME/Public"
+    export templatesfolder="$HOME/Templates"
+    export videosfolder="$HOME/Videos"
 
 shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
 shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
