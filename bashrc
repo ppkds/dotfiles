@@ -31,11 +31,11 @@ shopt -s cdable_vars            # Directory aliases
     export downloadfolder="$HOME/Downloads"
     export gitfolder="$HOME/Dev/Git"
     export musicfolder="$HOME/Music"
-    export picturesfolder="$HOME/Pictures"
+    export picturefolder="$HOME/Pictures"
     export practicefolder="$HOME/Dev/Practice"
     export publicfolder="$HOME/Public"
-    export templatesfolder="$HOME/Templates"
-    export videosfolder="$HOME/Videos"
+    export templatefolder="$HOME/Templates"
+    export videofolder="$HOME/Videos"
 
 shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
 shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
@@ -60,8 +60,7 @@ case "$TERM" in
 xterm | xterm-color | *-256color) color_prompt=yes ;;
 esac
 
-# uncomment for a colored prompt
-# force_color_prompt=yes
+# uncomment for a colored prompt - force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -77,7 +76,6 @@ if [ "$color_prompt" = yes ]; then
     if [[ ${EUID} == 0 ]]; then
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
     else
-        # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]\[\033[01;34m\] \w \$ \[\033[00m\] '
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
     fi
 else
@@ -110,15 +108,6 @@ if [ -f $HOME/.bashrc_aliases ]; then
     . $HOME/.bashrc_aliases
 fi
 
-# Use display setup for WSL2 VcXsrv Xserver in WSL environment
-    # Export_mod files example
-        # export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-        # export LIBGL_ALWAYS_INDIRECT=1
-# if [ -f $HOME/.export_mod ]; then
-#     source $HOME/.export_mod
-# fi
-
-# Enable programmable completion features (you don't need to enable this, if it's already enabled in /etc/bash.bashrc and /etc/profile sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
