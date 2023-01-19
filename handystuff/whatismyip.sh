@@ -14,6 +14,7 @@ externalip=$(curl -s https://icanhazip.com) # Alternative: https://checkip.amazo
 clientdevice=$(ip r | grep 'default' | awk '{print $5}')
 
 # Echo output to stdout
+echo
 echo "Gateway IP    : ${routerip}"
 echo "Subnet/mask   : ${subnetmask}"
 echo "Internal IP   : ${internalip}"
