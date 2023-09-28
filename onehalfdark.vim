@@ -1,10 +1,10 @@
 " =============================================================================
 " Filename: autoload/lightline/colorscheme/onehalfdark.vim
+" Filename for Plugin install: .vim/plugged/onehalf/vim/autoload/lightline/colorscheme/onehalfdark.vim
 " Author: sonph
 " License: MIT License
 " Last Change: 2019/12/01
 " Modified: Pappukant Dansale - Sun Aug 22 21:42:27 CDT 2021
-" .vim/plugged/onehalf/vim/autoload/lightline/colorscheme/onehalfdark.vim
 " =============================================================================
 
 let s:mono0 = [ '#282c34', 236 ]
