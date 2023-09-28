@@ -4,6 +4,7 @@
 " License: MIT License
 " Last Change: 2019/12/01
 " Modified: Pappukant Dansale - Sun Aug 22 21:42:27 CDT 2021
+" .vim/plugged/onehalf/vim/autoload/lightline/colorscheme/onehalfdark.vim
 " =============================================================================
 
 let s:mono0 = [ '#282c34', 236 ]
