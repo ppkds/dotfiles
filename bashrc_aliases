@@ -26,7 +26,6 @@
     alias links='links2'
     alias lsb_release='lsb_release -cdir'
     alias neofetch='echo && neofetch'
-    # alias neofetch='clear && echo && neofetch'
     alias nth='name-that-hash'
     alias os-release='cat -l sh /etc/os-release'
     alias pwgen='pwgen -y 10'
