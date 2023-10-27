@@ -54,7 +54,7 @@ let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check se
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'relativepath', 'modified', 'readonly' ] ],
+    \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'relativepath'], ['modified', 'readonly' ] ],
     \   'right': [ [ 'bufnum'], [ 'percent', 'lineinfo', 'num_chrwrd', 'filesize' ], ['filetype', 'fileencoding', 'fileformat' ] ],
     \           },
     \ 'tabline': {
@@ -119,7 +119,7 @@ endfunction
             set nocompatible
         endif
     " set cursorcolumn          " Highligt cursor column
-    " set mouse=a               " Enable mouse usage (all modes) - if 'vim' installed
+    set mouse=a               " Enable mouse usage (all modes) - if 'vim' installed
     " set relativenumber        " Display relative line numbers
     " set syntax=on             " Set Syntax on
     " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
