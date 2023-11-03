@@ -1,9 +1,9 @@
 {
     "autosu": true,
-    "colorcolumn": 132,
+    "colorcolumn": 120,
     "colorscheme": "one-dark",
     "diffgutter": true,
-    "eofnewline": false,
+    "eofnewline": true,
     "fastdirty": true,
     "filemanager": true,
     "filemanager.compressparent": true,
