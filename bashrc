@@ -18,7 +18,7 @@ PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Set shell options
 HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with space in history
-HISTFILESIZE=20000              # History file size
+HISTFILESIZE=200000              # History file size
 HISTSIZE=10000                  # History size
 PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
 PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt

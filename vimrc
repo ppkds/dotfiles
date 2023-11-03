@@ -115,13 +115,13 @@ endfunction
 "  **** Set startup defaults ****
     set laststatus=2            " Set Status line to always on
     set noshowmode              " Do not indicate input/replace mode on command line
-        if &compatible          " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
-            set nocompatible
-        endif
+    if &compatible              " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
+        set nocompatible
+    endif
     " set cursorcolumn          " Highligt cursor column
-    set mouse=a               " Enable mouse usage (all modes) - if 'vim' installed
+    set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
     " set relativenumber        " Display relative line numbers
-    " set syntax=on             " Set Syntax on
+    set syntax=on               " Set Syntax on
     " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
     " set wrapmargin=0          " Set wrapmargin to 0
     set autoindent              " Use indent of previous line
