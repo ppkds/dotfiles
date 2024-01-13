@@ -2,6 +2,7 @@
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
 
 # ls aliases
+    alias ls='ls  --color=auto -ChF --group-directories-first'
     alias ll='ls -F -lh'
     alias lla='ls -alFhv'
 
