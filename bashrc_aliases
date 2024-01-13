@@ -13,7 +13,7 @@
 # File and Directory aliases
     alias cp='cp -iv'
     alias mkdir='mkdir -pv'
-    alias mv='mv -i'
+    alias mv='mv -iv'
     alias rm='rm -Iv'
 
 # Convinience aliasies
