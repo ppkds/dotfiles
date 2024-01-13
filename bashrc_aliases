@@ -2,9 +2,9 @@
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
 
 # ls aliases
-    alias ls='ls  --color=auto -ChF --group-directories-first'
-    alias ll='ls -F -lh'
-    alias lla='ls -alFhv'
+    alias ls='ls  --color=auto -ChFv --group-directories-first'
+    alias ll='ls l'
+    alias lla='ls -al'
 
 # exa aliases
     alias exa='exa -lh --group-directories-first'
