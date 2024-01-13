@@ -3,8 +3,8 @@
 
 # ls aliases
     alias ls='ls  --color=auto -ChFv --group-directories-first'
-    alias ll='ls -l'
-    alias lla='ls -al'
+    alias ll='ls -lFhv'
+    alias lla='ls -alFhv'
 
 # exa aliases
     alias exa='exa -lh --group-directories-first'
