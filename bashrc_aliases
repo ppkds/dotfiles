@@ -40,4 +40,4 @@
     alias edit-gitfiles='vim -p \
             $HOME/Dev/Git/dotfiles/bashrc \
             $HOME/Dev/Git/dotfiles/bashrc_aliases \
-            $HOME/Dev/Git/dotfiles/vimrc'
+            $HOME/Dev/Git/dotfiles/config/vim/vimrc'
