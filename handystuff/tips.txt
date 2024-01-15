@@ -1,0 +1,7 @@
+Use to create spcefic file size
+
+dd if=/dev/random of=~/testing_file_size.txt bs=1023 count=1
+
+/* Comment 
+In this example dd uses dev/random to input random data one could use urandom or zero (to create '\0')
+*/
