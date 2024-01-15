@@ -81,7 +81,7 @@ function! FileSize()
     let base2 = 1024.0
     let base10 = 1000.0
     let bytes = getfsize(expand("%:p"))
-        if (bytes >= 1024)
+        if (bytes > base2)
             let kbytes = bytes / base2
         endif
         if (exists('kbytes') && kbytes >= base2)
