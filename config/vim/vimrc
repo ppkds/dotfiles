@@ -81,13 +81,13 @@ function! FileSize()
     let base2 = 1024.0
     let base10 = 1000.0
     let bytes = getfsize(expand("%:p"))
-        if (bytes > base2)
+        if (bytes >= base2)
             let kbytes = bytes / base2
         endif
-        if (exists('kbytes') && kbytes > base2)
+        if (exists('kbytes') && kbytes >= base2)
             let mbytes = kbytes / base2
         endif
-        if (exists('mbytes') && mbytes > base2)
+        if (exists('mbytes') && mbytes >= base2)
             let gbytes = mbytes / base2
         endif
         if bytes <= 0
