@@ -45,7 +45,7 @@ editor_backspace_through_tabs=false
 editor_fake_half_tabs=true
 editor_option_save_position=true
 editor_option_auto_para_formatting=true
-editor_option_typewriter_wrap=true
+editor_option_typewriter_wrap=false
 editor_edit_confirm_save=true
 editor_syntax_highlighting=true
 editor_persistent_selections=true
@@ -85,6 +85,8 @@ mcview_eof=
 skin=default
 
 shadows=true
+
+filepos_max_saved_entries=1024
 
 [Layout]
 output_lines=0
