@@ -3,7 +3,6 @@
     "colorcolumn": 120,
     "colorscheme": "one-dark",
     "diffgutter": true,
-    "eofnewline": true,
     "fastdirty": true,
     "filemanager": true,
     "filemanager.compressparent": true,
