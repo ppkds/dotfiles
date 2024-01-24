@@ -7,7 +7,7 @@ routerip=$(ip r | grep 'default' | awk '{print $3}')
 # Subnet mask from router
 subnetmask=$(ip r | grep 'scope' | awk '{print $1}')
 # Internal IP
-internalip=$(ip r | grep 'scope' | grep -Fv 'vir' | awk '{print $9}')
+internalip=$(ip r | grep 'scope' | grep -v 'vir' | awk '{print $9}')
 # External IP
 externalip=$(curl -s https://icanhazip.com) # Alternatives: https://checkip.amazonaws.com; https://ipinfo.io/ip; https://ident.me
 # Connected client device
