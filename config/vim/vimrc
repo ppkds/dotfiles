@@ -194,25 +194,31 @@ endfunction
 
 " **** Shortcut Keys (default leader in vim is '\' ****
 " == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
-    noremap <leader>w :w<CR>                                " save file
-    " noremap <leader>s :sav                                  " save as...
-    " noremap <C-F2> :e                                       " edit new/existing file - gvim
-    " noremap <C-S-F2> <C-g>                                  " display file details - gvim
+    noremap <leader>w :w<CR>
+    " save as...
+    " noremap <leader>s :sav
+    
+    " edit new/existing file - gvim
+    " noremap <C-F2> :e
+
+    " display file details - gvim
+    " noremap <C-S-F2> <C-g>
 
 " == Disable search highlighting
-    noremap <leader>h :noh<CR>                              " disable search highlighting
+    noremap <leader>h :let @/ = ""<CR>
+    "old method       "noremap <leader>h :noh<CR>
 
 " == Toggle set spell
-    noremap <leader>s :setlocal spell!<CR>                  " Toggle spellcheck
+    noremap <leader>s :setlocal spell!<CR>
 
 " == Mappings for commonly used plugins
-    nmap <leader>d :NERDTreeToggle<CR>                      " Toggle NERDTRee
-    nmap <leader>t :TagbarToggle<CR>                        " Toggle TagBar
+    nmap <leader>d :NERDTreeToggle<CR>
+    nmap <leader>t :TagbarToggle<CR>
 
 " == Toggle line wrapping & display status
-    noremap <leader>r :set wrap! wrap?<CR>                  " Toggle wrap and display status
+    noremap <leader>r :set wrap! wrap?<CR>
 
 " == Toggle line numbers & display status
-    noremap <F12> :set number!<CR>                          " Toggle line #
-    noremap <S-F12> :set relativenumber!<CR>                " Toggle relative line #
+    noremap <F12> :set number!<CR>
+    noremap <S-F12> :set relativenumber!<CR>
 
