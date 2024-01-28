@@ -38,12 +38,13 @@ shopt -s cdable_vars            # Directory aliases
     export publicfolder="$HOME/Public"
     export templatefolder="$HOME/Templates"
     export videofolder="$HOME/Videos"
+    export vimfolder="$HOME/Dev/Git/vim"
 
-shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
-shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
-shopt -s cmdhist                # Save multi-line commands as one command
-shopt -s dirspell 2> /dev/null  # Correct spelling errors during tab-completion
-shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
+    shopt -s cdspell 2> /dev/null   # Correct spelling errors in arguments supplied to cd
+    shopt -s checkwinsize           # check the window size after each command and if necessary update the values of LINES and COLUMNS.
+    shopt -s cmdhist                # Save multi-line commands as one command
+    shopt -s dirspell 2> /dev/null  # Correct spelling errors during tab-completion
+    shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
 
 # Set man options
 # export PAGER="less"                           # Default manpager
@@ -108,6 +109,7 @@ if [ -f $HOME/.bashrc_aliases ]; then
     . $HOME/.bashrc_aliases
 fi
 
+# Check for and enable auto-completion
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
