@@ -32,7 +32,7 @@
     alias pwgen='pwgen -y 10'
     alias python='clear && python3'
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop -v | grep -v tmpfs | grep -v snapfuse'
-    alias speedtest='speedtest --csv --share >>speedtest-history.csv'
+    alias speedtest='speedtest --csv --share --secure >>speedtest-history.csv'
     alias snap='sudo snap'
     alias top='htop'
     alias weather='echo && curl wttr.in/{Tokyo,Bejing,Mumbai,Moscow,London,"New_York",Chicago,Denver,Sacramento,}?format="%l:+%c+%t+|+Local+Time:+%T|+Sunrise/Sunset:+%S+%s\n" && echo'
