@@ -2,7 +2,7 @@
 
 # Script for fresh Debian based installs.
 
-# Create user specific directories after initial install of Debian based linux
+# Create user specific directories after fresh install of Debian based linux
 mkdir -pv Desktop Dev Dev/Git Dev/Git/dotfiles Dev/Practice Dev/Scripts Documents Documents/Original_configs Downloads Music Pictures Public Templates Videos tempdir .config/bat .config/btop .config/htop .config/mc .config/micro .config/nano .config/neofetch .fonts .vim
 
 # Update, upgrade and install useful programs.
