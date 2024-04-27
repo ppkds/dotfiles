@@ -128,6 +128,7 @@ endfunction
     set autowrite               " Automatically save before commands like :next and :make
     set backspace=indent,eol,start
     set breakindent             " Set line wrapping to indent
+    set clipboard=unnamedplus   " Use system clipboard
     set cursorline              " Highlight cursor line
     set directory=/tmp          " Set temp directory
     set encoding=utf-8          " Set default encoding to UTF-8
