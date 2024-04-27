@@ -187,11 +187,11 @@ endfunction
     noremap <leader>nlv YP0i" <ESC><CR>
 
 " ==  Source vi .exrc & .bashrc setting files / set .exrc source file
-    noremap <leader>e :e $HOME/.bashrc<CR>
-    noremap <leader>v :so $HOME/.vim/vimrc<CR>
+    " noremap <leader>e :e $HOME/.bashrc<CR>
+    " noremap <leader>so :so $HOME/.vim/vimrc<CR>
 
 " == #!bin/bash standard header
-    noremap <leader>T 1GO#!/bin/bash <CR># <CR># <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR><ESC>60a#<ESC>
+    noremap <leader>T 1GO#!/bin/bash <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR><ESC>:set ft=sh<ESC>
 
 " **** Shortcut Keys (default leader in vim is '\' ****
 " == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
