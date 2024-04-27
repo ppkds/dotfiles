@@ -14,7 +14,7 @@ clear
 ls -al ~/.ssh
 
 # Setup new private SSH key
-ssh-keygen -t ed25519 -C "ppkds@outlook.com"
+ssh-keygen -t ed25519 -C "user@domain.com"
 
 # Add SSH key to SSH agent
 ssh-add ~/.ssh/id_ed25519
