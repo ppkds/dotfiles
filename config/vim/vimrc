@@ -17,7 +17,6 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Enable ALE completion where available.
 " This setting must be set before ALE is loaded.
-"
 " You should not turn this setting on if you wish to use ALE as a completion
 " source for other completion plugins, like Deoplete.
 let g:ale_completion_enabled = 1
@@ -76,6 +75,12 @@ let g:lightline = {
     \}
    
 " **** Functions ****
+" == Determine git branch 
+function! Lightlinegitbranch()
+    let l:branch = FugitiveHead()
+    return l:branch ==# '' ? '' : ' ' . l:branch
+endfunction
+
 " == Calculate filesize - determines filesize rounded to x decimal places
 function! FileSize()
     let base2 = 1024.0
@@ -106,24 +111,14 @@ function! FileSize()
         " use Ki / Mi / Gi for base2 Kebibytes notation
 endfunction
 
-" == Determine git branch 
-function! Lightlinegitbranch()
-    let l:branch = FugitiveHead()
-    return l:branch ==# '' ? '' : ' ' . l:branch
-endfunction
-
 "  **** Set startup defaults ****
     set laststatus=2            " Set Status line to always on
     set noshowmode              " Do not indicate input/replace mode on command line
     if &compatible              " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
         set nocompatible
     endif
-    " set cursorcolumn          " Highligt cursor column
     set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
-    " set relativenumber        " Display relative line numbers
     set syntax=on               " Set Syntax on
-    " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
-    " set wrapmargin=0          " Set wrapmargin to 0
     set autoindent              " Use indent of previous line
     set autowrite               " Automatically save before commands like :next and :make
     set backspace=indent,eol,start
@@ -160,6 +155,10 @@ endfunction
     set warn                    " Warn no write since last change
     set wrapscan                " Wrap search to beginning of file
     syntax enable               " Enable Syntax
+    " set cursorcolumn          " Highligt cursor column
+    " set relativenumber        " Display relative line numbers
+    " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
+    " set wrapmargin=0          " Set wrapmargin to 0
 
 " **** Autocommands ****
     autocmd BufWinLeave mkview            " save folds on exit

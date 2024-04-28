@@ -10,7 +10,7 @@ case $- in
 esac
 
 # Set path
-PATH=$PATH:/usr/lib/i386-linux-gnu
+# PATH=$PATH:/usr/lib/i386-linux-gnu
 
 # Set Locale
 # LANG=/usr/lib/locale/en_US    # or use option below
