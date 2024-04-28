@@ -81,7 +81,7 @@ function! Lightlinegitbranch()
     return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
-" == Calculate filesize - determines filesize rounded to x decimal places
+" == Calculate filesize - determines filesize rounded to x decimal places (here 2 decimals using '%.2f')
 function! FileSize()
     let base2 = 1024.0
     let base10 = 1000.0
