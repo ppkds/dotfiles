@@ -121,7 +121,7 @@ endfunction
     endif
 "  **** Autocommands ****
     filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
-"  **** Pencil (word-procesor plugin) Autocommands
+"  **** Pencil (word-procesor plugin)
     augroup pencil
         autocmd!
         autocmd FileType markdown,mkd call pencil#init()
@@ -202,14 +202,6 @@ endfunction
 " **** Shortcut Keys (default leader in vim is '\' ****
 " == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
     noremap <leader>w :w<CR>
-    " save as...
-    " noremap <leader>s :sav
-    
-    " edit new/existing file - gvim
-    " noremap <C-F2> :e
-
-    " display file details - gvim
-    " noremap <C-S-F2> <C-g>
 
 " == Disable search highlighting
     noremap <leader>h :let @/ = ""<CR>
