@@ -12,6 +12,8 @@ internalip=$(ip r | grep 'scope' | grep -v 'vir' | awk '{print $9}')
 externalip=$(curl -s https://icanhazip.com) # Alternatives: https://checkip.amazonaws.com; https://ipinfo.io/ip; https://ident.me
 # Connected client device
 clientdevice=$(ip r | grep 'default' | awk '{print $5}')
+# connected client MAC
+connecteddevicemac=$(ip a | grep -A 1 -e 'state UP' | grep -e 'link/ether' | awk '{print $2}')
 
 # Echo output to stdout
 echo
@@ -20,4 +22,5 @@ echo "Gateway IP    : ${routerip}"
 echo "Internal IP   : ${internalip}"
 echo "External IP   : ${externalip}"
 echo "Interface     : ${clientdevice}"
+echo "Device MAC    : ${connecteddevicemac}"
 exit 0
