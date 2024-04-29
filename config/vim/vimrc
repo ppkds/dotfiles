@@ -34,6 +34,7 @@ call plug#begin()
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
+    Plug 'preservim/vim-pencil'
 call plug#end()
 
 " **** Set colorscheme ****
@@ -118,6 +119,14 @@ endfunction
     if &compatible              " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
         set nocompatible
     endif
+"  **** Autocommands ****
+    filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
+"  **** Pencil (word-procesor plugin) Autocommands
+    augroup pencil
+        autocmd!
+        autocmd FileType markdown,mkd call pencil#init()
+        autocmd FileType text         call pencil#init()
+    augroup END  
 "  **** Default VIm setup ****
     set autoindent              " Use indent of previous line
     set autowrite               " Automatically save before commands like :next and :make
@@ -206,8 +215,9 @@ endfunction
     noremap <leader>h :let @/ = ""<CR>
     "old method       "noremap <leader>h :noh<CR>
 
-" == Toggle set spell
+" == Toggle spell and word-processing modes
     noremap <F6> :setlocal spell! spell?<CR>
+    noremap <S-F6> :TogglePencil<CR>
 
 " == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>
