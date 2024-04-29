@@ -4,7 +4,7 @@
 " Author: sonph
 " License: MIT License
 " Last Change: 2019/12/01
-" Modified: Pappukant Dansale - Sun Aug 22 21:42:27 CDT 2021
+" Modified: Pappukant Dansale - Mon Apr 29 04:17:15 PM CDT 2024
 " =============================================================================
 
 let s:mono0 = [ '#282c34', 236 ]

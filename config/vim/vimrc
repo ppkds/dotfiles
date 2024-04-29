@@ -24,14 +24,15 @@ let g:ale_completion_enabled = 1
 " **** Activate vim-plug to initiate plugins ****
 " Call plugins
 call plug#begin()
+    Plug 'bullets-vim/bullets.vim'
     Plug 'dense-analysis/ale'
-    Plug 'tpope/vim-fugitive'
     Plug 'itchyny/lightline.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'preservim/NERDTree'
     Plug 'preservim/nerdcommenter'
     Plug 'preservim/tagbar'
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
 call plug#end()
 
@@ -117,8 +118,7 @@ endfunction
     if &compatible              " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
         set nocompatible
     endif
-    set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
-    set syntax=on               " Set Syntax on
+"  **** Default VIm setup ****
     set autoindent              " Use indent of previous line
     set autowrite               " Automatically save before commands like :next and :make
     set backspace=indent,eol,start
@@ -135,6 +135,7 @@ endfunction
     set incsearch               " Search while typing
     set linebreak               " Set linebreak at word boundary
     set listchars=precedes:<,extends:>
+    set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
     set mousemodel=popup_setpos " Set right mouse button to popup menu at the click
     set noswapfile              " Do not create swap files
     set nowrap                  " Set wrap off
@@ -155,6 +156,7 @@ endfunction
     set warn                    " Warn no write since last change
     set wrapscan                " Wrap search to beginning of file
     syntax enable               " Enable Syntax
+    syntax on                   " Set Syntax on
     " set cursorcolumn          " Highligt cursor column
     " set relativenumber        " Display relative line numbers
     " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
@@ -184,10 +186,6 @@ endfunction
 " == Copy and comment out current line (bash/exrc, Vim)
     noremap <leader>nlb YP0i# <ESC><CR>
     noremap <leader>nlv YP0i" <ESC><CR>
-
-" ==  Source vi .exrc & .bashrc setting files / set .exrc source file
-    " noremap <leader>e :e $HOME/.bashrc<CR>
-    " noremap <leader>so :so $HOME/.vim/vimrc<CR>
 
 " == #!bin/bash standard header
     noremap <leader>T 1GO#!/bin/bash <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR><ESC>:set ft=sh<ESC>
@@ -221,4 +219,7 @@ endfunction
 " == Toggle line numbers & display status
     noremap <F12> :set number!<CR>
     noremap <S-F12> :set relativenumber!<CR>
+
+" == Toggle spell-check
+    noremap <F6> :set spell!<CR>
 
