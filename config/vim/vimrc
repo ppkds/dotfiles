@@ -136,7 +136,7 @@ endfunction
     set linebreak               " Set linebreak at word boundary
     set listchars=precedes:<,extends:>
     set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
-    set mousemodel=popup_setpos " Set right mouse button to popup menu at the click
+    set mousemodel=popup        " Enable popup on right click
     set noswapfile              " Do not create swap files
     set nowrap                  " Set wrap off
     set nowritebackup           " Do not save .sh~ files
@@ -207,7 +207,7 @@ endfunction
     "old method       "noremap <leader>h :noh<CR>
 
 " == Toggle set spell
-    noremap <leader>s :setlocal spell!<CR>
+    noremap <F6> :setlocal spell! spell?<CR>
 
 " == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>
@@ -219,7 +219,3 @@ endfunction
 " == Toggle line numbers & display status
     noremap <F12> :set number!<CR>
     noremap <S-F12> :set relativenumber!<CR>
-
-" == Toggle spell-check
-    noremap <F6> :set spell!<CR>
-
