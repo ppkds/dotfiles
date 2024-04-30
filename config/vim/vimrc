@@ -2,7 +2,7 @@
 "  | vimrc: Pappukant Dansale                     |
 "  | Created: Sun 19 Feb 2012 02:34:16 PM CST     |
 "  +----------------------------------------------+
-"   
+#  ॐ
 
 " **** Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
