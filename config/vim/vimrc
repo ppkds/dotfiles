@@ -24,17 +24,17 @@ let g:ale_completion_enabled = 1
 " **** Activate vim-plug to initiate plugins ****
 " Call plugins
 call plug#begin()
-    Plug 'bullets-vim/bullets.vim'
-    Plug 'dense-analysis/ale'
-    Plug 'itchyny/lightline.vim'
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'preservim/NERDTree'
-    Plug 'preservim/nerdcommenter'
-    Plug 'preservim/tagbar'
-    Plug 'sonph/onehalf', {'rtp': 'vim/'}
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-surround'
-    Plug 'preservim/vim-pencil'
+    Plug 'bullets-vim/bullets.vim'          " Auto-bullets
+    Plug 'dense-analysis/ale'               " Check syntax
+    Plug 'itchyny/lightline.vim'            " Lightweight status-line plugin
+    Plug 'jiangmiao/auto-pairs'             " Auto-pair / delete brackets, quotes, parantheses
+    Plug 'preservim/NERDTree'               " Tree file explorer
+    Plug 'preservim/nerdcommenter'          " Comment / un-comment lines
+    Plug 'preservim/tagbar'                 " Display tags ordered by scope
+    Plug 'sonph/onehalf', {'rtp': 'vim/'}   " OneHalfDark colorscheme for vim
+    Plug 'tpope/vim-fugitive'               " VIm plugin for Git
+    Plug 'tpope/vim-surround'               " Delete/change/add parentheses/quotes/XML-tags
+    Plug 'preservim/vim-pencil'             " VIm Prose editor / word-processor 
 call plug#end()
 
 " **** Set colorscheme ****
@@ -43,13 +43,17 @@ colorscheme onehalfdark                 " Set colorscheme to onehalfdark
 " **** Misc. Configuration ****
 let mapleader = '\'                     " Vim default is '\'
 
-" **** NerdCommenter settings ***** <leader>cc
+" **** NerdCommenter settings **** 
 let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
 let g:NERDCompactSexyComs = 1           " Use compact syntax for prettified multi-line comments
 let g:NERDDefaultAlign = 'left'         " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDSpaceDelims = 1               " Add spaces after comment
 let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
 let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
+
+" **** VIm-Pencil settings ****
+let g:pencil#wrapModeDefault = 'soft'
+let g:pencil#textwidth = 120
 
 " **** lightline plugin ****
 let g:lightline = {
@@ -116,14 +120,14 @@ endfunction
 "  **** AUTOCOMMANDS ****
     filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
 
-"  **** Pencil (word-procesor plugin)
+"  ==== Pencil (word-procesor plugin)
     augroup pencil
         autocmd!
         autocmd FileType markdown,mkd call pencil#init()
         " autocmd FileType text         call pencil#init()
     augroup END  
 
-" **** Fold Autocommands ****
+" ==== Fold Autocommands ****
     autocmd BufWinLeave mkview            " save folds on exit
     autocmd BufWinEnter silent loadview   " autoload folds on start
 
@@ -210,8 +214,8 @@ endfunction
     "old method       "noremap <leader>h :noh<CR>
 
 " == Toggle spell and word-processing modes
-    noremap <F6> :setlocal spell! spell?<CR>
-    noremap <S-F6> :TogglePencil<CR>
+    noremap <F7> :setlocal spell! spell?<CR>
+    noremap <S-F7> :TogglePencil<CR>
 
 " == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>
