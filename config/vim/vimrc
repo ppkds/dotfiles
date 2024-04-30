@@ -125,7 +125,7 @@ endfunction
     augroup pencil
         autocmd!
         autocmd FileType markdown,mkd call pencil#init()
-        autocmd FileType text         call pencil#init()
+        " autocmd FileType text         call pencil#init()
     augroup END  
 "  **** Default VIm setup ****
     set autoindent              " Use indent of previous line
