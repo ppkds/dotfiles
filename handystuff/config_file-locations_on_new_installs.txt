@@ -1,0 +1,43 @@
+Config files to update on new installs
+
+config
+    bat
+        config                      ~/.config/bat/config
+    btop
+        btop.conf                   ~/.config/btop/btop.conf
+    htop
+        htoprc                      ~/.config/htop/htoprc
+    mc
+        ini                         ~/.config/mc/ini
+        panels.ini                  ~/.config/mc/panels.ini
+    micro
+        bindings.json               ~/.config/micro/bindings.json
+        settings.json               ~/.config/micro/settings.json
+    nano
+        nanorc                      ~/.config/nano/nanorc
+    neofetch
+        config.conf                 ~/.config/neofetch/config.conf
+    vim
+        onehalfdark.vim             ~/.vim/plugged/onehalf/vim/autoload/lightline/colorscheme/onehalfdark.vim
+        vimrc                       ~/.vim/vimrc
+    wsl
+            export_mod              N/A - obsoleted
+
+handystuff
+        display_tput_colors.sh
+        fresh-install.sh
+        grub_config                 /etc/default/grub
+        gtk.css
+        slickslice-0.9_patched.sh   /usr/local/bin/slickslice
+        tips.txt
+        vim_notes.txt
+        whatismyip.sh               /usr/local/whatismyip
+
+root
+        LESS_TERMCAP                ~/.LESS_TERMCAP
+        LICENSE
+        README.md
+        bashrc                      ~/.bashrc
+        bashrc_aliases              ~/.baskrc_aliases
+        slickslice-config           ~/.slickslice-config
+
