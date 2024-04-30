@@ -127,6 +127,9 @@ endfunction
         autocmd FileType markdown,mkd call pencil#init()
         " autocmd FileType text         call pencil#init()
     augroup END  
+" **** Fold Autocommands ****
+    autocmd BufWinLeave mkview            " save folds on exit
+    autocmd BufWinEnter silent loadview   " autoload folds on start
 "  **** Default VIm setup ****
     set autoindent              " Use indent of previous line
     set autowrite               " Automatically save before commands like :next and :make
@@ -171,9 +174,6 @@ endfunction
     " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
     " set wrapmargin=0          " Set wrapmargin to 0
 
-" **** Autocommands ****
-    autocmd BufWinLeave mkview            " save folds on exit
-    autocmd BufWinEnter silent loadview   " autoload folds on start
 
 " **** ab_(breviations) & autocorrect ****
 " == Shortforms
