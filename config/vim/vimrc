@@ -113,24 +113,26 @@ function! FileSize()
         " use Ki / Mi / Gi for base2 Kebibytes notation
 endfunction
 
-"  **** Set startup defaults ****
-    set laststatus=2            " Set Status line to always on
-    set noshowmode              " Do not indicate input/replace mode on command line
-    if &compatible              " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
-        set nocompatible
-    endif
-"  **** Autocommands ****
+"  **** AUTOCOMMANDS ****
     filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
+
 "  **** Pencil (word-procesor plugin)
     augroup pencil
         autocmd!
         autocmd FileType markdown,mkd call pencil#init()
         " autocmd FileType text         call pencil#init()
     augroup END  
+
 " **** Fold Autocommands ****
     autocmd BufWinLeave mkview            " save folds on exit
     autocmd BufWinEnter silent loadview   " autoload folds on start
-"  **** Default VIm setup ****
+
+"  **** STARTUP defaults ****
+    set laststatus=2            " Set Status line to always on
+    set noshowmode              " Do not indicate input/replace mode on command line
+    if &compatible              " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
+        set nocompatible
+    endif
     set autoindent              " Use indent of previous line
     set autowrite               " Automatically save before commands like :next and :make
     set backspace=indent,eol,start
