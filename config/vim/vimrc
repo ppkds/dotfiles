@@ -32,9 +32,10 @@ call plug#begin()
     Plug 'preservim/nerdcommenter'          " Comment / un-comment lines
     Plug 'preservim/tagbar'                 " Display tags ordered by scope
     Plug 'sonph/onehalf', {'rtp': 'vim/'}   " OneHalfDark colorscheme for vim
-    Plug 'tpope/vim-fugitive'               " VIm plugin for Git
+    Plug 'tpope/vim-fugitive'               " Vim plugin for Git
     Plug 'tpope/vim-surround'               " Delete/change/add parentheses/quotes/XML-tags
-    Plug 'preservim/vim-pencil'             " VIm Prose editor / word-processor 
+    Plug 'preservim/vim-pencil'             " Vim Prose editor / word-processor 
+    Plug 'preservim/vim-lexical'            " Vim lexicography
 call plug#end()
 
 " **** Set colorscheme ****
@@ -51,7 +52,7 @@ let g:NERDSpaceDelims = 1               " Add spaces after comment
 let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
 let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
 
-" **** VIm-Pencil settings ****
+" **** Vim-Pencil settings ****
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 120
 
@@ -125,7 +126,16 @@ endfunction
         autocmd!
         autocmd FileType markdown,mkd,md call pencil#init()
         " autocmd FileType text         call pencil#init()
-    augroup END  
+    augroup END
+
+" ==== Lexical (Grammar plugin)
+    augroup lexical
+        autocmd!
+        autocmd FileType markdown,mkd,md call lexical#init()
+        " autocmd FileType textile call lexical#init()
+        autocmd FileType text call lexical#init()
+        " autocmd FileType text call lexical#init({ 'spell': 0 })
+    augroup END
 
 " ==== Fold Autocommands ****
     autocmd BufWinLeave mkview            " save folds on exit
