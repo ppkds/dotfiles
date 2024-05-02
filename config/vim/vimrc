@@ -217,7 +217,7 @@ endfunction
 
 " **** Shortcut Keys (default leader in vim is '\' ****
 " == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
-    noremap <leader>w :w<CR>
+    " noremap <leader>w :w<CR>
 
 " == Disable search highlighting
     noremap <leader>h :let @/ = ""<CR>
