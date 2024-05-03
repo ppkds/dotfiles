@@ -45,28 +45,6 @@ colorscheme onehalfdark                 " Set colorscheme to onehalfdark
 " **** Misc. Configuration ****
 let mapleader = '\'                     " Vim default is '\'
 
-" **** NerdCommenter settings **** 
-let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
-let g:NERDCompactSexyComs = 1           " Use compact syntax for prettified multi-line comments
-let g:NERDDefaultAlign = 'left'         " Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDSpaceDelims = 1               " Add spaces after comment
-let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
-let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
-
-" **** Vim-Pencil settings ****
-let g:pencil#wrapModeDefault = 'soft'
-let g:pencil#textwidth = 120
-let g:pencil#joinspaces = 0
-let g:pencil#cursorwrap = 1
-let g:pencil#conceallevel = 3
-let g:pencil#concealcursor = 'c'
-let g:pencil#softDetectSample = 20
-let g:pencil#softDetectThreshold = 130
-
-" **** Vim-Lexical settings ****
-let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
-" let g:lexical#spellfile = ['~/.vim/spell/en.utf-8.add',]
-
 " **** lightline plugin ****
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
@@ -129,24 +107,6 @@ function! FileSize()
         " use Ki / Mi / Gi for base2 Kebibytes notation
 endfunction
 
-"  **** AUTOCOMMANDS ****
-    filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
-
-"  ==== Prose editing (word-procesor plugin)
-    augroup prose
-        autocmd!
-        autocmd FileType markdown,mkd,md    call pencil#init()
-        autocmd FileType text               call pencil#init()
-            \ | call lexical#init()
-            \ | call litecorrect#init()
-            \ | setl spell spl=en fdl=4 noru nonu nornu
-            \ | setl fdo+=search
-    augroup END
-
-" ==== Fold Autocommands ****
-    autocmd BufWinLeave mkview            " save folds on exit
-    autocmd BufWinEnter silent loadview   " autoload folds on start
-
 "  **** STARTUP defaults ****
     set laststatus=2            " Set Status line to always on
     set noshowmode              " Do not indicate input/replace mode on command line
@@ -196,6 +156,53 @@ endfunction
     " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
     " set wrapmargin=0          " Set wrapmargin to 0
 
+"  **** AUTOCOMMANDS ****
+    filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
+
+"  ==== Prose editing (word-procesor plugin)
+    augroup prose
+        autocmd!
+        autocmd FileType markdown,mkd       call pencil#init()
+            \ | call lexical#init()
+            \ | call litecorrect#init()
+            \ | setl spell spl=en fdl=4 noru nonu nornu
+            \ | setl fdo+=search
+        autocmd FileType text               call pencil#init()
+            \ | call lexical#init()
+            \ | call litecorrect#init()
+            \ | setl spell spl=en fdl=4 noru nonu nornu
+            \ | setl fdo+=search
+    augroup END
+
+" ==== Fold Autocommands ****
+    autocmd BufWinLeave mkview            " save folds on exit
+    autocmd BufWinEnter silent loadview   " autoload folds on start
+
+" **** Plugin settings ****
+" ==== NerdCommenter settings ==== 
+let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
+let g:NERDCompactSexyComs = 1           " Use compact syntax for prettified multi-line comments
+let g:NERDDefaultAlign = 'left'         " Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDSpaceDelims = 1               " Add spaces after comment
+let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
+let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
+
+" ==== Vim-Pencil settings ====
+let g:pencil#wrapModeDefault = 'soft'
+let g:pencil#textwidth = 120
+let g:pencil#joinspaces = 0             "Spaces inserted after period, comma, exclamation (0=default=1 space)
+let g:pencil#cursorwrap = 1
+let g:pencil#conceallevel = 3
+let g:pencil#concealcursor = 'c'
+let g:pencil#softDetectSample = 20      " # of lines to sample from start of buffer to detect soft-wrap
+let g:pencil#softDetectThreshold = 130  " # of bytes to which are exceeded in current line to assume soft-warp
+
+" ==== Vim-Lexical settings ====
+let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
+let g:lexical#spellfile = ['~/.vim/spell/en.utf-8.add',]
+let g:lexical#spell_key = '<leader>s'
+let g:lexical#thesaurus_key = '<leader>t'
+let g:lexical#dictionary_key = '<leader>k'
 
 " **** ab_(breviations) & autocorrect ****
 " == Shortforms
