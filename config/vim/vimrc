@@ -31,11 +31,12 @@ call plug#begin()
     Plug 'preservim/NERDTree'               " Tree file explorer
     Plug 'preservim/nerdcommenter'          " Comment / un-comment lines
     Plug 'preservim/tagbar'                 " Display tags ordered by scope
+    Plug 'preservim/vim-lexical'            " Vim lexicography
+    Plug 'preservim/vim-litecorrect'        " Vim lite correct
+    Plug 'preservim/vim-pencil'             " Vim Prose editor / word-processor 
     Plug 'sonph/onehalf', {'rtp': 'vim/'}   " OneHalfDark colorscheme for vim
     Plug 'tpope/vim-fugitive'               " Vim plugin for Git
     Plug 'tpope/vim-surround'               " Delete/change/add parentheses/quotes/XML-tags
-    Plug 'preservim/vim-pencil'             " Vim Prose editor / word-processor 
-    Plug 'preservim/vim-lexical'            " Vim lexicography
 call plug#end()
 
 " **** Set colorscheme ****
@@ -55,6 +56,12 @@ let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check se
 " **** Vim-Pencil settings ****
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 120
+let g:pencil#joinspaces = 0
+let g:pencil#cursorwrap = 1
+let g:pencil#conceallevel = 3
+let g:pencil#concealcursor = 'c'
+let g:pencil#softDetectSample = 20
+let g:pencil#softDetectThreshold = 130
 
 " **** lightline plugin ****
 let g:lightline = {
@@ -125,17 +132,19 @@ endfunction
     augroup pencil
         autocmd!
         autocmd FileType markdown,mkd,md call pencil#init()
-        " autocmd FileType text         call pencil#init()
+            \ | call lexical#init()
+            " \ | call litecorrect#init()
+            \ | setl spell spl=en_us fdl=4 noru nonu nornu
+            \ | setl fdo+=search    
     augroup END
 
 " ==== Lexical (Grammar plugin)
-    augroup lexical
-        autocmd!
-        autocmd FileType markdown,mkd,md call lexical#init()
-        " autocmd FileType textile call lexical#init()
-        autocmd FileType text call lexical#init()
-        " autocmd FileType text call lexical#init({ 'spell': 0 })
-    augroup END
+    " augroup lexical
+    "     autocmd!
+    "     autocmd FileType markdown,mkd,md call lexical#init()
+    "     " autocmd FileType textile call lexical#init()
+    "     " autocmd FileType text call lexical#init({ 'spell': 0 })
+    " augroup END
 
 " ==== Fold Autocommands ****
     autocmd BufWinLeave mkview            " save folds on exit
