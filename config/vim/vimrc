@@ -131,11 +131,12 @@ endfunction
 "  ==== Pencil (word-procesor plugin)
     augroup pencil
         autocmd!
-        autocmd FileType markdown,mkd,md call pencil#init()
+        autocmd FileType markdown,mkd,md    call pencil#init()
+        autocmd FileType text               call pencil#init()
             \ | call lexical#init()
             \ | call litecorrect#init()
             \ | setl spell spl=en fdl=4 noru nonu nornu
-            \ | setl fdo+=search    
+            \ | setl fdo+=search
     augroup END
 
 " ==== Fold Autocommands ****
