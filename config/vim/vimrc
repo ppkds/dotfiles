@@ -63,6 +63,10 @@ let g:pencil#concealcursor = 'c'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
 
+" **** Vim-Lexical settings ****
+let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
+" let g:lexical#spellfile = ['~/.vim/spell/en.utf-8.add',]
+
 " **** lightline plugin ****
 let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
