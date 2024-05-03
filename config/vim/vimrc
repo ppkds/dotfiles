@@ -128,8 +128,8 @@ endfunction
 "  **** AUTOCOMMANDS ****
     filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
 
-"  ==== Pencil (word-procesor plugin)
-    augroup pencil
+"  ==== Prose editing (word-procesor plugin)
+    augroup prose
         autocmd!
         autocmd FileType markdown,mkd,md    call pencil#init()
         autocmd FileType text               call pencil#init()
