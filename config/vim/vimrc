@@ -133,18 +133,10 @@ endfunction
         autocmd!
         autocmd FileType markdown,mkd,md call pencil#init()
             \ | call lexical#init()
-            " \ | call litecorrect#init()
-            \ | setl spell spl=en_us fdl=4 noru nonu nornu
+            \ | call litecorrect#init()
+            \ | setl spell spl=en fdl=4 noru nonu nornu
             \ | setl fdo+=search    
     augroup END
-
-" ==== Lexical (Grammar plugin)
-    " augroup lexical
-    "     autocmd!
-    "     autocmd FileType markdown,mkd,md call lexical#init()
-    "     " autocmd FileType textile call lexical#init()
-    "     " autocmd FileType text call lexical#init({ 'spell': 0 })
-    " augroup END
 
 " ==== Fold Autocommands ****
     autocmd BufWinLeave mkview            " save folds on exit
