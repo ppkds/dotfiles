@@ -156,28 +156,6 @@ endfunction
     " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
     " set wrapmargin=0          " Set wrapmargin to 0
 
-"  **** AUTOCOMMANDS ****
-    filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
-
-"  ==== Prose editing (word-procesor plugin)
-    augroup prose
-        autocmd!
-        autocmd FileType markdown,mkd       call pencil#init()
-            \ | call lexical#init()
-            \ | call litecorrect#init()
-            \ | setl spell spl=en fdl=4 noru nonu nornu
-            \ | setl fdo+=search
-        autocmd FileType text               call pencil#init()
-            \ | call lexical#init()
-            \ | call litecorrect#init()
-            \ | setl spell spl=en fdl=4 noru nonu nornu
-            \ | setl fdo+=search
-    augroup END
-
-" ==== Fold Autocommands ****
-    autocmd BufWinLeave mkview            " save folds on exit
-    autocmd BufWinEnter silent loadview   " autoload folds on start
-
 " **** Plugin settings ****
 " ==== NerdCommenter settings ==== 
 let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
@@ -204,6 +182,28 @@ let g:lexical#spell_key = '<leader>s'
 let g:lexical#thesaurus_key = '<leader>t'
 let g:lexical#dictionary_key = '<leader>k'
 
+"  **** AUTOCOMMANDS ****
+    filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
+
+"  ==== Prose editing (word-procesor plugin)
+    augroup prose
+        autocmd!
+        autocmd FileType markdown,mkd       call pencil#init()
+            \ | call lexical#init()
+            \ | call litecorrect#init()
+            \ | setl spell spl=en fdl=4 noru nonu nornu
+            \ | setl fdo+=search
+        autocmd FileType text               call pencil#init()
+            \ | call lexical#init()
+            \ | call litecorrect#init()
+            \ | setl spell spl=en fdl=4 noru nonu nornu
+            \ | setl fdo+=search
+    augroup END
+
+" ==== Fold Autocommands ****
+    autocmd BufWinLeave mkview            " save folds on exit
+    autocmd BufWinEnter silent loadview   " autoload folds on start
+
 " **** ab_(breviations) & autocorrect ****
 " == Shortforms
     ab __ppkds Pappukant Dansale
@@ -226,15 +226,10 @@ let g:lexical#dictionary_key = '<leader>k'
     noremap <leader>nlv YP0i" <ESC><CR>
 
 " == #!bin/bash standard header
-    noremap <leader>T 1GO#!/bin/bash <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR><ESC>:set ft=sh<ESC>
-
-" **** Shortcut Keys (default leader in vim is '\' ****
-" == Save / Save as / Open file / File Info (C-S-F2 works only in gvim)
-    " noremap <leader>w :w<CR>
+    noremap <leader>T 1GO#!/bin/bash <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR># ॐ <CR><ESC>:set ft=sh<ESC>
 
 " == Disable search highlighting
-    noremap <leader>h :let @/ = ""<CR>
-    "old method       "noremap <leader>h :noh<CR>
+    noremap <silent> <leader>h :let @/ = ""<CR>
 
 " == Toggle spell and word-processing modes
     noremap <F7> :setlocal spell! spell?<CR>
@@ -248,5 +243,5 @@ let g:lexical#dictionary_key = '<leader>k'
     noremap <leader>r :set wrap! wrap?<CR>
 
 " == Toggle line numbers & display status
-    noremap <F12> :set number!<CR>
-    noremap <S-F12> :set relativenumber!<CR>
+    noremap <silent> <F12> :set number!<CR>
+    noremap <silent> <S-F12> :set relativenumber!<CR>
