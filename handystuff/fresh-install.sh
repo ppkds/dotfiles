@@ -43,6 +43,7 @@ ls -al ~/.ssh
 ssh-keygen -t ed25519 -C "user@domain.com"
 
 # Add SSH key to SSH agent
+eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_ed25519
 
 # Add SSH key to Github 
