@@ -11,7 +11,9 @@ make distclean
 
 # make test
 
-make
+OR
+
+# make
 
 sudo make install
 
