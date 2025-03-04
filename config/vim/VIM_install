@@ -1,0 +1,38 @@
+---- OPTIONAL
+sudo apt install libncurses5-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python2-dev python3-dev ruby-dev lua5.2 liblua5.2-dev libperl-dev git
+sudo apt remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox
+
+---- TO COMPILE FROM SCRATCH
+make distclean
+
+# export PREFIX='/usr/local/bin' && ./configure --with-features=huge --enable-gui=gtk3 --en./configure --with-features=huge --enable-gui=gtk3 --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-tclinterp  --enable-multibyte --enable-cscope --enable-fontset --enable-largefile --with-compiledby="ppkds" --prefix=$PREFIX
+
+./configure --with-features=huge --enable-gui=gtk3 --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-tclinterp --enable-multibyte --enable-cscope --enable-fontset --enable-largefile --with-compiledby="ppkds" 
+
+# make test
+
+make
+
+sudo make install
+
+
+---- Directly execute configure command from CLI
+Interprets and executes sed pull as a command 
+eval "$(sed -n '10p' ~/VIM_install)"
+
+OR 
+Executes sed pull in current shell environment)
+source <(sed -n '10p' ~/VIM_install
+
+
+---- CHECK SHARED LIBRARIES
+readelf -L /usr/local/bin/vim | grep Shared
+
+
+
+---- TO BE ADDED TO VIM LOCAL COMPILE CONFIG FILE
+
+ 0x0000000000000001 (NEEDED)             Shared library: [libcanberra.so.0]
+ 0x0000000000000001 (NEEDED)             Shared library: [libacl.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgpm.so.2]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtcl8.6.soA]
