@@ -36,7 +36,7 @@
     alias speedtest='echo "Starting speedtest-cli" && speedtest --csv --share --secure >>~/speedtest-history.csv && echo "Result appended to ~/speedtest-history.csv"'
     alias snap='sudo snap'
     alias top='htop'
-    alias weather='echo && curl wttr.in/{Tokyo,Bejing,Mumbai,Moscow,London,"New_York",Chicago,Denver,Sacramento,}?format="%l:+%c+%t+|+Local+Time:+%T|+Sunrise/Sunset:+%S+%s\n" && echo'
+    alias weather='echo && curl wttr.in/{Tokyo,Bejing,Mumbai,Moscow,London,"New_York",Chicago,Denver,Sacramento,}?format="%l:+%c+%t+|+Local+Time:+%T+|+Sunrise+/+Sunset:+%S+/+%s\n" && echo'
     alias weechat='weechat-curses'
     alias wget='wget -c'
     alias edit-gitfiles='vim -p \
