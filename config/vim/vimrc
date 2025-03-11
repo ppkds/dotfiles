@@ -82,29 +82,29 @@ function! FileSize()
     let base2 = 1024.0
     let base10 = 1000.0
     let bytes = getfsize(expand("%:p"))
-        if (bytes >= base2)
-            let kbytes = bytes / base2
+        if (bytes >= base10)
+            let kbytes = bytes / base10
         endif
-        if (exists('kbytes') && kbytes >= base2)
-            let mbytes = kbytes / base2
+        if (exists('kbytes') && kbytes >= base10)
+            let mbytes = kbytes / base10
         endif
-        if (exists('mbytes') && mbytes >= base2)
-            let gbytes = mbytes / base2
+        if (exists('mbytes') && mbytes >= base10)
+            let gbytes = mbytes / base10
         endif
         if bytes <= 0
             return '0'
         endif
 
         if (exists('gbytes'))
-            return printf("%.2f", gbytes) . 'Gi'
+            return printf("%.2f", gbytes) . ' gb'
         elseif (exists('mbytes'))
-            return printf("%.2f", mbytes) . 'Mi'
+            return printf("%.2f", mbytes) . ' mb'
         elseif (exists('kbytes'))
-            return printf("%.2f", kbytes) . 'Ki'
+            return printf("%.2f", kbytes) . ' kb'
         else
-            return bytes . 'b'
+            return bytes . ' b'
         endif
-        " use Ki / Mi / Gi for base2 Kebibytes notation
+        " use Ki / Mi / Gi for base10 Kebibytes notation
 endfunction
 
 "  **** STARTUP defaults ****
