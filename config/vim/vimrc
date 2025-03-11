@@ -98,7 +98,7 @@ function! FileSize()
             let pbytes = tbytes / base2
         endif
         if bytes <= 0
-            return '0'
+            return '0 b'
         endif
 
         if (exists('pbytes'))
@@ -111,8 +111,8 @@ function! FileSize()
             return printf("%.2f", mbytes) . ' mi'
         elseif (exists('kbytes'))
             return printf("%.2f", kbytes) . ' ki'
-        else
-            return bytes . ' b'
+"        else
+"            return bytes . ' b'
         endif
         " use Ki / Mi / Gi for base2 Kebibytes notation
 endfunction
