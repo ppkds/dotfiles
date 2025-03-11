@@ -91,11 +91,21 @@ function! FileSize()
         if (exists('mbytes') && mbytes >= base2)
             let gbytes = mbytes / base2
         endif
+        if (exists('gbytes') && gbytes >= base2)
+            let tbytes = gbytes / base2
+        endif
+        if (exists('tbytes') && tbytes >= base2)
+            let pbytes = tbytes / base2
+        endif
         if bytes <= 0
             return '0'
         endif
 
-        if (exists('gbytes'))
+        if (exists('pbytes'))
+            return printf("%.2f", tbytes) . ' pi'
+        elseif (exists('tbytes'))
+            return printf("%.2f", tbytes) . ' ti'
+        elseif (exists('gbytes'))
             return printf("%.2f", gbytes) . ' gi'
         elseif (exists('mbytes'))
             return printf("%.2f", mbytes) . ' mi'
