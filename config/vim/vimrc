@@ -97,24 +97,27 @@ function! FileSize()
         if (exists('tbytes') && tbytes >= base2)
             let pbytes = tbytes / base2
         endif
+
         if bytes <= 0
-            return '0 b'
+            return '0 B'
         endif
 
+"       use KiB / Mi / Gi etc... for base2 Kibibytes notation
+"       use kB / mB / gB etc... for base10 Kilobytes notation
+
         if (exists('pbytes'))
-            return printf("%.2f", tbytes) . ' pi'
+            return printf("%.2f", tbytes) . ' PiB'
         elseif (exists('tbytes'))
-            return printf("%.2f", tbytes) . ' ti'
+            return printf("%.2f", tbytes) . ' TiB'
         elseif (exists('gbytes'))
-            return printf("%.2f", gbytes) . ' gi'
+            return printf("%.2f", gbytes) . ' GiB'
         elseif (exists('mbytes'))
-            return printf("%.2f", mbytes) . ' mi'
+            return printf("%.2f", mbytes) . ' MiB'
         elseif (exists('kbytes'))
-            return printf("%.2f", kbytes) . ' ki'
+            return printf("%.2f", kbytes) . ' KiB'
 "        else
-"            return bytes . ' b'
+"            return bytes . ' B'
         endif
-        " use Ki / Mi / Gi for base2 Kebibytes notation
 endfunction
 
 "  **** STARTUP defaults ****
