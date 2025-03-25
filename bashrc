@@ -21,7 +21,7 @@ HISTCONTROL=ignoreboth          # Don't put duplicates or lines starting with sp
 HISTFILESIZE=200000             # History file size
 HISTSIZE=10000                  # History size
 PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
-PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
+# PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 
 export EDITOR="vi"              # Set default editor to vi or vim if it is installed
 
@@ -76,9 +76,11 @@ fi
 # Enable color prompt for shell. Green for standard user, red for superuser
 if [ "$color_prompt" = yes ]; then
     if [[ ${EUID} == 0 ]]; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]┌── \h\[\033[01;34m\] \w\n\[\033[01;31m\]└─ \$ \[\033[00m\] '
+        # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
     else
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]┌── \h\[\033[01;34m\] \w\n\[\033[01;32m\]└─ \$ \[\033[00m\] '
+        # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
     fi
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
