@@ -90,7 +90,6 @@ unset color_prompt force_color_prompt
 # Echo blankline before command prompt
 PS1="\n$PS1"
 # PS1="$PS1"
-# PS1="\n[$PS1]"
 
 # enable color support of common commands
 if [ -x /usr/bin/dircolors ]; then
