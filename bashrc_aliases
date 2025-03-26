@@ -40,6 +40,7 @@
     alias weather='echo && curl wttr.in/{Tokyo,Bejing,Mumbai,Moscow,London,"New_York",Chicago,Denver,Sacramento,}?format="%l:+%c+%t+|+Local+Time:+%T+|+Sunrise+/+Sunset:+%S+/+%s\n" && echo'
     alias weechat='weechat-curses'
     alias wget='wget -c'
+    alias yt-dlp='/home/ppkds/Dev/Git/yt-dlp/yt-dlp.sh'
     alias edit-gitfiles='vim -p \
             $HOME/Dev/Git/dotfiles/bashrc \
             $HOME/Dev/Git/dotfiles/bashrc_aliases \
