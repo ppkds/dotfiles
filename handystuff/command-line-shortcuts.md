@@ -1,4 +1,3 @@
-
 ## Command Editing Shortcuts
 
 * Ctrl + a – go to the start of the command line
