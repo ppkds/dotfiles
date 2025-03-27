@@ -45,7 +45,8 @@ shopt -s cdable_vars            # Directory aliases
     shopt -s cmdhist                # Save multi-line commands as one command
     shopt -s dirspell 2> /dev/null  # Correct spelling errors during tab-completion
     shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
-
+    shopt -s checkwinsize           # check the window size after each command and, if necessary,update the values of LINES and COLUMNS.
+                           
 # Set man options
 # export PAGER="less"                           # Default manpager
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
@@ -89,6 +90,7 @@ unset color_prompt force_color_prompt
 
 # Echo blankline before command prompt
 PS1="\n$PS1"
+# PS1="$PS1\n"
 # PS1="$PS1"
 
 # enable color support of common commands
