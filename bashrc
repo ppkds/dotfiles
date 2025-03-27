@@ -23,7 +23,7 @@ HISTSIZE=10000                  # History size
 PROMPT_COMMAND='history -a'     # Append each command to history as it is issued
 # PROMPT_DIRTRIM=3                # Automatically trim long paths in the prompt
 
-export EDITOR="vi"              # Set default editor to vi or vim if it is installed
+export EDITOR=vim              # Set default editor to vim
 
 shopt -s cdable_vars            # Directory aliases
     export desktopfolder="$HOME/Desktop"
