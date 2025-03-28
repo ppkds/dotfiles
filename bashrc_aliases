@@ -24,7 +24,7 @@
     alias cls='clear'
     alias df='df -hT | grep -v ^none | ( read header ; echo "$header" ; sort -k 1)'
     alias free='free -ht'
-    alias git-pull='git -C $HOME/Dev/Git/dotfiles/ -C ../vim/ -C ../yt-dlp/ pull'
+    alias git-pull='git -C $HOME/Dev/Git/dotfiles/ -C $HOME/Dev/Git/vim/ -C $HOME/Dev/Git/yt-dlp/ pull'
     alias gvim='gvim; exit'
     alias links='links2'
     alias lsb_release='lsb_release -cdir'
