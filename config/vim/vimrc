@@ -115,8 +115,6 @@ function! FileSize()
             return printf("%.2f", mbytes) . ' MiB'
         elseif (exists('kbytes'))
             return printf("%.2f", kbytes) . ' KiB'
-"        else
-"            return bytes . ' B'
         endif
 endfunction
 
