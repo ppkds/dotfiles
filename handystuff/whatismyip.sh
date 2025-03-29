@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Created Aug 06, 2015 - PPKDS
+# Created Aug 06, 2015 - Pappukant Dansale 
 
 # Gateway IP
 routerip=$(ip r | grep 'default' | awk '{print $3}')
