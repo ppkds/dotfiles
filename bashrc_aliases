@@ -29,6 +29,7 @@
             $HOME/Dev/Git/dotfiles/config/vim/vimrc'
     alias free='free -ht'
     alias git-pull='$HOME/Dev/Git/dotfiles/handystuff/git-pull.sh'
+    alias git-status='$HOME/Dev/Git/dotfiles/handystuff/git-status.sh'
     alias gvim='gvim; exit'
     alias links='links2'
     alias lsb_release='lsb_release -cdir'
