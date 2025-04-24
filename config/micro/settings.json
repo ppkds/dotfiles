@@ -20,5 +20,6 @@
     "softwrap": true,
     "statusformatl": "$(filename) $(modified) $(status.paste) ",
     "statusformatr": "| $(line):$(col) | $(opt:filetype) | $(opt:encoding) | $(opt:fileformat) | keybinds:alt-g help:ctl-g ",
-    "tabstospaces": true
+    "tabstospaces": true,
+    "wordwrap": true
 }
