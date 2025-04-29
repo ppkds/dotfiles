@@ -8,14 +8,13 @@ make distclean
 # export PREFIX='/usr/local/bin' && ./configure --with-features=huge --enable-gui=gtk3 --en./configure --with-features=huge --enable-gui=gtk3 --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-tclinterp  --enable-multibyte --enable-cscope --enable-fontset --enable-largefile --with-compiledby="ppkds" --prefix=$PREFIX
 
 ./configure --with-features=huge --enable-gui=gtk3 --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-tclinterp --enable-multibyte --enable-cscope --enable-fontset --enable-largefile --with-compiledby="ppkds" 
+
 # run line 10 from CLI
 eval "$(sed -n '10p' ~/VIM_install)"
 
-# make test
+make test
 
 OR
-
-# make
 
 sudo make install
 
