@@ -23,7 +23,7 @@ eval "$(sed -n '10p' ~/VIM_install)"
 
 OR 
 Executes sed pull in current shell environment)
-source <(sed -n '10p' ~/VIM_install
+source <(sed -n '10p' ~/VIM_install)
 
 
 ---- CHECK SHARED LIBRARIES
