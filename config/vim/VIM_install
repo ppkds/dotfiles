@@ -14,8 +14,6 @@ eval "$(sed -n '10p' ~/VIM_install)"
 
 make test
 
-OR
-
 sudo make install
 
 
