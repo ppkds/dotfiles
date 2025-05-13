@@ -78,10 +78,8 @@ fi
 if [ "$color_prompt" = yes ]; then
     if [[ ${EUID} == 0 ]]; then
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]┌── \h\[\033[01;34m\] \w\n\[\033[01;31m\]└─ \$\[\033[00m\] '
-        # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
     else
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]┌── \h\[\033[01;34m\] \w\n\[\033[01;32m\]└─ \$\[\033[00m\] '
-        # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[01;34m\] \w \$ \[\033[00m\] '
     fi
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
@@ -90,7 +88,6 @@ unset color_prompt force_color_prompt
 
 # Echo blankline before command prompt
 PS1="\n$PS1"
-# PS1="$PS1\n"
 # PS1="$PS1"
 
 # enable color support of common commands
