@@ -1,7 +1,7 @@
 
 " =**= Special characters in vim
 
-" = In vim special key/unicode characters are entered in ***insert mode*** by  + special key or using  + unocode HEX
+" = In vim special key/unicode characters are entered in ***insert mode*** by  + special key or using  + unicode HEX
 " = Useful statusline glyphs; kept for reference
 "   ¦   " Alternate pipe symbol ( u00A6)
 "   ॐ   " Aum ( u0950)
