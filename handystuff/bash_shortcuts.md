@@ -13,7 +13,7 @@
 
 - **Alt + d** : Delete word after the cursor.
 - **Alt + del** : Delete word before the cursor.
-- **Ctrl + _ **: Undo the last command.
+- **Ctrl + \_** : Undo the last command.
 - **Ctrl + k** : Delete from cursor to the end of the line.
 - **Ctrl + u** : Delete from cursor to the beginning of the line.
 - **Ctrl + w** : Delete the last word.
