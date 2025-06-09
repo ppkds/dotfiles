@@ -6,11 +6,9 @@
 - **Ctrl + e** : Move to the end of the line.
 - **Alt + b** : Move cursor back one word.
 - **Alt + f** : Move cursor forward one word.
-- **Ctrl + l** : Clear the screen.
-- **Alt + <** : Move to the first line of the history.
-- **Alt + >** : Move to the last line of the history.
 - **Esc + t** : Switch between last two words before cursor.
-- **Alt + t** : Switch current word with the previous one. 
+- **Alt + t** : Switch current word with the previous one.
+
 
 
 **Editing:**
@@ -44,6 +42,8 @@
 - **Ctrl + p** : Retrieve the previous command in history.
 - **Ctrl + n** : Retrieve the next command in history.
 - **Ctrl + g** :  escape from history searching mode.
+- **Alt + <** : Move to the first line of the history.
+- **Alt + >** : Move to the last line of the history.
 
 
 **Other:**
