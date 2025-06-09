@@ -58,6 +58,6 @@
 - **Ctrl + c** : Terminate the command.
 - **Ctrl + d** : Quit the Bash shell.
 - **Ctrl + l** : Clear the screen (same as the clear command).
-- **Ctrl + q** : Allow output to the screen (if previously stopped using command above).
+- **Ctrl + q** : Allow output to the screen (if previously stopped using command below).
 - **Ctrl + s** : Stops the output to the screen (for long running verbose command).
 - **Ctrl + z** : Suspend/stop the command.
