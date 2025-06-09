@@ -9,8 +9,6 @@
 - **Alt + t** : Switch current word with the previous one.
 - **Esc + t** : Switch between last two words before cursor.
 
-
-
 **Editing:**
 
 - **Alt + d** : Delete word after the cursor.
@@ -23,7 +21,6 @@
 - **Ctrl + xx** : Move between start of command line and current cursor position (and back again).
 - **Ctrl + y** : Paste the last item deleted or cut.
 
-
 **Process Control:**
 
 - **Alt + .** : Use the last word of the previous command.
@@ -34,7 +31,6 @@
 - **bg** : Resume a suspended process in the background.
 - **fg** : Resume a suspended process in the foreground.
 
-
 **History:**
 
 - **Alt + <** : Move to the first line of the history.
@@ -44,7 +40,6 @@
 - **Ctrl + p** : Retrieve the previous command in history.
 - **Ctrl + r** : Search backward through history.
 - **Ctrl + s** : Search forward through history.
-
 
 **Other:**
 
@@ -61,3 +56,5 @@
 - **Ctrl + q** : Allow output to the screen (if previously stopped using command below).
 - **Ctrl + s** : Stops the output to the screen (for long running verbose command).
 - **Ctrl + z** : Suspend/stop the command.
+- **bg** : Resume a suspended process in the background.
+- **fg** : Resume a suspended process in the foreground.
