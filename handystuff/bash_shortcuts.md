@@ -1,4 +1,4 @@
-## CLI Shortcuts
+## BASH Shortcuts
 
 **Navigation:**
 
