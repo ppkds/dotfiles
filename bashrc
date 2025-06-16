@@ -47,7 +47,7 @@ shopt -s cdable_vars            # Directory aliases
     shopt -s globstar               # The pattern "**" used in a pathname expansion context will match all files and zero or more directories and subdirectories.
                            
 # Set man options
-# export PAGER="less"                           # Default manpager
+export PAGER="less"                           # Default manpager
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Customize colour on man-pages - uses definitions from .LESS_TERMCAP
 
 # make less more friendly for non-text input files
