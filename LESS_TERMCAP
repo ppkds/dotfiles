@@ -1,14 +1,58 @@
 # Less Colors for Man Pages
-export LESS_TERMCAP_mb=$'\E[0;103m' # begin blinking
-export LESS_TERMCAP_md=$'\E[0;94m' # begin bold
-export LESS_TERMCAP_me=$'\E[0m' # end mode
-export LESS_TERMCAP_se=$'\E[0m' # end standout-mode
+export LeSS_TERMCAP_mb=$'\e[1;31m' # begin blinking
+export LESS_TERMCAP_md=$'\e[1;37m' # begin bold
+export LESS_TERMCAP_me=$'\e[0m' # end mode
+export LESS_TERMCAP_se=$'\e[0m' # end standout-mode
 export LESS_TERMCAP_so=$(tput setaf 7; tput setab 5) # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m' # end underline
-export LESS_TERMCAP_us=$'\E[04;95m' # begin underline
+export LESS_TERMCAP_ue=$'\e[0m' # end underline
+export LESS_TERMCAP_us=$'\e[04;36m' # begin underline
 export LESS_TERMCAP_mr=$(tput rev)
 export LESS_TERMCAP_mh=$(tput dim)
 export LESS_TERMCAP_ZN=$(tput ssubm)
 export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
+
+# More info: 
+# https://tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
+# http://unix.stackexchange.com/a/108840# 
+# 
+# termcap terminfo
+# ks      smkx      make the keypad send commands
+# ke      rmkx      make the keypad send digits
+# vb      flash     emit visual bell
+# mb      blink     start blink
+# md      bold      start bold
+# me      sgr0      turn off bold, blink and underline
+# so      smso      start standout (reverse video)
+# se      rmso      stop standout
+# us      smul      start underline
+# ue      rmul      stop underline
+#
+#
+# Color codes:
+
+# 30 – black
+# 31 – red
+# 32 – green
+# 33 – orange
+# 34 – blue
+# 35 – magenta
+# 36 – cyan
+# 37 – white
+#
+# Escape Codes (following "\e[" then followed by ;)
+#
+# 0 – reset/normal
+# 1 – bold
+# 3 – italic/reversed
+# 4 – underlined
+# 5 – blink
+#
+# You can check this by typing in a terminal something like:
+#
+# printf '\e[31m'
+# printf '\e[32m'
+# printf '\e[37m'
+#
+# eg: printf '\e[01;33m' will print bold orange text

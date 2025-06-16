@@ -48,7 +48,7 @@ shopt -s cdable_vars            # Directory aliases
                            
 # Set man options
 # export PAGER="less"                           # Default manpager
-[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Colour man - uses definitions from .LESS_TERMCAP
+[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Customize colour on man-pages - uses definitions from .LESS_TERMCAP
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
