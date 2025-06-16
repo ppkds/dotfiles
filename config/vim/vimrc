@@ -106,15 +106,15 @@ function! FileSize()
 "       use kB / mB / gB etc... for base10 Kilobytes notation
 
         if (exists('pbytes'))
-            return printf("%.2f", tbytes) . ' piB'
+            return printf("%.2f", tbytes) . ' PiB'
         elseif (exists('tbytes'))
-            return printf("%.2f", tbytes) . ' tiB'
+            return printf("%.2f", tbytes) . ' TiB'
         elseif (exists('gbytes'))
-            return printf("%.2f", gbytes) . ' giB'
+            return printf("%.2f", gbytes) . ' GiB'
         elseif (exists('mbytes'))
-            return printf("%.2f", mbytes) . ' miB'
+            return printf("%.2f", mbytes) . ' MiB'
         elseif (exists('kbytes'))
-            return printf("%.2f", kbytes) . ' kiB'
+            return printf("%.2f", kbytes) . ' KiB'
         endif
 endfunction
 
