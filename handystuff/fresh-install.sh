@@ -28,9 +28,28 @@ clear
 cd 
 read -p "Creating Directories. Press any key to continue: `echo $'\n '`" -n 1 -s 
 cd 
-mkdir -pv Desktop Dev Dev/Git Dev/Git/dotfiles Dev/Practice Dev/Scripts Documents Documents/Original_configs Downloads Music Pictures Public Templates Videos tempdir .config/bat .config/btop .config/htop .config/mc .config/micro .config/nano .config/neofetch .fonts .vim 
+mkdir -pv Desktop Dev Dev/Git Dev/Git/dotfiles Dev/Git/vim Dev/Git/yt-dlp  Dev/Practice Dev/Scripts Documents Documents/Original_configs Downloads Music Pictures Public Templates Videos tempdir .config/bat .config/btop .config/htop .config/mc .config/micro .config/nano .config/neofetch .fonts .vim 
+echo
+
+# Clone essential repositories
+cd
+clear
+read -p "Directories created. Press any key to clone essential Github repositories `echo $'\n'`" -n 1 -s 
+cd $HOME/Dev/test
+echo
+echo "Cloning $USER dotfiles" # user's dotfiles
+git clone https://github.com/ppkds/dotfiles.git
+echo
+echo "Cloning vim" # vim repository to build latest versions of vim
+git clone --depth 1 https://github.com/vim/vim.git
 echo 
-read -p "Directories created. Press any key to continue creating SSH key and enable cloning from Github -- OR -- press ^C to cancel: "
+echo "Cloning yt-dlp" # CL based Youtube downloader (use alias eg: alias yt-dlp='$HOME/Dev/Git/yt-dlp/yt-dlp.sh') (IMPORTANT: python 3 needs to be installed to use this script)
+git clone --depth 1 https://github.com/yt-dlp/yt-dlp.git
+cd 
+echo
+
+# Create SSH key
+read -p "Github cloning completed. Press any key to continue creating SSH key -- OR -- press ^C to cancel: "
 
 
 # Check for existing SSH keys
@@ -49,5 +68,5 @@ ssh-add ~/.ssh/id_ed25519
 # Add SSH key to Github 
 cat ~/.ssh/id_ed25519.pub
 echo
-read -p "Add SSH key to Github -- Go to https://github.com/settings/keys -- Press 'New SSH key' button to add new SSH key to Github. Then copy and paste the contents of the SSH displayed key above to dialog box on the website. Press any key when ready..." -n 1 -s
+read -p "To add SSH key to Github -- Go to https://github.com/settings/keys -- Press 'New SSH key' button to add new SSH key to Github. Then copy and paste the contents of the SSH displayed key above to dialog box on the website. Press any key when ready..." -n 1 -s
 echo
