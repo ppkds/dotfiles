@@ -21,14 +21,14 @@ echo ""
 read -p "Press any key to install useful utilities or ^C to cancel: `echo $'\n '`" -n 1 -s 
 sudo apt install -y bat btop cheese curl exa git gnupg2 gparted gtkhash htop imagemagick krename krusader mc micro mplayer nemo-gtkhash neofetch pwgen qemu secure-delete speedtest-cli tree vim wget xdg-utils 
 echo ""
-read -p "Udated and installed packages. Press any key to continue creating directories -- OR -- press ^C to cancel: "
+read -p "Updated and installed packages. Press any key to continue creating directories -- OR -- press ^C to cancel: "
 
 # Create directories.
 clear 
 cd 
 read -p "Creating Directories. Press any key to continue: `echo $'\n '`" -n 1 -s 
 cd 
-mkdir -pv Desktop Dev Dev/Git Dev/Git/dotfiles Dev/Git/vim Dev/Git/yt-dlp  Dev/Practice Dev/Scripts Documents Documents/Original_configs Downloads Music Pictures Public Templates Videos tempdir .config/bat .config/btop .config/htop .config/mc .config/micro .config/nano .config/neofetch .fonts .vim 
+mkdir -pv Desktop Dev Dev/Git Dev/Git/dotfiles Dev/Git/vim Dev/Git/yt-dlp Dev/Practice Dev/Scripts Dev/Test Documents Documents/Original_configs Downloads Music Pictures Public Templates Videos tempdir .config/bat .config/btop .config/htop .config/mc .config/micro .config/nano .config/neofetch .fonts .vim 
 echo ""
 
 # Clone essential repositories
