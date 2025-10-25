@@ -119,4 +119,5 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# rust environment
 . "$HOME/.cargo/env"
