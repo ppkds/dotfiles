@@ -18,6 +18,7 @@
     alias rm='rm -Iv'
 
 # Convinience aliasies
+    alias angryoxide='sudo angryoxide -i wlp113s0'
     alias apt='sudo apt'
     alias bashrc='source ~/.bashrc'
     alias cat='batcat -n'
