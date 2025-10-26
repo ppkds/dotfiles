@@ -43,6 +43,15 @@ function! FileSize(bytes)
   return l:bytes > 0 ? printf(' %.1f%s ', l:bytes, l:sizes[l:i]) : ''
 endfunction
 
+==**== To perform a search and replace operation in Vim for the current line and the next 'n' lines
+:.,+n-1s/search_pattern/replace_string/[flags]
+
+[flags]: Optional flags to modify the behavior of the substitution:
+    g: Global flag, replaces all occurrences on each line within the specified range. Without g, only the first occurrence on each line is replaced.
+    c: Confirm flag, prompts for confirmation before each replacement.
+    i: Ignore case flag, performs a case-insensitive search.
+
+
 ==**== Copy / move specific lines
 = yank specific line number : :4y <return>
 = yank specific line number and paste below current line: :4co. <return>
