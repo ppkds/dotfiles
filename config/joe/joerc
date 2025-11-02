@@ -93,7 +93,7 @@
 
  -columns nnn	Set no. screen columns
 
- -helpon	Start with help on
+-helpon	Start with help on
 
  -skiptop nnn	Don't use top nnn lines of the screen
 
@@ -188,24 +188,24 @@
   %W  W if wordwrap is enabled
   %I  A if autoindent is enabled
   %X  Rectangle mode indicator
-  %n  File name
-  %m  '(Modified)' if file has been changed
+  %%n  File name
+  %%m  '(Modified)' if file has been changed
   %*  '*' if file has been changed
-  %R  Read-only indicator
-  %r  Row (line) number
-  %c  Column number
+  %%R  Read-only indicator
+  %%r  Row (line) number
+  %%c  Column number
   %o  Byte offset into file
   %O  Byte offset into file in hex
   %a  Ascii value of character under cursor
   %A  Ascii value of character under cursor in hex
   %w  Width of character under cursor
   %p  Percent of file cursor is at
-  %l  No. lines in file
+  %%l  No. lines in file
   %k  Entered prefix keys
   %S  '*SHELL*' if there is a shell running in window
   %M  Macro recording message
-  %y  Syntax
-  %e  Encoding of file
+  %%y  Syntax
+  %%e  Encoding of file
   %b  Encoding of terminal
   %x  Context (first non-indented line going backwards)
   %dd day
@@ -224,8 +224,8 @@
   \f  Blink
   \l  Italic
 
--lmsg \i%k%T%W%I%X %n %m%y%R %M %x
--rmsg  %S Row %4r Col %3c 
+-lmsg \i%k%T%W%I%X | %n %* | %R %M %x
+-rmsg  %S | FT: %y | %e | Row: %r/%l | Col: %c 
 -smsg ** Line %r Col %c Offset %o(0x%O) %e %a(0x%A) Width %w ** 
 -zmsg ** Line %r Col %c Offset %o(0x%O) ** 
 -xmsg \i Joe's Own Editor %v (%b) ** Type \bCtrl-K Q\b to exit or \bCtrl-K H\b for help **\i
@@ -265,7 +265,7 @@
 
 	-hex			Hex editor mode
 
-	-highlight		Enable highlighting
+-highlight		Enable highlighting
 
 	-smarthome		Home key first moves cursor to beginning of line,
 				then if hit again, to first non-blank character.
@@ -277,13 +277,13 @@
 				'indentc's if cursor is at first non-space
 				character.
 
-	-tab nnn		Tab width
+-tab 4  		Tab width
 
 	-indentc nnn		Indentation character (32 for space, 9 for tab)
 
 	-istep nnn		Number of indentation columns
 
-	-spaces			TAB inserts spaces instead of tabs.
+-spaces			TAB inserts spaces instead of tabs.
 
 	-purify			Fix indentation if necessary for rindent, lindent and backs
 				(for example if indentation uses a mix of tabs and spaces,
@@ -292,11 +292,11 @@
 
 	-crlf			File uses CR-LF at ends of lines
 
-	-wordwrap		Wordwrap
+-wordwrap		Wordwrap
 
 	-nobackup		If you don't want backup file to be created
 
-	-autoindent		Auto indent
+-autoindent		Auto indent
 
 	-overwrite		Overtype mode
 
@@ -316,9 +316,9 @@
 				sometimes it must put spacing in itself.  This
 				selects how much is inserted.
 
-	-linums			Enable line numbers on each line
+-linums			Enable line numbers on each line
 
-	-hiline			Highlight current line
+-hiline			Highlight current line
 
 	-rdonly			File is read-only
 
@@ -353,11 +353,11 @@
 	-no_double_quoted	Text between " " should not be ignored (useful
 				for TeX).
 
-	-c_comment		Text between /* */ should be ignored
+-c_comment		Text between /* */ should be ignored
 
-	-cpp_comment		Text after // should be ignored
+-cpp_comment		Text after // should be ignored
 
-	-pound_comment		Text after # should be ignored
+-pound_comment		Text after # should be ignored
 
 	-vhdl_comment		Text after -- should be ignored
 
