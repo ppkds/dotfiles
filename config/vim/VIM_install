@@ -5,7 +5,7 @@ sudo apt remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox
 ---- TO COMPILE FROM SCRATCH
 make distclean
 
-# export PREFIX='/usr/local/bin' && ./configure --with-features=huge --enable-gui=gtk3 --en./configure --with-features=huge --enable-gui=gtk3 --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-tclinterp  --enable-multibyte --enable-cscope --enable-fontset --enable-largefile --with-compiledby="ppkds" --prefix=$PREFIX
+# export PREFIX='/usr/local/bin' && ./configure --with-features=huge --enable-gui=gtk3 --en./configure --with-features=huge --enable-gui=gtk3 --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-tclinterp  --enable-multibyte --enable-cscope --enable-fontset --enable-largefile --with-compiledby="ppkds" --enable-gpm --prefix=$PREFIX
 
 ./configure --with-features=huge --enable-gui=gtk3 --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-tclinterp --enable-multibyte --enable-cscope --enable-fontset --enable-largefile --with-compiledby="ppkds" 
 
@@ -35,5 +35,4 @@ readelf -L /usr/local/bin/vim | grep Shared
 
  0x0000000000000001 (NEEDED)             Shared library: [libcanberra.so.0]
  0x0000000000000001 (NEEDED)             Shared library: [libacl.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libgpm.so.2]
  0x0000000000000001 (NEEDED)             Shared library: [libtcl8.6.soA]
