@@ -35,4 +35,3 @@ readelf -L /usr/local/bin/vim | grep Shared
 
  0x0000000000000001 (NEEDED)             Shared library: [libcanberra.so.0]
  0x0000000000000001 (NEEDED)             Shared library: [libacl.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libtcl8.6.soA]
