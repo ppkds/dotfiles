@@ -197,7 +197,7 @@ let g:lexical#dictionary_key = '<leader>k'
     filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
 
 "  ==== Prose editing (word-procesor plugin)
-    augroup prose
+augroup prose
         autocmd!
         autocmd FileType markdown,mkd       call pencil#init()
             \ | call lexical#init()

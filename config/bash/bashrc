@@ -36,6 +36,7 @@ shopt -s cdable_vars            # Directory aliases
     export picturefolder="$HOME/Pictures"
     export practicefolder="$HOME/Dev/Practice"
     export publicfolder="$HOME/Public"
+    export rustprojects="$HOME/Dev/Rust/projects"
     export templatefolder="$HOME/Templates"
     export videofolder="$HOME/Videos"
     export vimfolder="$HOME/Dev/Git/vim"
