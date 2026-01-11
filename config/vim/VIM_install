@@ -17,6 +17,10 @@ make test
 sudo make install
 
 
+---- Check change log
+git log -p HEAD@{1}..HEAD
+
+
 ---- Directly execute configure command from CLI
 Interprets and executes sed pull as a command 
 eval "$(sed -n '10p' ~/VIM_install)"
