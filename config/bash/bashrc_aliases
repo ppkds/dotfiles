@@ -18,11 +18,11 @@
     alias rm='rm -Iv'
 
 # Convinience aliasies
-    alias angryoxide='sudo angryoxide -i wlp113s0'
+    alias angryoxide='sudo angryoxide -i wlp113s0'  # update specific device
     alias apt='sudo apt'
-    alias bashrc='source /home/ppkds/.bashrc'
-    alias cat='batcat'
-    alias cls='clear'
+    alias bashrc='source /home/ppkds/.bashrc'       # source .bashrc
+    alias cat='batcat'                              # replace cat with batcat
+    alias cls='clear'                               # for muscle memory from DOS
     alias df='df -hT | grep -v ^none | ( read header ; echo "$header" ; sort -k 1)'
     alias edit-git-files='vim -p \
                           $HOME/Dev/Git/dotfiles/config/bash/bashrc \
@@ -41,7 +41,7 @@
     alias python='clear && python3'
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop -v | grep -v tmpfs | grep -v snapfuse'
     alias serial-number='echo "This requires SU access" && sudo dmidecode -s system-serial-number'
-    alias snap='echo "nice try, Canonical" && sudo snap'
+    alias snap='echo "nice try, Canonical!`\r`" && sudo snap'
     alias speedtest='echo "Starting speedtest-cli" && speedtest --csv --share --secure >>/home/ppkds/speedtest-history.csv && echo "Result appended to $HOME/speedtest-history.csv"'
     # alias snap='sudo snap'
     alias top='btop'
