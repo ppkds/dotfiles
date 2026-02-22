@@ -40,6 +40,7 @@
 - **Ctrl + p** : Retrieve the previous command in history.
 - **Ctrl + r** : Search backward through history.
 - **Ctrl + s** : Search forward through history.
+- **!n** : Run line 'n' from history
 
 **Other:**
 
