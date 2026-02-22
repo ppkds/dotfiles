@@ -25,37 +25,33 @@
 
 - **Alt + \.** : Use the last word of the previous command.
 - **Ctrl + c** : Terminate the current command.
-- **Ctrl + q** : Resume the output to the screen.
-- **Ctrl + s** : Pause the output to the screen.
-- **Ctrl + z** : Suspend the current command.
+- **Ctrl + s** : Stops output to the screen (for long running verbose command).
+- **Ctrl + q** : Allow output to the screen (for output suspended command).
+- **Ctrl + z** : Suspend/stop the current command.
 - **bg** : Resume a suspended process in the background.
 - **fg** : Resume a suspended process in the foreground.
 
 **History:**
 
+- **Ctrl + g** : Escape from history searching mode.
 - **Alt + <** : Move to the first line of the history.
 - **Alt + >** : Move to the last line of the history.
-- **Ctrl + g** : Escape from history searching mode.
 - **Ctrl + n** : Retrieve the next command in history.
 - **Ctrl + p** : Retrieve the previous command in history.
 - **Ctrl + r** : Search backward through history.
 - **Ctrl + s** : Search forward through history.
 - **!n** : Run line 'n' from history
+- **\!\!** : Repeat the last command.
+- **\!\!:p** : Print the last command without executing it, allowing you to edit the line before running
+- **\!:p** : Print out what \!\! would substitute.
+- **\!\* **: Repeat the last command except for the first word (e.g., if you type find some_file.txt /, then !* would give you some_file.txt /)
+- **\!** : Repeat the last command except for the last word (e.g. if you type ‘find some_file.txt /‘, then \! would give you ‘find some_file.txt‘).
+- **\!$** : Use the last word of the previous command (same as Alt + .).
+- **\!$:p** : Print out the word that \!$ would substitute.
+- **\!blah** : Run the most recent command that starts with ‘blah’ (e.g. \!ls).
+- **\!blah:p** : Print out the command that !blah would run (also adds it as the latest command in the command history).
 
 **Other:**
 
-- **\!\!** : Repeat the last command.
-- **\!$** : Use the last word of the previous command (same as Alt + .).
-- **\!$:p** : Print out the word that \!$ would substitute.
-- **\!** : Repeat the last command except for the last word (e.g. if you type ‘find some_file.txt /‘, then \!- **would give you ‘find some_file.txt‘).
-- **\!:p** : Print out what \!* would substitute.
-- **\!blah** : Run the most recent command that starts with ‘blah’ (e.g. \!ls).
-- **\!blah:p** : Print out the command that !blah would run (also adds it as the latest command in the command history).
-- **Ctrl + c** : Terminate the command.
 - **Ctrl + d** : Quit the Bash shell.
 - **Ctrl + l** : Clear the screen (same as the clear command).
-- **Ctrl + q** : Allow output to the screen (if previously stopped using command below).
-- **Ctrl + s** : Stops the output to the screen (for long running verbose command).
-- **Ctrl + z** : Suspend/stop the command.
-- **bg** : Resume a suspended process in the background.
-- **fg** : Resume a suspended process in the foreground.
