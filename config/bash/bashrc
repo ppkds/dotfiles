@@ -127,4 +127,4 @@ fi
 
 # rust environment
 . "$HOME/.cargo/env"
-. "/home/ppkds/.deno/env"
+# . "/home/ppkds/.deno/env"
