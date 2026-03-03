@@ -3,25 +3,15 @@
 # Script for fresh Debian based installs. Run after first install of OS.
 
 # Update, upgrade and install useful programs.
-clear 
-echo ""
-echo "Updating, upgrading and installing useful packages. Enter SU password to continue: `echo $'\n '`" 
-cd 
-sudo apt update 
-echo ""
-echo "Following packages are going to be upgraded:" 
-echo ""
-sudo apt list --upgradeable 
-echo ""
-read -p "Press any key to continue: `echo $'\n'`" -n 1 -s 
-sudo apt dist-upgrade -y 
-echo ""
-echo "Kept back packages are 'not in band' and are likely to be upgraded during a subsequent upgrade session" 
-echo ""
-read -p "Press any key to install useful utilities or ^C to cancel: `echo $'\n '`" -n 1 -s 
-sudo apt install -y bat btop cheese curl exa git gnupg2 gparted gtkhash htop imagemagick krename krusader mc micro mplayer nemo-gtkhash neofetch pwgen qemu secure-delete speedtest-cli tree vim wget xdg-utils 
-echo ""
-read -p "Updated and installed packages. Press any key to continue creating directories -- OR -- press ^C to cancel: "
+clear echo "" echo "Updating, upgrading and installing useful packages. Enter SU password to continue: `echo $'\n '`" cd sudo apt 
+update echo "" echo "Following packages are going to be upgraded:" echo "" sudo apt list --upgradeable echo "" read -p "Press any 
+key to continue: `echo $'\n'`" -n 1 -s sudo apt dist-upgrade -y echo "" echo "Kept back packages are 'not in band' and are likely 
+to be upgraded during a subsequent upgrade session" echo "" read -p "Press any key to install useful utilities or ^C to cancel: 
+`echo $'\n '`" -n 1 -s sudo apt install -y bat btop cheese curl git gnupg2 gparted gtkhash htop imagemagick krename krusader 
+mc micro mplayer nemo-gtkhash neofetch pwgen secure-delete speedtest-cli tree vim wget xdg-utils echo "" read -p "Updated 
+and installed packages. Press any key to continue creating directories -- OR -- press ^C to cancel: "
+
+# add exa qemu - if needed to above
 
 # Create directories.
 clear 
