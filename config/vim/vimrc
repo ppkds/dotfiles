@@ -102,8 +102,8 @@ function! FileSize()
             return '0 B'
         endif
 
-"       use KiB / Mi / Gi etc... for base2 Kibibytes notation
-"       use kB / mB / gB etc... for base10 Kilobytes notation
+"       use KiB / Mi / Gi etc... for base2 Kibibytes IEM notation
+"       use kB / mB / gB etc... for base10 Kilobytes standard notation
 
         if (exists('pbytes'))
             return printf("%.2f", pbytes) . ' PiB'
