@@ -1,0 +1,5 @@
+## Ignore local changes for specific files - eg: btop.conf, mc .ini files
+git update-index --skip-worktree <filepath/file>
+
+## Undo ignore of local changes for specific files - eg: btop.conf, mc .ini files
+git update-index --no-skip-worktree <file_path/file>
