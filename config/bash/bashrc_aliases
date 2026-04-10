@@ -2,10 +2,10 @@
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
 
 # ls aliases
-    alias ls='ls  --color=auto -ChFv --group-directories-first'
-    alias ll='ls -lhFv --group-directories-first'
-    alias lla='ls -alhFv --group-directories-first'
-    alias lld='ls -alhFvd */' 
+alias ls='ls  --color=auto -ChFv --group-directories-first'         # more useful ls (list entries by columns + human readable + classify files + natural sort)
+    alias ll='ls -lhFv --group-directories-first'                   # ls (long listing format + human readable + classify files + natural sort + group directories first)
+    alias lla='ls -alhFv --group-directories-first'                 # ls (include hidden files + long listing format + human readbale + classify + natural sort + group directories first)
+    alias lld='ls -alhFvd */'                                       # list directories only (include hidden files + long listing format + human readbale + classify files + natural sort)
 
 # exa aliases
     alias exa='exa -lhFv --group-directories-first'
@@ -37,6 +37,7 @@
     alias neofetch='echo && neofetch'
     alias nth='name-that-hash'
     alias os-release='cat -l sh /etc/os-release'
+    alias ping='ping -c 7'
     alias pwgen='pwgen -ycn 16'
     alias python='clear && python3'
     alias resources='neofetch && echo && echo - Memory - && free && echo && echo - Disk - && echo && df | grep -v /dev/loop -v | grep -v tmpfs | grep -v snapfuse'
@@ -47,7 +48,7 @@
     alias top='btop'
     # alias vim='/usr/local/bin/vim'
     # alias gvimtutor='/usr/local/bin/gvimtutor'
-    alias weather='echo && curl wttr.in/{Tokyo,Bejing,Mumbai,Moscow,London,"New_York",Chicago,Denver,Sacramento,}?format="%l:+%c+%t+|+Local+Time:+%T+|+Sunrise+/+Sunset:+%S+/+%s\n" && echo'
+    alias weather='echo && curl wttr.in/{Tokyo,Bejing,Mumbai,Moscow,London,"New_York",Chicago,Denver,Sacramento,}?format="%l: + %c+%t+|+Local+Time:+%T+|+Sunrise+/+Sunset:+%S+/+%s\n" && echo'
     alias weechat='weechat-curses'
     alias wget='wget -c'
     alias yt-dlp='/home/ppkds/Dev/Git/yt-dlp/yt-dlp.sh'
