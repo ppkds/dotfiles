@@ -2,7 +2,7 @@
     # alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
 
 # ls aliases
-alias ls='ls  --color=auto -ChFv --group-directories-first'         # more useful ls (list entries by columns + human readable + classify files + natural sort)
+alias ls='ls  --color=auto -ChFv --group-directories-first'         # more useful ls (list entries by columns + human readable + classify files + natural sort + group directories first)
     alias ll='ls -lhFv --group-directories-first'                   # ls (long listing format + human readable + classify files + natural sort + group directories first)
     alias lla='ls -alhFv --group-directories-first'                 # ls (include hidden files + long listing format + human readbale + classify + natural sort + group directories first)
     alias lld='ls -alhFvd */'                                       # list directories only (include hidden files + long listing format + human readbale + classify files + natural sort)
