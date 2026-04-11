@@ -32,7 +32,7 @@ alias ls='ls  --color=auto -ChFv --group-directories-first'         # more usefu
     alias git-pull='(cd $HOME/Dev/Git && $HOME/Dev/Git/dotfiles/handystuff/git-pull.sh)' # () runs the command in a separate, temporary sub-shell
     alias git-status='(cd $HOME/Dev/Git && $HOME/Dev/Git/dotfiles/handystuff/git-status.sh)' # () runs the command in a separate, temporary sub-shell
     # alias gvim='gvim; exit'
-    alias links='links2'
+    alias links='links2 https://duckduckgo.com/'
     alias lsb_release='lsb_release -cdir'
     alias neofetch='echo && neofetch'
     alias nth='name-that-hash'
