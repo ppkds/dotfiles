@@ -23,6 +23,7 @@ alias ls='ls  --color=auto -ChFv --group-directories-first'         # more usefu
     alias bashrc='source /home/ppkds/.bashrc'       # source .bashrc
     alias cat='batcat'                              # replace cat with batcat
     alias cls='clear'                               # for muscle memory from DOS
+    alias comfyui='cd ~/ComfyUI && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py'
     alias df='df -hT | grep -v ^none | ( read header ; echo "$header" ; sort -k 1)'
     alias edit-git-files='vim -p \
                           $HOME/Dev/Git/dotfiles/config/bash/bashrc \

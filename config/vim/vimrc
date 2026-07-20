@@ -33,7 +33,7 @@ call plug#begin()
     Plug 'preservim/tagbar'                 " Display tags ordered by scope
     Plug 'preservim/vim-lexical'            " Vim lexicography
     Plug 'preservim/vim-litecorrect'        " Vim lite correct
-    Plug 'preservim/vim-pencil'             " Vim Prose editor / word-processor 
+    Plug 'preservim/vim-pencil'             " Vim Prose editor / word-processor
     Plug 'sonph/onehalf', {'rtp': 'vim/'}   " OneHalfDark colorscheme for vim
     Plug 'tpope/vim-fugitive'               " Vim plugin for Git
     Plug 'tpope/vim-surround'               " Delete/change/add parentheses/quotes/XML-tags
@@ -69,9 +69,9 @@ let g:lightline = {
     \   'gitbranch': 'Lightlinegitbranch',
     \   },
     \}
-   
+
 " **** Functions ****
-" == Determine git branch 
+" == Determine git branch
 function! Lightlinegitbranch()
     let l:branch = FugitiveHead()
     return l:branch ==# '' ? '' : ' ' . l:branch
@@ -168,7 +168,7 @@ endfunction
     " set wrapmargin=0          " Set wrapmargin to 0
 
 " **** Plugin settings ****
-" ==== NerdCommenter settings ==== 
+" ==== NerdCommenter settings ====
 let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
 let g:NERDCompactSexyComs = 1           " Use compact syntax for prettified multi-line comments
 let g:NERDDefaultAlign = 'left'         " Align line-wise comment delimiters flush left instead of following code indentation
@@ -253,6 +253,6 @@ augroup prose
 " == Toggle line wrapping & display status
     noremap <leader>r :set wrap! wrap?<CR>
 
-" == Toggle line numbers & display status
-    noremap <silent> <F12> :set number!<CR>
-    noremap <silent> <S-F12> :set relativenumber!<CR>
+" == Toggle line numbers
+    noremap <silent> <F2> :set number!<CR>
+    noremap <silent> <S-F2> :set relativenumber!<CR>
