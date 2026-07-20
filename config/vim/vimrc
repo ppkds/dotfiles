@@ -256,3 +256,7 @@ augroup prose
 " == Toggle line numbers
     noremap <silent> <F2> :set number!<CR>
     noremap <silent> <S-F2> :set relativenumber!<CR>
+
+" Highlight the current active line number in hybrid mode
+    highlight CursorLineNr ctermfg=220 guifg=#fabd2f cterm=bold gui=bold
+
