@@ -4,25 +4,26 @@
 "  +----------------------------------------------+
 "  ॐ
 
-" **** Install vim-plug if not found
+" Strict Initialization Guard - Must be first to avoid resetting options later
+if &compatible
+    set nocompatible
+endif
+
+" **** Install vim-plug if not found ****
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-" **** Automatically install missing plugins defined in Call Plugins section using PlugInstall command
+" **** Automatically install missing plugins ****
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     \| PlugInstall --sync | source $MYVIMRC
     \| endif
 
-" Enable ALE completion where available.
-" This setting must be set before ALE is loaded.
-" You should not turn this setting on if you wish to use ALE as a completion
-" source for other completion plugins, like Deoplete.
+" Enable ALE completion where available (Must be set before ALE loads)
 let g:ale_completion_enabled = 1
 
 " **** Activate vim-plug to initiate plugins ****
-" Call plugins
 call plug#begin()
     Plug 'bullets-vim/bullets.vim'          " Auto-bullets
     Plug 'dense-analysis/ale'               " Check syntax
@@ -40,10 +41,16 @@ call plug#begin()
 call plug#end()
 
 " **** Set colorscheme ****
-colorscheme onehalfdark                 " Set colorscheme to onehalfdark
+colorscheme onehalfdark                     " Set colorscheme to onehalfdark
 
-" **** Misc. Configuration ****
-let mapleader = '\'                     " Vim default is '\'
+" **** Misc. Configuration & Notation Toggles ****
+let mapleader = '\'                         " Vim default is '\'
+
+" Default size notation preference: 1 = Base 2 (KiB/MiB), 0 = Base 10 (kB/MB)
+let g:filesize_base2 = 1
+
+" Command to toggle between notation styles on the fly and refresh lightline
+command! ToggleSizeNotation let g:filesize_base2 = !g:filesize_base2 | call lightline#update()
 
 " **** lightline plugin ****
 let g:lightline = {
@@ -57,134 +64,128 @@ let g:lightline = {
     \   'right': [ [ 'close' ] ]
     \           },
     \ 'inactive': {
-	\   'left': [ [ 'filename' ] ],
+    \   'left': [ [ 'filename' ] ],
     \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
     \           },
     \ 'component': {
-    \   'lineinfo': "%{printf('%2d/%-d : %2d', line('.'), line('$'), col('.'))}",
-    \   'num_chrwrd': "%{printf('%d c : %d w', wordcount().chars, wordcount().words)}"
+    \   'lineinfo': "%{printf('%2d/%-d : %2d', line('.'), line('$'), col('.'))}"
     \   },
     \ 'component_function': {
+    \   'num_chrwrd': 'LightlineWordCount',
     \   'filesize': 'FileSize',
     \   'gitbranch': 'Lightlinegitbranch',
     \   },
     \}
 
 " **** Functions ****
+" == Optimize text telemetry calculations by running wordcount metrics only once
+function! LightlineWordCount()
+    let l:stats = wordcount()
+    return printf('%d c : %d w', l:stats.chars, l:stats.words)
+endfunction
+
 " == Determine git branch
 function! Lightlinegitbranch()
     let l:branch = FugitiveHead()
     return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
-" == Determine filesize - filesize rounded to x decimal places (2 decimals using '%.2f')
+" == Determine filesize - dynamically handles both base2 (IEC) and base10 (SI) scales
 function! FileSize()
-    let base2 = 1024.0
-    let base10 = 1000.0
-    let bytes = getfsize(expand("%:p"))
-        if (bytes >= base2)
-            let kbytes = bytes / base2
-        endif
-        if (exists('kbytes') && kbytes >= base2)
-            let mbytes = kbytes / base2
-        endif
-        if (exists('mbytes') && mbytes >= base2)
-            let gbytes = mbytes / base2
-        endif
-        if (exists('gbytes') && gbytes >= base2)
-            let tbytes = gbytes / base2
-        endif
-        if (exists('tbytes') && tbytes >= base2)
-            let pbytes = tbytes / base2
-        endif
+    let l:bytes = getfsize(expand("%:p"))
+    if l:bytes <= 0
+        return '0 B'
+    endif
 
-        if bytes <= 0
-            return '0 B'
-        endif
+    " Select base system and labels dynamically based on user selection state
+    if g:filesize_base2
+        let l:scale = 1024.0
+        let l:units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB']
+    else
+        let l:scale = 1000.0
+        let l:units = ['B', 'kB', 'MB', 'GB', 'TB', 'PB']
+    endif
 
-"       use KiB / Mi / Gi etc... for base2 Kibibytes IEM notation
-"       use kB / mB / gB etc... for base10 Kilobytes standard notation
+    " Process unit metrics dynamically
+    let l:size = str2float(l:bytes)
+    let l:idx = 0
+    while l:size >= l:scale && l:idx < len(l:units) - 1
+        let l:size = l:size / l:scale
+        let l:idx += 1
+    endwhile
 
-        if (exists('pbytes'))
-            return printf("%.2f", pbytes) . ' PiB'
-        elseif (exists('tbytes'))
-            return printf("%.2f", tbytes) . ' TiB'
-        elseif (exists('gbytes'))
-            return printf("%.2f", gbytes) . ' GiB'
-        elseif (exists('mbytes'))
-            return printf("%.2f", mbytes) . ' MiB'
-        elseif (exists('kbytes'))
-            return printf("%.2f", kbytes) . ' KiB'
-        endif
+    return printf("%.2f %s", l:size, l:units[l:idx])
 endfunction
 
 "  **** STARTUP defaults ****
-    set laststatus=2            " Set Status line to always on
-    set noshowmode              " Do not indicate input/replace mode on command line
-    if &compatible              " Set nocompatible mode - avoiding side-effects if nocompatible has already been set
-        set nocompatible
-    endif
-    set autoindent              " Use indent of previous line
-    set autowrite               " Automatically save before commands like :next and :make
+    set laststatus=2                        " Set Status line to always on
+    set noshowmode                          " Do not indicate input/replace mode on command line
+    set autoindent                          " Use indent of previous line
+    set autowrite                           " Automatically save before destructive commands
     set backspace=indent,eol,start
-    set breakindent             " Set line wrapping to indent
-    set clipboard=unnamedplus   " Use system clipboard
-    set cursorline              " Highlight cursor line
-    set directory=/tmp          " Set temp directory
-    set encoding=utf-8          " Set default encoding to UTF-8
-    set errorbells              " Set error bell on
-    set expandtab               " Convert tab to spaces
-    set hidden                  " Hide buffers when they are abandoned
-    set hlsearch                " highlight search matches
-    set ignorecase              " Ignore case when searching
-    set incsearch               " Search while typing
-    set linebreak               " Set linebreak at word boundary
+    set clipboard=unnamedplus               " Use system clipboard
+    set cursorline                          " Highlight cursor line
+    set directory=/tmp                      " Set temp directory
+    set encoding=utf-8                      " Set default encoding to UTF-8
+    set errorbells                          " Set error bell on
+    set expandtab                           " Convert tab to spaces
+    set hidden                              " Hide buffers when they are abandoned
+    set hlsearch                            " Highlight search matches
+    set ignorecase                          " Ignore case when searching
+    set incsearch                           " Search while typing
+    set mouse=a                             " Enable mouse usage (all modes)
+    set mousemodel=popup                    " Enable popup on right click
+    set noswapfile                          " Do not create swap files
+    set nowrap                              " Soft wrap default off
+    set nowritebackup                       " Do not save transient backup files
+    set number                              " Display line numbers
+    set scrolloff=3                         " Keep 3 lines visible at top & bottom of screen
+    set shell=/bin/bash                     " Set shell as /bin/bash
+    set shiftwidth=4                        " Set shift width to 4 characters
+    set showmatch                           " Display the match for a search pattern
+    set sidescroll=5                        " Set horizontal scroll steps
+    set smartcase                           " Smart case matching
+    set smartindent                         " Smart indent
+    set smarttab                            " Set Smarttab
+    set spelllang=en                        " Set spell language to English
+    set splitbelow                          " Open split below
+    set splitright                          " Open vsplit to right
+    set tabstop=4                           " Set tab width to 4 characters
+    set warn                                " Warn if no write since last change
+    set wrapscan                            " Wrap search to beginning of file
+    syntax on                               " Set Syntax on
+    " set cursorcolumn                      " Highlight cursor column
+    " set relativenumber                    " Display relative line numbers
+    " set textwidth=0                       " Wrap text at column xx (0 = default)
+    " set wrapmargin=0                      " Set wrapmargin to 0
+
+" ==== Wrapping Configurations (Toggled together) ====
+    set nowrap                              " Soft wrap default off
+    set breakindent                         " Maintain indentation on soft-wrapped lines
+    set linebreak                           " Prevent word splitting on wrap
     set listchars=precedes:<,extends:>
-    set mouse=a                 " Enable mouse usage (all modes) - if 'vim' installed
-    set mousemodel=popup        " Enable popup on right click
-    set noswapfile              " Do not create swap files
-    set nowrap                  " Set wrap off
-    set nowritebackup           " Do not save .sh~ files
-    set number                  " Display line numbers
-    set scrolloff=3             " Keep 3 lines visible at top & bottom of edit screen
-    set shell=/bin/bash         " Set shell as /bin/bash
-    set shiftwidth=4            " Set shift width to 4 characters
-    set showmatch               " Display the match for a search pattern when typing
-    set sidescroll=5            " Set sidescroll to scroll screen sideways 5 charaters at screen edge
-    set smartcase               " Smart case matching
-    set smartindent             " Smart indent
-    set smarttab                " Set Smarttab
-    set spelllang=en            " Set spell language to English all versions
-    set splitbelow              " Open split below
-    set splitright              " Open vsplit to right
-    set tabstop=4               " Set tab width to 4 characters
-    set warn                    " Warn no write since last change
-    set wrapscan                " Wrap search to beginning of file
-    syntax enable               " Enable Syntax
-    syntax on                   " Set Syntax on
-    " set cursorcolumn          " Highligt cursor column
-    " set relativenumber        " Display relative line numbers
-    " set textwidth=0           " Use tw/textwidth=xx to wrap text at column xx, 0 default with nowrap
-    " set wrapmargin=0          " Set wrapmargin to 0
 
 " **** Plugin settings ****
+" ==== Auto-Pairs Settings ====
+let g:AutoPairsMapCR = 0                    " Stops auto-pairs from stealing the Enter key from bullets.vim
+
 " ==== NerdCommenter settings ====
-let g:NERDCommentEmptyLines = 1         " Allow commenting and inverting empty lines
-let g:NERDCompactSexyComs = 1           " Use compact syntax for prettified multi-line comments
-let g:NERDDefaultAlign = 'left'         " Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDSpaceDelims = 1               " Add spaces after comment
-let g:NERDTrimTrailingWhitespace = 1    " Trim trailing whitespace when uncommenting
-let g:NERDToggleCheckAllLines = 1       " Enable NERDCommenterToggle to check selected lines are commented
+let g:NERDCommentEmptyLines = 1             " Allow commenting/inverting empty lines
+let g:NERDCompactSexyComs = 1               " Use compact syntax for prettified multi-line comments
+let g:NERDDefaultAlign = 'left'             " Align line-wise comment delimiters flush left
+let g:NERDSpaceDelims = 1                   " Add spaces after comment
+let g:NERDTrimTrailingWhitespace = 1        " Trim trailing whitespace when uncommenting
+let g:NERDToggleCheckAllLines = 1           " Enable NERDCommenterToggle to check selected lines
 
 " ==== Vim-Pencil settings ====
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 120
-let g:pencil#joinspaces = 0             "Spaces inserted after period, comma, exclamation (0=default=1 space)
+let g:pencil#joinspaces = 0                 " Spaces inserted after punctuation (0 = 1 space)
 let g:pencil#cursorwrap = 1
 let g:pencil#conceallevel = 3
 let g:pencil#concealcursor = 'c'
-let g:pencil#softDetectSample = 20      " # of lines to sample from start of buffer to detect soft-wrap
-let g:pencil#softDetectThreshold = 130  " # of bytes to which are exceeded in current line to assume soft-warp
+let g:pencil#softDetectSample = 20          " Lines to sample to detect soft-wrap
+let g:pencil#softDetectThreshold = 130      " Byte limit threshold for soft-wrap detection
 
 " ==== Vim-Lexical settings ====
 let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
@@ -194,9 +195,7 @@ let g:lexical#thesaurus_key = '<leader>t'
 let g:lexical#dictionary_key = '<leader>k'
 
 "  **** AUTOCOMMANDS ****
-    filetype plugin on          " Defines autocommands that'll get executed when a file matching a given pattern is opened.
-
-"  ==== Prose editing (word-procesor plugin)
+"  ==== Prose editing hooks
 augroup prose
         autocmd!
         autocmd FileType markdown,mkd       call pencil#init()
@@ -209,13 +208,16 @@ augroup prose
             \ | call litecorrect#init()
             \ | setl spell spl=en fdl=4 noru nonu nornu
             \ | setl fdo+=search
-    augroup END
+augroup END
 
 " ==== Fold Autocommands ****
-    autocmd BufWinLeave mkview            " save folds on exit
-    autocmd BufWinEnter silent loadview   " autoload folds on start
+augroup buffer_folds
+    autocmd!
+    autocmd BufWinLeave * silent! mkview    " Save folds on buffer exit safely
+    autocmd BufWinEnter * silent! loadview  " Restore folds on buffer entry safely
+augroup END
 
-" **** ab_(breviations) & autocorrect ****
+" **** Abbreviations & Autocorrect ****
 " == Shortforms
     ab __ppkds Pappukant Dansale
 " == Auto-correct common spelling errors
@@ -240,11 +242,22 @@ augroup prose
     noremap <leader>T 1GO#!/bin/bash <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR># ॐ <CR><ESC>:set ft=sh<ESC>
 
 " == Disable search highlighting
-    noremap <silent> <leader>h :let @/ = ""<CR>
+    noremap <silent> <leader>h :noh<CR>
 
-" == Toggle spell and word-processing modes
+" == Reference Block for Future Custom Prose Function
+" function! ToggleProseMode()
+"     TogglePencil
+"     if g:pencil_loaded && pencil#status() == 'Soft' " Or 'Hard' depending on your default
+"         colorscheme peachpuff
+"     else
+"         colorscheme onehalfdark
+"     endif
+" endfunction
+
+" == Toggle spell and word-processing modes (F8 switches theme to peachpuff for prose)
     noremap <F7> :setlocal spell! spell?<CR>
-    noremap <S-F7> :TogglePencil<CR>
+    let g:prose_colors_active = 0
+    noremap <F8> :TogglePencil<CR>:if g:prose_colors_active == 0 \| colorscheme peachpuff \| let g:prose_colors_active = 1 \| else \| colorscheme onehalfdark \| let g:prose_colors_active = 0 \| endif<CR>
 
 " == Mappings for commonly used plugins
     nmap <leader>d :NERDTreeToggle<CR>
@@ -257,6 +270,8 @@ augroup prose
     noremap <silent> <F2> :set number!<CR>
     noremap <silent> <S-F2> :set relativenumber!<CR>
 
+" == Dynamic statusline data toggles
+    noremap <leader>fn :ToggleSizeNotation<CR>
+
 " Highlight the current active line number in hybrid mode
     highlight CursorLineNr ctermfg=220 guifg=#fabd2f cterm=bold gui=bold
-
