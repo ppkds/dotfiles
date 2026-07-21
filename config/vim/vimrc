@@ -177,20 +177,11 @@ let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermfg=196 ctermbg=NONE guifg=#ff5f5f guibg=NONE
 highlight ALEWarningSign ctermfg=220 ctermbg=NONE guifg=#fabd2f guibg=NONE
 
-" Target only script files
+" Target only script and rust files — avoiding vimscript/vint complications
 let g:ale_linters = {
 \   'sh': ['shellcheck'],
 \   'python': ['flake8'],
-\}
-
-" Gutter Signs / Indicators
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
-
-" Target only script files — avoiding vimscript/vint complications
-let g:ale_linters = {
-\   'sh': ['shellcheck'],
-\   'python': ['flake8'],
+\   'rust': ['analyzer', 'cargo'],
 \}
 
 " Explicit Fixers (Format on save)
@@ -198,6 +189,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'sh': ['shfmt'],
 \   'python': ['black', 'isort'],
+\   'rust': ['rustfmt'],
 \}
 let g:ale_fix_on_save = 1                   " Run fixers automatically on file write
 
