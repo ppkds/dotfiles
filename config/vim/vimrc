@@ -263,6 +263,11 @@ augroup END
     ab teh the
 
 " **** Map shortcut keys ****
+" == Standard File Headers
+    noremap <leader>T 1GO#!/bin/bash <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR># ॐ <CR><ESC>:set ft=sh<ESC>
+    noremap <leader>Tp 1GO#!/usr/bin/env python3<CR># -*- coding: utf-8 -*-<CR>#<CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR># ॐ<CR><ESC>:set ft=python<ESC>
+    noremap <leader>Tr 1GO//! <CR>//! Pappukant Dansale - <ESC>:r!date<CR>kJo//!<CR>//! ॐ<CR><ESC>:set ft=rust<ESC>
+
 " == Insert various commonly used phrases and strings
     noremap <leader>ppkd o Pappukant Dansale - <ESC>:r !date<CR>kJA<ESC><ESC>
     noremap <leader>ppk o Pappukant Dansale<ESC>
@@ -271,9 +276,6 @@ augroup END
 " == Copy and comment out current line (bash/exrc, Vim)
     noremap <leader>nlb YP0i# <ESC><CR>
     noremap <leader>nlv YP0i" <ESC><CR>
-
-" == #!bin/bash standard header
-    noremap <leader>T 1GO#!/bin/bash <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR># ॐ <CR><ESC>:set ft=sh<ESC>
 
 " == Disable search highlighting
     noremap <silent> <leader>h :noh<CR>
