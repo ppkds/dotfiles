@@ -1,0 +1,172 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "display": {
+    "separator": ": ",
+    "color": {
+      "keys": "green"
+    },
+    "bar": {
+      "char": {
+        "elapsed": "■",
+        "total": "·"
+      },
+      "border": {
+        "left": "[",
+        "right": "]"
+      },
+      "color": {
+        "total": "white"
+      },
+      "width": 14
+    }
+  },
+  "modules": [
+    // --- System & Desktop Environment ---
+    {
+      "type": "uptime",
+      "key": "Uptime"
+    },
+    {
+      "type": "os",
+      "key": "OS",
+      "format": "{3} {12} {10}"
+    },
+    {
+      "type": "kernel",
+      "key": "Kernel"
+    },
+    {
+      "type": "shell",
+      "key": "Shell"
+    },
+    {
+      "type": "terminal",
+      "key": "Terminal"
+    },
+    {
+      "type": "terminalfont",
+      "key": "Terminal Font"
+    },
+    {
+      "type": "de",
+      "key": "DE"
+    },
+    {
+      "type": "font",
+      "key": "Font"
+    },
+    {
+      "type": "packages",
+      "key": "Packages"
+    },
+    {
+      "type": "locale",
+      "key": "Locale"
+    },
+    {
+      "type": "command",
+      "key": "User",
+      "text": "whoami"
+    },
+    {
+      "type": "command",
+      "key": "Host",
+      "text": "hostname"
+    },
+    {
+      "type": "separator",
+      "string": "---------------------"
+    },
+
+    // --- Hardware & Graphics ---
+    {
+      "type": "host",
+      "key": "Model",
+      "format": "{1}"
+    },
+    {
+      "type": "cpu",
+      "key": "CPU",
+      "temp": true
+    },
+    {
+      "type": "gpu",
+      "key": "GPU",
+      "format": "{2}"
+    },
+    {
+      "type": "display",
+      "key": "Display",
+      "format": "{1}x{2} @ {3}Hz"
+    },
+    {
+      "type": "separator",
+      "string": "---------------------"
+    },
+
+    // --- Memory, Storage & Power ---
+    {
+      "type": "memory",
+      "key": "Memory",
+      "percent": {
+        "type": 3
+      }
+    },
+    {
+      "type": "swap",
+      "key": "Swap",
+      "percent": {
+        "type": 3
+      }
+    },
+    {
+      "type": "disk",
+      "key": "Disk (/)",
+      "folders": "/",
+      "percent": {
+        "type": 3
+      }
+    },
+    {
+      "type": "disk",
+      "key": "Disk (/home)",
+      "folders": "/home",
+      "percent": {
+        "type": 3
+      }
+    },
+    {
+      "type": "battery",
+      "key": "Battery",
+      "percent": {
+        "type": 3
+      }
+    },
+    {
+      "type": "separator",
+      "string": "---------------------"
+    },
+
+    // --- Network Info ---
+    {
+      "type": "command",
+      "key": "Interface (Device * MAC)",
+      "text": "IFACE=$(ip route show default | awk '{print $5}'); MAC=$(cat /sys/class/net/$IFACE/address); echo \"$IFACE * $MAC\""
+    },
+    {
+      "type": "command",
+      "key": "IP (Local * Gateway * Public)",
+      "text": "LIP=$(ip route get 1.1.1.1 | awk '{print $7}'); GW=$(ip route show default | awk '{print $3}'); PIP=$(curl -s --connect-timeout 2 ifconfig.me); echo \"$LIP * $GW * $PIP\""
+    },
+    "break",
+
+    // --- Color Block Footer ---
+    {
+      "type": "colors",
+      "symbol": "block",
+      "block": {
+        "width": 3
+      }
+    }
+  ]
+}
