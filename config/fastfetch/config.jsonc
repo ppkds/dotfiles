@@ -92,7 +92,9 @@
     {
       "type": "gpu",
       "key": "GPU",
-      "format": "{2}"
+      "driverSpecific": true,
+      "temp": true,
+      "format": "{2} - {4} ({dedicated-used} / {dedicated-total})"
     },
     {
       "type": "display",
