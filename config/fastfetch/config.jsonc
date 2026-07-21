@@ -115,8 +115,9 @@
       }
     },
     {
-      "type": "swap",
-      "key": "Swap",
+      "type": "disk",
+      "key": "Disk (/boot/efi)",
+      "folders": "/boot/efi",
       "percent": {
         "type": 3
       }
@@ -133,6 +134,13 @@
       "type": "disk",
       "key": "Disk (/home)",
       "folders": "/home",
+      "percent": {
+        "type": 3
+      }
+    },
+    {
+      "type": "swap",
+      "key": "Swap",
       "percent": {
         "type": 3
       }
