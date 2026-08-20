@@ -1,6 +1,5 @@
-// Modified & Customized by Pappukant Dansale on July 20,2026
+// Modified & Customized on July 20,2026
 // ॐ
-
 
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
@@ -69,11 +68,6 @@
     },
     {
       "type": "command",
-      "key": "User",
-      "text": "whoami"
-    },
-    {
-      "type": "command",
       "key": "Host",
       "text": "hostname"
     },
@@ -119,35 +113,34 @@
       }
     },
     {
-      "type": "disk",
-      "key": "Disk (/boot/efi)",
-      "folders": "/boot/efi",
-      "percent": {
-        "type": 3
-      }
+      "type": "command",
+      "key": "Disk (Boot)",
+      "text": "df -kT /boot/efi | awk 'NR==2 {pct=int($6); bar_blocks=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<bar_blocks) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f MiB / %.2f MiB (%d%%) - %s - %s\", bar, $4/1024, $3/1024, pct, $2, $1}'"
     },
     {
-      "type": "disk",
+      "type": "command",
       "key": "Disk (/)",
-      "folders": "/",
-      "percent": {
-        "type": 3
-      }
+      "text": "df -kT / | awk 'NR==2 {pct=int($6); bar_blocks=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<bar_blocks) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, $4/1024/1024, $3/1024/1024, pct, $2, $1}'"
     },
     {
-      "type": "disk",
+      "type": "command",
       "key": "Disk (/home)",
-      "folders": "/home",
-      "percent": {
-        "type": 3
-      }
+      "text": "df -kT /home | awk 'NR==2 {pct=int($6); bar_blocks=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<bar_blocks) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, $4/1024/1024, $3/1024/1024, pct, $2, $1}'"
     },
     {
-      "type": "swap",
-      "key": "Swap",
-      "percent": {
-        "type": 3
-      }
+      "type": "command",
+      "key": "Disk (Swap)",
+      "text": "SWAP_DEV=$(swapon --show=NAME --noheadings | head -n1); if [ -n \"$SWAP_DEV\" ]; then free -b | awk -v dev=\"$SWAP_DEV\" '/Swap:/ {used=$3; total=$2; if(total==0) pct=0; else pct=int((used/total)*100); bar_blocks=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<bar_blocks) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - swap - %s\", bar, used/1024/1024/1024, total/1024/1024/1024, pct, dev}'; else echo \"[··············] 0.00 GiB / 0.00 GiB (0%) - swap\"; fi"
+    },
+    {
+      "type": "command",
+      "key": "Drive (Linux NVMe)",
+      "text": "uK=$(df -k | awk '/^\\/dev\\/nvme1n1/ {s+=$3} END {print s}'); tB=$(lsblk -bno SIZE /dev/nvme1n1 | head -n1); awk -v u=\"$uK\" -v t=\"$tB\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=int((uG/tG)*100); b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - /dev/nvme1n1\", bar, uG, tG, pct}'"
+    },
+    {
+      "type": "command",
+      "key": "Drive (Win NVMe)",
+      "text": "uK=$(df -k | awk '/^\\/dev\\/nvme0n1/ {s+=$3} END {print s}'); tB=$(lsblk -bno SIZE /dev/nvme0n1 | head -n1); if [ -n \"$tB\" ]; then awk -v u=\"$uK\" -v t=\"$tB\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=int((uG/tG)*100); b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - /dev/nvme0n1\", bar, uG, tG, pct}'; else echo \"Not Mounted\"; fi"
     },
     {
       "type": "battery",
