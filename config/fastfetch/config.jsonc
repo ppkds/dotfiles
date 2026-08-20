@@ -54,10 +54,11 @@
       "type": "de",
       "key": "DE"
     },
-    {
+/*    {
       "type": "font",
       "key": "Font"
     },
+*/
     {
       "type": "packages",
       "key": "Packages"
@@ -71,12 +72,12 @@
       "key": "Host",
       "text": "hostname"
     },
-    {
-      "type": "separator",
-      "string": "-"
-    },
 
-    // --- Hardware, Graphics & Power ---
+    // --- Hardware & Power ---
+    {
+      "type": "custom",
+      "format": "\u001b[1;37m--- Hardware & Power ---\u001b[0m"
+    },
     {
       "type": "host",
       "key": "Model",
@@ -106,12 +107,12 @@
         "type": 3
       }
     },
-    {
-      "type": "separator",
-      "string": "-"
-    },
 
     // --- Memory & Storage ---
+    {
+      "type": "custom",
+      "format": "\u001b[1;37m--- Memory & Storage ---\u001b[0m"
+    },
     {
       "type": "memory",
       "key": "Memory",
@@ -149,12 +150,16 @@
       "key": "Drive (Win NVMe)",
       "text": "LDEV=$(df / | awk 'NR==2 {print $1}' | sed -E 's/p?[0-9]+$//'); WDEV=$(lsblk -dno NAME | grep -v \"$(basename \"$LDEV\")\" | head -n1); if [ -n \"$WDEV\" ]; then uK=$(df -k | awk -v d=\"$WDEV\" '$1 ~ d {s+=$3} END {print s}'); tB=$(lsblk -bno SIZE \"/dev/$WDEV\" | head -n1); awk -v u=\"$uK\" -v t=\"$tB\" -v dev=\"/dev/$WDEV\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=int((uG/tG)*100); b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s\", bar, uG, tG, pct, dev}'; else echo \"Not Mounted\"; fi"
     },
-    {
-      "type": "separator",
-      "string": "-"
-    },
 
-    // --- Network Info ---
+    // --- Connectivity ---
+    {
+      "type": "custom",
+      "format": "\u001b[1;37m--- Connectivity ---\u001b[0m"
+    },
+    {
+      "type": "bluetooth",
+      "key": "Bluetooth"
+    },
     {
       "type": "command",
       "key": "Interface (Device * MAC)",
