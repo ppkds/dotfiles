@@ -76,7 +76,7 @@
       "string": "---------------------"
     },
 
-    // --- Hardware & Graphics ---
+    // --- Hardwar, Graphics & Power ---
     {
       "type": "host",
       "key": "Model",
@@ -100,11 +100,18 @@
       "format": "{1}x{2} @ {3}Hz"
     },
     {
+      "type": "battery",
+      "key": "Battery",
+      "percent": {
+        "type": 3
+      }
+    },
+    {
       "type": "separator",
       "string": "---------------------"
     },
 
-    // --- Memory, Storage & Power ---
+    // --- Memory & Storage ---
     {
       "type": "memory",
       "key": "Memory",
@@ -141,13 +148,6 @@
       "type": "command",
       "key": "Drive (Win NVMe)",
       "text": "uK=$(df -k | awk '/^\\/dev\\/nvme0n1/ {s+=$3} END {print s}'); tB=$(lsblk -bno SIZE /dev/nvme0n1 | head -n1); if [ -n \"$tB\" ]; then awk -v u=\"$uK\" -v t=\"$tB\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=int((uG/tG)*100); b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - /dev/nvme0n1\", bar, uG, tG, pct}'; else echo \"Not Mounted\"; fi"
-    },
-    {
-      "type": "battery",
-      "key": "Battery",
-      "percent": {
-        "type": 3
-      }
     },
     {
       "type": "separator",
