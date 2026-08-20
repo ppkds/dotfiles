@@ -108,7 +108,7 @@
     },
     {
       "type": "separator",
-      "string": "---------------------"
+      "string": "-"
     },
 
     // --- Memory & Storage ---
@@ -151,7 +151,7 @@
     },
     {
       "type": "separator",
-      "string": "---------------------"
+      "string": "-"
     },
 
     // --- Network Info ---
