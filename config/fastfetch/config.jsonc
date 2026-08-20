@@ -73,10 +73,10 @@
     },
     {
       "type": "separator",
-      "string": "---------------------"
+      "string": "-"
     },
 
-    // --- Hardwar, Graphics & Power ---
+    // --- Hardware, Graphics & Power ---
     {
       "type": "host",
       "key": "Model",
