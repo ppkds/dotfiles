@@ -24,7 +24,6 @@ alias clear='FIRST_PROMPT= ; clear'
 HISTCONTROL=ignoreboth          # Ignore duplicates and leading spaces
 HISTSIZE=200000                 # Session history size
 HISTFILESIZE=200000             # File history size
-PROMPT_COMMAND="add_prompt_space; history -a"  # Append history & handle spacing
 
 # Directory & Navigation Options
 shopt -s autocd                 # Type a folder path to cd into it
@@ -60,25 +59,41 @@ export PAGER="less"
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Prompt Customization
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+# Git Prompt Setup
+if [ -f /usr/lib/git-core/git-prompt.sh ]; then
+    # shellcheck disable=SC1091
+    . /usr/lib/git-core/git-prompt.sh
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    GIT_PS1_SHOWUPSTREAM="auto"
 fi
 
-case "$TERM" in
-    xterm|xterm-color|*-256color) color_prompt=yes ;;
-esac
+# Prompt Customization Function
+set_bash_prompt() {
+    local exit_status=$?
+    add_prompt_space
 
-if [ "$color_prompt" = yes ]; then
-    if [[ ${EUID} == 0 ]]; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]┌── \h\[\033[01;34m\] \w\n\[\033[01;31m\]└─ \$\[\033[00m\] '
-    else
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]┌── \h\[\033[01;34m\] \w\n\[\033[01;32m\]└─ \$\[\033[00m\] '
+    local git_info=""
+    if declare -f __git_ps1 >/dev/null; then
+        # Reverse video yellow/amber pill for git branch (flush to hostname)
+        git_info=$(__git_ps1 "\[\033[7;33m\]  %s \[\033[00m\]")
     fi
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
-fi
-unset color_prompt force_color_prompt
+
+    local chroot_str="${debian_chroot:+($debian_chroot)}"
+
+    if [[ ${EUID} == 0 ]]; then
+        # Reverse video red for root, yellow for git
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]┌── \[\033[7;31m\] \h \[\033[00m\]'"${git_info}"' \[\033[01;34m\]\w\n\[\033[01;31m\]└─ \$\[\033[00m\] '
+    else
+        # Reverse video green for user, yellow for git
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]┌── \[\033[7;32m\] \h \[\033[00m\]'"${git_info}"' \[\033[01;34m\]\w\n\[\033[01;32m\]└─ \$\[\033[00m\] '
+    fi
+
+    history -a
+    return $exit_status
+}
+
+PROMPT_COMMAND="set_bash_prompt"
 
 # Colors & Aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -101,7 +116,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Custom Aliases File
 if [ -f "$HOME/.bashrc_aliases" ]; then
-    # shellcheck disable=SC1090
+    # shellcheck disable=SC1090,SC1091
     . "$HOME/.bashrc_aliases"
 fi
 
