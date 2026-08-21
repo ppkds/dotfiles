@@ -94,10 +94,10 @@ set_bash_prompt() {
             local behind="${count##*	}"
 
             if [ "$ahead" -gt 0 ] 2>/dev/null; then
-                status_flags="${status_flags} u+${ahead}"
+                status_flags="${status_flags} >+${ahead}"
             fi
             if [ "$behind" -gt 0 ] 2>/dev/null; then
-                status_flags="${status_flags} u-${behind}"
+                status_flags="${status_flags} <-${behind}"
             fi
         fi
 
