@@ -59,37 +59,71 @@ export PAGER="less"
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Git Prompt Setup
-if [ -f /usr/lib/git-core/git-prompt.sh ]; then
-    # shellcheck disable=SC1091
-    . /usr/lib/git-core/git-prompt.sh
-    GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1_SHOWUNTRACKEDFILES=1
-    GIT_PS1_SHOWUPSTREAM="auto"
-fi
-
 # Prompt Customization Function
 set_bash_prompt() {
     local exit_status=$?
     add_prompt_space
 
     local git_info=""
-    if declare -f __git_ps1 >/dev/null; then
-        # Reverse video yellow/amber pill for git branch (flush to hostname)
-        git_info=$(__git_ps1 "\[\033[7;33m\]  %s \[\033[00m\]")
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        local branch
+        branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+
+        local status_flags=""
+
+        # Check for unstaged changes (*)
+        if ! git diff --no-ext-diff --quiet 2>/dev/null; then
+            status_flags="*"
+        fi
+
+        # Check for staged changes (+)
+        if ! git diff --no-ext-diff --cached --quiet 2>/dev/null; then
+            status_flags="${status_flags}+"
+        fi
+
+        # Check for untracked files (%)
+        if [ -n "$(git ls-files --others --exclude-standard 2>/dev/null)" ]; then
+            status_flags="${status_flags}%"
+        fi
+
+        # Check upstream status (u+N / u-N) using pure Bash parameter expansion
+        local count
+        count=$(git rev-list --left-right --count HEAD...'@{upstream}' 2>/dev/null)
+        if [ -n "$count" ]; then
+            local ahead="${count%%	*}"
+            local behind="${count##*	}"
+
+            if [ "$ahead" -gt 0 ] 2>/dev/null; then
+                status_flags="${status_flags} u+${ahead}"
+            fi
+            if [ "$behind" -gt 0 ] 2>/dev/null; then
+                status_flags="${status_flags} u-${behind}"
+            fi
+        fi
+
+        # Format full git string with badge background
+        if [ -n "$status_flags" ]; then
+            git_info="\[\033[7;33m\]  ${branch} ${status_flags} \[\033[00m\]"
+        else
+            git_info="\[\033[7;33m\]  ${branch} \[\033[00m\]"
+        fi
     fi
 
-    local chroot_str="${debian_chroot:+($debian_chroot)}"
-
+    # Set prompt colors based on privileges (Red for Root, Green for Standard User)
+    local host_color="01;32m"
+    local badge_color="7;32m"
     if [[ ${EUID} == 0 ]]; then
-        # Reverse video red for root, yellow for git
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]┌── \[\033[7;31m\] \h \[\033[00m\]'"${git_info}"' \[\033[01;34m\]\w\n\[\033[01;31m\]└─ \$\[\033[00m\] '
-    else
-        # Reverse video green for user, yellow for git
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]┌── \[\033[7;32m\] \h \[\033[00m\]'"${git_info}"' \[\033[01;34m\]\w\n\[\033[01;32m\]└─ \$\[\033[00m\] '
+        host_color="01;31m"
+        badge_color="7;31m"
     fi
 
+    # Single consolidated PS1 statement
+    PS1='${debian_chroot:+($debian_chroot)}\[\033['"${host_color}"'\]┌── \[\033['"${badge_color}"'\] \h \[\033[00m\]'"${git_info}"' \[\033[01;34m\]\w\n\[\033['"${host_color}"'\]└─ \$\[\033[00m\] '
+
+    # Save and reload history across parallel terminals
     history -a
+    history -c
+    history -r
     return $exit_status
 }
 
