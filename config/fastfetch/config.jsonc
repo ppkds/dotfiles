@@ -30,6 +30,10 @@
       "key": "Uptime"
     },
     {
+      "type": "custom",
+      "format": "\u001b[1;37m--- OS and System ---\u001b[0m"
+    },
+    {
       "type": "os",
       "key": "OS",
       "format": "{3} {12} {10}"
@@ -54,20 +58,10 @@
       "type": "de",
       "key": "DE"
     },
-/*    {
-      "type": "font",
-      "key": "Font"
-    },
-*/
     {
       "type": "packages",
       "key": "Packages"
     },
-/*    {
-      "type": "locale",
-      "key": "Locale"
-    },
-*/
     {
       "type": "command",
       "key": "Host",
@@ -121,27 +115,6 @@
         "type": 3
       }
     },
- /*   {
-      "type": "command",
-      "key": "Disk (Boot)",
-      "text": "df -kT /boot/efi | awk 'NR==2 {pct=int($6); bar_blocks=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<bar_blocks) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f MiB / %.2f MiB (%d%%) - %s - %s\", bar, $4/1024, $3/1024, pct, $2, $1}'"
-    },
-    {
-      "type": "command",
-      "key": "Disk (/)",
-      "text": "df -kT / | awk 'NR==2 {pct=int($6); bar_blocks=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<bar_blocks) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, $4/1024/1024, $3/1024/1024, pct, $2, $1}'"
-    },
-    {
-      "type": "command",
-      "key": "Disk (/home)",
-      "text": "df -kT /home | awk 'NR==2 {pct=int($6); bar_blocks=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<bar_blocks) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, $4/1024/1024, $3/1024/1024, pct, $2, $1}'"
-    },
-    {
-      "type": "command",
-      "key": "Disk (Swap)",
-      "text": "SWAP_DEV=$(swapon --show=NAME --noheadings | head -n1); if [ -n \"$SWAP_DEV\" ]; then free -b | awk -v dev=\"$SWAP_DEV\" '/Swap:/ {used=$3; total=$2; if(total==0) pct=0; else pct=int((used/total)*100); bar_blocks=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<bar_blocks) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - swap - %s\", bar, used/1024/1024/1024, total/1024/1024/1024, pct, dev}'; else echo \"[··············] 0.00 GiB / 0.00 GiB (0%) - swap\"; fi"
-    },
-*/
     {
       "type": "command",
       "key": "Drive (NVMe)",
