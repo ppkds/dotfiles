@@ -63,10 +63,11 @@
       "type": "packages",
       "key": "Packages"
     },
-    {
+/*    {
       "type": "locale",
       "key": "Locale"
     },
+*/
     {
       "type": "command",
       "key": "Host",
