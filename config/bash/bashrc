@@ -65,7 +65,9 @@ set_bash_prompt() {
     add_prompt_space
 
     local git_info=""
+    local is_git=0
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        is_git=1
         local branch
         branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
 
@@ -86,7 +88,7 @@ set_bash_prompt() {
             status_flags="${status_flags}%"
         fi
 
-        # Check upstream status (u+N / u-N) using pure Bash parameter expansion
+        # Check upstream status (> +N / < -N) using pure Bash parameter expansion
         local count
         count=$(git rev-list --left-right --count HEAD...'@{upstream}' 2>/dev/null)
         if [ -n "$count" ]; then
@@ -101,24 +103,33 @@ set_bash_prompt() {
             fi
         fi
 
-        # Format full git string with badge background
+        # Pure TrueBlack Text (38;2;0;0;0) on Warm Amber (48;5;178) + Trailing arrow
         if [ -n "$status_flags" ]; then
-            git_info="\[\033[7;33m\]  ${branch} ${status_flags} \[\033[00m\]"
+            git_info="\[\033[22;38;2;0;0;0;48;5;178m\]  ${branch} ${status_flags} \[\033[00;38;5;178m\]\[\033[00m\]"
         else
-            git_info="\[\033[7;33m\]  ${branch} \[\033[00m\]"
+            git_info="\[\033[22;38;2;0;0;0;48;5;178m\]  ${branch} \[\033[00;38;5;178m\]\[\033[00m\]"
         fi
     fi
 
-    # Set prompt colors based on privileges (Red for Root, Green for Standard User)
-    local host_color="01;32m"
-    local badge_color="7;32m"
+    # Pure TrueBlack Text (38;2;0;0;0) on Bright Green / Red
+    local line_color="01;32m"
+    local host_bg="\[\033[22;38;2;0;0;0;48;5;82m\]"            # Pure TrueBlack on Bright Green (82)
+    local arrow_git="\[\033[38;5;82;48;5;178m\]"        # Bright Green fg, Warm Amber bg (178)
+    local arrow_term="\[\033[00;38;5;82m\]\[\033[00m\]"     # Bright Green fg, Default bg
+
     if [[ ${EUID} == 0 ]]; then
-        host_color="01;31m"
-        badge_color="7;31m"
+        line_color="01;31m"
+        host_bg="\[\033[22;38;2;0;0;0;48;5;196m\]"          # Pure TrueBlack on Bright Red (196)
+        arrow_git="\[\033[38;5;196;48;5;178m\]"       # Bright Red fg, Warm Amber bg (178)
+        arrow_term="\[\033[00;38;5;196m\]\[\033[00m\]"    # Bright Red fg, Default bg
     fi
 
-    # Single consolidated PS1 statement
-    PS1='${debian_chroot:+($debian_chroot)}\[\033['"${host_color}"'\]┌── \[\033['"${badge_color}"'\] \h \[\033[00m\]'"${git_info}"' \[\033[01;34m\]\w\n\[\033['"${host_color}"'\]└─ \$\[\033[00m\] '
+    # PS1 Construction with aligned bracket (┌─)
+    if [ "$is_git" -eq 1 ]; then
+        PS1='${debian_chroot:+($debian_chroot)}\[\033['"${line_color}"'\]┌─ '"${host_bg}"' \h '"${arrow_git}"''"${git_info}"' \[\033[01;34m\]\w\n\[\033['"${line_color}"'\]└─ \$\[\033[00m\] '
+    else
+        PS1='${debian_chroot:+($debian_chroot)}\[\033['"${line_color}"'\]┌─ '"${host_bg}"' \h '"${arrow_term}"' \[\033[01;34m\]\w\n\[\033['"${line_color}"'\]└─ \$\[\033[00m\] '
+    fi
 
     # Save and reload history across parallel terminals
     history -a
