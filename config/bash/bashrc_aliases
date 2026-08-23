@@ -54,7 +54,7 @@ alias snap='echo "Nice try, Canonical!"'
 alias speedtest='echo "Starting speedtest-cli" && speedtest --csv --share --secure >> "$HOME/speedtest-history.csv" && echo "Result appended to $HOME/speedtest-history.csv"'
 alias top='command -v btop >/dev/null 2>&1 && btop || top'
 # alias vim='/usr/local/bin/vim'
-alias weather='echo && { printf "Location|Condition|Local Time|Sunrise|Sunset\n--------|---------|----------|-------|------\n"; curl -s "wttr.in/{Sydney,Tokyo,Beijing,Mumbai,Moscow,London,New+York,Chicago,Denver,Sacramento,Honolulu}?m&format=%l|%c+%t|%T|%S|%s\n" | awk -F"|" -v OFS="|" "{
+alias weather='echo && { printf "Location|Conditions|Local Time|Sunrise|Sunset\n--------|----------|----------|-------|------\n"; curl -s "wttr.in/{Sydney,Tokyo,Beijing,Mumbai,Moscow,London,New+York,Chicago,Denver,Sacramento,Honolulu}?m&format=%l|%c+%t|%T|%S|%s\n" | awk -F"|" -v OFS="|" "{
   if (\$2 ~ /[0-9]+°C/) {
     match(\$2, /[-+]?[0-9]+/);
     c = substr(\$2, RSTART, RLENGTH);
