@@ -54,7 +54,14 @@ alias snap='echo "Nice try, Canonical!"'
 alias speedtest='echo "Starting speedtest-cli" && speedtest --csv --share --secure >> "$HOME/speedtest-history.csv" && echo "Result appended to $HOME/speedtest-history.csv"'
 alias top='command -v btop >/dev/null 2>&1 && btop || top'
 # alias vim='/usr/local/bin/vim'
-alias weather='echo && { printf "Location|Condition|Local Time|Sunrise|Sunset\n--------|---------|----------|-------|------\n"; curl -s "wttr.in/{Tokyo,Beijing,Mumbai,Moscow,London,New_York,Chicago,Denver,Sacramento}?format=%l|%c+%t|%T|%S|%s\n"; } | column -t -s "|" && echo'
-alias weechat='weechat-curses'
+alias weather='echo && { printf "Location|Condition|Local Time|Sunrise|Sunset\n--------|---------|----------|-------|------\n"; curl -s "wttr.in/{Sydney,Tokyo,Beijing,Mumbai,Moscow,London,New+York,Chicago,Denver,Sacramento}?m&format=%l|%c+%t|%T|%S|%s\n" | awk -F"|" -v OFS="|" "{
+  if (\$2 ~ /[0-9]+°C/) {
+    match(\$2, /[-+]?[0-9]+/);
+    c = substr(\$2, RSTART, RLENGTH);
+    f = sprintf(\"%+d\", int(c * 1.8 + 32));
+    sub(/°C/, \"°C (\" f \"°F)\", \$2);
+  }
+  print
+}"; } | column -t -s "|" && echo'
 alias wget='wget -c'
 alias yt-dlp='[ -f "$HOME/Dev/Git/yt-dlp/yt-dlp.sh" ] && "$HOME/Dev/Git/yt-dlp/yt-dlp.sh" || yt-dlp' # fallback to system binary if custom script path moves
