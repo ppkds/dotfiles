@@ -1,14 +1,13 @@
-# #Unused / Obsoleted aliases
-# alias apg='apg -a 0 -n 10 -m 10 -M SNC -s -t'
-
 # ls aliases
 alias ls='ls --color=auto -ChFv --group-directories-first'         # more useful ls (list entries by columns + human readable + classify files + natural sort + group directories first)
 alias ll='ls -lhFv --group-directories-first'                   # ls (long listing format + human readable + classify files + natural sort + group directories first)
 alias lla='ls -alhFv --group-directories-first'                 # ls (include hidden files + long listing format + human readable + classify + natural sort + group directories first)
 alias lld='ls -alhFvd */'                                       # list directories only (include hidden files + long listing format + human readable + classify files + natural sort)
 
-# exa aliases
-alias exa='exa -lhFv --group-directories-first'
+# Directory traversal
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 # File and Directory aliases
 alias cp='cp -iv'
@@ -16,14 +15,26 @@ alias mkdir='mkdir -pv'
 alias mv='mv -iv'
 alias rm='rm -Iv'
 
+# Root permission safety guardrails
+alias chmod='chmod --preserve-root'
+alias chown='chown --preserve-root'
+
 # Convenience aliases
 alias angryoxide='sudo angryoxide -i wlp113s0'                  # update specific device
 alias apt='sudo apt'
+alias sudo='sudo '                                             # trailing space enables alias expansion for following commands (e.g., sudo cp)
 alias bashrc='source "$HOME/.bashrc"'                           # source .bashrc
-alias cat='batcat'                                              # replace cat with batcat
+
+# Replace cat with batcat/bat if installed (if/then prevents breaking bash completions)
+if command -v batcat >/dev/null 2>&1; then
+    alias cat='batcat'
+elif command -v bat >/dev/null 2>&1; then
+    alias cat='bat'
+fi
+
 alias cls='clear'                                               # for muscle memory from DOS
-alias comfyui='cd ~/ComfyUI && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py'
-alias df='df -hT -x devtmpfs -x tmpfs -x squashfs'
+alias comfyui='cd "$HOME/ComfyUI" && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py'
+alias df='command -v duf >/dev/null 2>&1 && duf || df -hT -x devtmpfs -x tmpfs -x squashfs -x overlay'
 alias edit-git-files='vim -p \
                       "$HOME/Dev/Git/dotfiles/config/bash/bashrc" \
                       "$HOME/Dev/Git/dotfiles/config/bash/bashrc_aliases" \
@@ -31,24 +42,19 @@ alias edit-git-files='vim -p \
 alias free='free -ht'
 alias git-pull='(cd "$HOME/Dev/Git" && "$HOME/Dev/Git/dotfiles/handystuff/git-pull.sh")' # () runs the command in a separate, temporary sub-shell
 alias git-status='(cd "$HOME/Dev/Git" && "$HOME/Dev/Git/dotfiles/handystuff/git-status.sh")' # () runs the command in a separate, temporary sub-shell
-# alias gvim='gvim; exit'
-# alias gvimtutor='/usr/local/bin/gvimtutor'
 alias links='links2 https://lite.duckduckgo.com/lite/'
 alias lsb_release='lsb_release -cdir'
-alias neofetch='echo && neofetch'
 alias nth='name-that-hash'
 alias os-release='cat -l sh /etc/os-release'
-alias ping='echo "3 pings" && ping -c3'
+alias ping='echo "3 pings" && ping -c3 -w5'                    # -w5 timeout prevents hanging on unreachable nodes
 alias pwgen='pwgen -ycn 16'
 alias python='clear && python3'
-# alias resources='fastfetch && echo && echo "- Memory -" && free -ht && echo && echo "- Disk -" && df -hT | grep -Ev "loop|tmpfs|snapfuse"'
 alias serial-number='echo "This requires SU access" && sudo dmidecode -s system-serial-number'
-alias snap='echo "Nice try, Canonical!" && sudo snap'
-# alias snap='sudo snap'
+alias snap='echo "Nice try, Canonical!"'
 alias speedtest='echo "Starting speedtest-cli" && speedtest --csv --share --secure >> "$HOME/speedtest-history.csv" && echo "Result appended to $HOME/speedtest-history.csv"'
-alias top='btop'
+alias top='command -v btop >/dev/null 2>&1 && btop || top'
 # alias vim='/usr/local/bin/vim'
-alias weather='echo && curl -s "wttr.in/{Tokyo,Beijing,Mumbai,Moscow,London,New_York,Chicago,Denver,Sacramento,}?format=%l:+%c+%t+|+Local+Time:+%T+|+Sunrise+/+Sunset:+%S+/+%s\n" && echo'
+alias weather='echo && { printf "Location|Condition|Local Time|Sunrise|Sunset\n--------|---------|----------|-------|------\n"; curl -s "wttr.in/{Tokyo,Beijing,Mumbai,Moscow,London,New_York,Chicago,Denver,Sacramento}?format=%l|%c+%t|%T|%S|%s\n"; } | column -t -s "|" && echo'
 alias weechat='weechat-curses'
 alias wget='wget -c'
-alias yt-dlp='"$HOME/Dev/Git/yt-dlp/yt-dlp.sh"'
+alias yt-dlp='[ -f "$HOME/Dev/Git/yt-dlp/yt-dlp.sh" ] && "$HOME/Dev/Git/yt-dlp/yt-dlp.sh" || yt-dlp' # fallback to system binary if custom script path moves
