@@ -33,7 +33,7 @@ elif command -v bat >/dev/null 2>&1; then
 fi
 
 alias cls='clear'                                               # for muscle memory from DOS
-alias comfyui='cd "$HOME/ComfyUI" && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py'
+alias comfyui='cd "$HOME/Dev/Git/ComfyUI" && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py --use-pytorch-cross-attention'
 alias df='command -v duf >/dev/null 2>&1 && duf || df -hT -x devtmpfs -x tmpfs -x squashfs -x overlay'
 alias edit-git-files='vim -p \
                       "$HOME/Dev/Git/dotfiles/config/bash/bashrc" \
