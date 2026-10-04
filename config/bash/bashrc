@@ -8,18 +8,6 @@ esac
 # Default Editor
 export EDITOR="vim"
 
-# Dynamic spacing before prompt (prevents empty line on launch/clear)
-add_prompt_space() {
-    if [ -z "$FIRST_PROMPT" ]; then
-        FIRST_PROMPT=1
-    else
-        echo ""
-    fi
-}
-
-# Clear FIRST_PROMPT flag when 'clear' is run so top line stays flush
-alias clear='FIRST_PROMPT= ; clear'
-
 # History Configuration
 HISTCONTROL=ignoreboth          # Ignore duplicates and leading spaces
 HISTSIZE=200000                 # Session history size
@@ -62,7 +50,6 @@ export PAGER="less"
 # Prompt Customization Function
 set_bash_prompt() {
     local exit_status=$?
-    add_prompt_space
 
     local git_info=""
     local is_git=0
@@ -124,11 +111,11 @@ set_bash_prompt() {
         arrow_term="\[\033[00;38;5;196m\]\[\033[00m\]"    # Bright Red fg, Default bg
     fi
 
-    # PS1 Construction with aligned bracket (┌─)
+    # Standard PS1 with simple newline prefix (\n)
     if [ "$is_git" -eq 1 ]; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033['"${line_color}"'\]┌─ '"${host_bg}"' \h '"${arrow_git}"''"${git_info}"' \[\033[01;34m\]\w\n\[\033['"${line_color}"'\]└─ \$\[\033[00m\] '
+        PS1='\n${debian_chroot:+($debian_chroot)}'"${host_bg}"' \h '"${arrow_git}"''"${git_info}"' \[\033[01;34m\]\w\n\[\033['"${line_color}"'\]\$\[\033[00m\] '
     else
-        PS1='${debian_chroot:+($debian_chroot)}\[\033['"${line_color}"'\]┌─ '"${host_bg}"' \h '"${arrow_term}"' \[\033[01;34m\]\w\n\[\033['"${line_color}"'\]└─ \$\[\033[00m\] '
+        PS1='\n${debian_chroot:+($debian_chroot)}'"${host_bg}"' \h '"${arrow_term}"' \[\033[01;34m\]\w\n\[\033['"${line_color}"'\]\$\[\033[00m\] '
     fi
 
     # Save and reload history across parallel terminals
