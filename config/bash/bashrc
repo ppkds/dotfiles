@@ -100,15 +100,15 @@ set_bash_prompt() {
 
     # Pure TrueBlack Text (38;2;0;0;0) on Bright Green / Red
     local line_color="01;32m"
-    local host_bg="\[\033[22;38;2;0;0;0;48;5;82m\]"            # Pure TrueBlack on Bright Green (82)
-    local arrow_git="\[\033[38;5;82;48;5;178m\]"        # Bright Green fg, Warm Amber bg (178)
-    local arrow_term="\[\033[00;38;5;82m\]\[\033[00m\]"     # Bright Green fg, Default bg
+    local host_bg="\[\033[22;38;2;0;0;0;48;5;82m\]"         # Pure TrueBlack on Bright Green (82)
+    local arrow_git="\[\033[38;5;82;48;5;178m\]"           # Bright Green fg, Warm Amber bg (178)
+    local arrow_term="\[\033[00;38;5;82m\]\[\033[00m\]"    # Bright Green fg, Default bg
 
     if [[ ${EUID} == 0 ]]; then
         line_color="01;31m"
         host_bg="\[\033[22;38;2;0;0;0;48;5;196m\]"          # Pure TrueBlack on Bright Red (196)
-        arrow_git="\[\033[38;5;196;48;5;178m\]"       # Bright Red fg, Warm Amber bg (178)
-        arrow_term="\[\033[00;38;5;196m\]\[\033[00m\]"    # Bright Red fg, Default bg
+        arrow_git="\[\033[38;5;196;48;5;178m\]"            # Bright Red fg, Warm Amber bg (178)
+        arrow_term="\[\033[00;38;5;196m\]\[\033[00m\]"     # Bright Red fg, Default bg
     fi
 
     # Standard PS1 with simple newline prefix (\n)
