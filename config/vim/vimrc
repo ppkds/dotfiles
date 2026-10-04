@@ -115,6 +115,28 @@ function! FileSize()
     return printf("%.2f %s", l:size, l:units[l:idx])
 endfunction
 
+" == On-demand interactive header insertion
+function! InsertCustomHeader() abort
+    let l:choice = confirm("Select header to insert:", "&Bash\n&Python\n&Rust\n&Cancel", 4)
+    if l:choice == 4 || l:choice == 0
+        return
+    endif
+
+    let l:date = strftime('%a %d %b %Y %I:%M:%S %p %Z')
+
+    if l:choice == 1
+        call append(0, ['#!/bin/bash', '#', '# Pappukant Dansale - ' . l:date, '#', '# ॐ', ''])
+        setlocal ft=sh
+    elseif l:choice == 2
+        call append(0, ['#!/usr/bin/env python3', '# -*- coding: utf-8 -*-', '#', '# Pappukant Dansale - ' . l:date, '#', '# ॐ', ''])
+        setlocal ft=python
+    elseif l:choice == 3
+        call append(0, ['//!', '//! Pappukant Dansale - ' . l:date, '//!', '//! ॐ', ''])
+        setlocal ft=rust
+    endif
+    1
+endfunction
+
 "  **** STARTUP defaults ****
     set laststatus=2                        " Set Status line to always on
     set noshowmode                          " Do not indicate input/replace mode on command line
@@ -265,9 +287,7 @@ augroup END
 
 " **** Map shortcut keys ****
 " == Standard File Headers
-    noremap <leader>T 1GO#!/bin/bash <CR># <CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR># ॐ <CR><ESC>:set ft=sh<ESC>
-    noremap <leader>Tp 1GO#!/usr/bin/env python3<CR># -*- coding: utf-8 -*-<CR>#<CR># Pappukant Dansale - <ESC>:r!date<CR>kJo#<CR># ॐ<CR><ESC>:set ft=python<ESC>
-    noremap <leader>Tr 1GO//! <CR>//! Pappukant Dansale - <ESC>:r!date<CR>kJo//!<CR>//! ॐ<CR><ESC>:set ft=rust<ESC>
+    nnoremap <leader>H :call InsertCustomHeader()<CR>
 
 " == Insert various commonly used phrases and strings
     noremap <leader>ppkd o Pappukant Dansale - <ESC>:r !date<CR>kJA<ESC><ESC>
