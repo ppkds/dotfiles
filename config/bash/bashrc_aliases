@@ -29,7 +29,7 @@ alias tree='tree -C --dirsfirst'
 # Convenience aliases
 alias bashrc='source "$HOME/.bashrc"'                           # reload bash configuration
 alias cls='clear'                                               # for muscle memory from DOS
-alias comfyui='cd "$HOME/Dev/Git/ComfyUI" && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py --use-flash-attention'
+alias comfyui='cd "$HOME/Dev/Git/ComfyUI" && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py'
 alias localip="ip route get 1 2>/dev/null | awk '{print \$7;exit}' || ifconfig 2>/dev/null | awk '/inet / && !/127.0.0.1/ {print \$2;exit}'"
 alias myip='curl -s https://ifconfig.me/ip && echo'
 alias path='echo -e ${PATH//:/\\n}'                              # print PATH entries cleanly on separate lines
