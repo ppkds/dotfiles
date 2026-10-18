@@ -166,3 +166,8 @@ fi
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 # shellcheck disable=SC1091
 [ -f "$HOME/.deno/env" ]  && . "$HOME/.deno/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/ppkds/.lmstudio/bin"
+# End of LM Studio CLI section
+
