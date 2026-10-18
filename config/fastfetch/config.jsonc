@@ -1,4 +1,4 @@
-// Modified & Customized on July 20,2026
+// Customized: July 20, 2026 // Modified: October 18, 2026
 // ॐ
 
 {
@@ -117,13 +117,23 @@
     },
     {
       "type": "command",
-      "key": "Drive (NVMe)",
-      "text": "DEV=$(df / | awk 'NR==2 {print $1}' | sed -E 's/p?[0-9]+$//'); uK=$(df -k | grep \"$DEV\" | awk '{s+=$3} END {print s}'); tB=$(lsblk -bno SIZE \"$DEV\" | head -n1); awk -v u=\"$uK\" -v t=\"$tB\" -v dev=\"$DEV\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=int((uG/tG)*100); b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s\", bar, uG, tG, pct, dev}'"
+      "key": "Drive",
+      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '1p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
     },
     {
       "type": "command",
-      "key": "Drive (NVMe)",
-      "text": "LDEV=$(df / | awk 'NR==2 {print $1}' | sed -E 's/p?[0-9]+$//'); WDEV=$(lsblk -dno NAME | grep -v \"$(basename \"$LDEV\")\" | head -n1); if [ -n \"$WDEV\" ]; then uK=$(df -k | awk -v d=\"$WDEV\" '$1 ~ d {s+=$3} END {print s}'); tB=$(lsblk -bno SIZE \"/dev/$WDEV\" | head -n1); awk -v u=\"$uK\" -v t=\"$tB\" -v dev=\"/dev/$WDEV\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=int((uG/tG)*100); b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s\", bar, uG, tG, pct, dev}'; else echo \"Not Mounted\"; fi"
+      "key": "Drive",
+      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '2p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
+    },
+    {
+      "type": "command",
+      "key": "Drive",
+      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '3p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
+    },
+    {
+      "type": "command",
+      "key": "Drive",
+      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '4p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/7); bar=\"\"; for(i=0;i<14;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
     },
 
     // --- Connectivity ---
