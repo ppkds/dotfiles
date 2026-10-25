@@ -1,4 +1,9 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
+# ॐ
+# Created: Sun 19 Feb 2012
+# Modified: Sun 25 Oct 2026
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -52,9 +57,7 @@ set_bash_prompt() {
     local exit_status=$?
 
     local git_info=""
-    local is_git=0
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        is_git=1
         local branch
         branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
 
@@ -90,33 +93,23 @@ set_bash_prompt() {
             fi
         fi
 
-        # Pure TrueBlack Text (38;2;0;0;0) on Warm Amber (48;5;178) + Trailing arrow
+        # Muted grey brackets (244) with Warm Amber (178) text
         if [ -n "$status_flags" ]; then
-            git_info="\[\033[22;38;2;0;0;0;48;5;178m\]  ${branch} ${status_flags} \[\033[00;38;5;178m\]\[\033[00m\]"
+            git_info=" \[\033[38;5;244m\][\[\033[38;5;178m\] ${branch} ${status_flags}\[\033[38;5;244m\]]\[\033[00m\]"
         else
-            git_info="\[\033[22;38;2;0;0;0;48;5;178m\]  ${branch} \[\033[00;38;5;178m\]\[\033[00m\]"
+            git_info=" \[\033[38;5;244m\][\[\033[38;5;178m\] ${branch}\[\033[38;5;244m\]]\[\033[00m\]"
         fi
     fi
 
-    # Pure TrueBlack Text (38;2;0;0;0) on Bright Green / Red
     local line_color="01;32m"
-    local host_bg="\[\033[22;38;2;0;0;0;48;5;82m\]"         # Pure TrueBlack on Bright Green (82)
-    local arrow_git="\[\033[38;5;82;48;5;178m\]"           # Bright Green fg, Warm Amber bg (178)
-    local arrow_term="\[\033[00;38;5;82m\]\[\033[00m\]"    # Bright Green fg, Default bg
-
     if [[ ${EUID} == 0 ]]; then
         line_color="01;31m"
-        host_bg="\[\033[22;38;2;0;0;0;48;5;196m\]"          # Pure TrueBlack on Bright Red (196)
-        arrow_git="\[\033[38;5;196;48;5;178m\]"            # Bright Red fg, Warm Amber bg (178)
-        arrow_term="\[\033[00;38;5;196m\]\[\033[00m\]"     # Bright Red fg, Default bg
     fi
 
-    # Standard PS1 with simple newline prefix (\n)
-    if [ "$is_git" -eq 1 ]; then
-        PS1='\n${debian_chroot:+($debian_chroot)}'"${host_bg}"' \h '"${arrow_git}"''"${git_info}"' \[\033[01;34m\]\w\n\[\033['"${line_color}"'\]\$\[\033[00m\] '
-    else
-        PS1='\n${debian_chroot:+($debian_chroot)}'"${host_bg}"' \h '"${arrow_term}"' \[\033[01;34m\]\w\n\[\033['"${line_color}"'\]\$\[\033[00m\] '
-    fi
+    local top_branch="\[\033[${line_color}\]╭─\[\033[00m\]"
+    local bottom_branch="\[\033[${line_color}\]╰─\[\033[00m\]"
+
+    PS1='\n${debian_chroot:+($debian_chroot)}'"${top_branch}"' \[\033['"${line_color}"'\]\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]'"${git_info}"'\n'"${bottom_branch}"' '
 
     # Save and reload history across parallel terminals
     history -a
@@ -170,4 +163,3 @@ fi
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/ppkds/.lmstudio/bin"
 # End of LM Studio CLI section
-

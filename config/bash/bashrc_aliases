@@ -13,6 +13,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias -- -='cd -'
 alias cd..='cd ..'
+alias md='mkdir -pv'                                            # make parent directories if needed + verbose
 
 # File and Directory aliases
 # Replace cat with batcat/bat if installed (if/then prevents breaking bash completions)
@@ -53,6 +54,7 @@ alias os-release='cat -l sh /etc/os-release'
 alias path='echo -e ${PATH//:/\\n}'                             # print PATH entries cleanly on separate lines
 alias ping='echo "3 pings" && ping -c3 -w5'                     # -w5 timeout prevents hanging on unreachable nodes
 alias ports='ss -tulpn'                                         # show listening TCP/UDP sockets with process names and PIDs
+alias sudo='sudo '                                              # expand subsequent alias (e.g., sudo ll)
 alias publicip='curl -s https://ifconfig.me/ip && echo'
 alias pwgen='pwgen -ycn 16'
 alias python='clear && python3'
