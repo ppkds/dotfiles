@@ -1,4 +1,4 @@
-// Customized: July 20, 2026 // Modified: October 18, 2026
+// Customized: July 20, 2026 // Modified: October 26, 2026
 // ॐ
 
 {
@@ -88,7 +88,7 @@
       "key": "GPU",
       "driverSpecific": true,
       "temp": true,
-      "format": "{2} - {4} ({dedicated-used} / {dedicated-total})"
+      "format": "{2}{?4} - {4}{?}"
     },
     {
       "type": "display",
