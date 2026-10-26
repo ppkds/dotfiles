@@ -51,10 +51,6 @@
       "key": "Terminal"
     },
     {
-      "type": "terminalfont",
-      "key": "Terminal Font"
-    },
-    {
       "type": "de",
       "key": "DE"
     },
@@ -96,11 +92,9 @@
       "format": "{1}x{2} @ {3}Hz"
     },
     {
-      "type": "battery",
+      "type": "command",
       "key": "Battery",
-      "percent": {
-        "type": 3
-      }
+      "text": "bdir=$(ls -d /sys/class/power_supply/BAT* 2>/dev/null | head -n1); if [ -d \"$bdir\" ]; then cap=$(cat \"$bdir/capacity\" 2>/dev/null); st=$(cat \"$bdir/status\" 2>/dev/null); prof=$(powerprofilesctl get 2>/dev/null); [ -z \"$prof\" ] && prof=\"unknown\"; now=\"\"; pwr=\"\"; [ -f \"$bdir/energy_now\" ] && now=$(cat \"$bdir/energy_now\" 2>/dev/null); [ -z \"$now\" ] && [ -f \"$bdir/charge_now\" ] && now=$(cat \"$bdir/charge_now\" 2>/dev/null); [ -f \"$bdir/power_now\" ] && pwr=$(cat \"$bdir/power_now\" 2>/dev/null); [ -z \"$pwr\" ] && [ -f \"$bdir/current_now\" ] && pwr=$(cat \"$bdir/current_now\" 2>/dev/null); awk -v c=\"$cap\" -v s=\"$st\" -v p=\"$prof\" -v now=\"$now\" -v pwr=\"$pwr\" 'BEGIN {pct=int(c); b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) {if(i<2) col=\"\\033[91m\"; else if(i<5) col=\"\\033[93m\"; else col=\"\\033[92m\"; bar=bar col \"■\\033[0m\"} else bar=bar\"·\"}; time_str=\"\"; if(now>0 && pwr>0) {hrs=int(now/pwr); mins=int(((now%pwr)*60)/pwr); time_str=sprintf(\" (%d:%02d hours remaining)\", hrs, mins)}; printf \"[%s] (%d%%)%s [%s * %s]\", bar, pct, time_str, s, p}'; fi"
     },
 
     // --- Memory & Storage ---
@@ -109,31 +103,34 @@
       "format": "\u001b[1;37m--- Memory & Storage ---\u001b[0m"
     },
     {
-      "type": "memory",
+      "type": "command",
       "key": "Memory",
-      "percent": {
-        "type": 3
-      }
+      "text": "awk '/MemTotal:/ {t=$2} /MemAvailable:/ {a=$2} END {u=t-a; uG=u/1024/1024; tG=t/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) {if(i<5) col=\"\\033[92m\"; else if(i<8) col=\"\\033[93m\"; else col=\"\\033[91m\"; bar=bar col \"■\\033[0m\"} else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%)\", bar, uG, tG, pct}' /proc/meminfo"
     },
     {
       "type": "command",
       "key": "Drive",
-      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '1p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
+      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '1p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) {if(i<5) col=\"\\033[92m\"; else if(i<8) col=\"\\033[93m\"; else col=\"\\033[91m\"; bar=bar col \"■\\033[0m\"} else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
     },
     {
       "type": "command",
       "key": "Drive",
-      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '2p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
+      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '2p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) {if(i<5) col=\"\\033[92m\"; else if(i<8) col=\"\\033[93m\"; else col=\"\\033[91m\"; bar=bar col \"■\\033[0m\"} else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
     },
     {
       "type": "command",
       "key": "Drive",
-      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '3p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
+      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '3p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) {if(i<5) col=\"\\033[92m\"; else if(i<8) col=\"\\033[93m\"; else col=\"\\033[91m\"; bar=bar col \"■\\033[0m\"} else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
     },
     {
       "type": "command",
       "key": "Drive",
-      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '4p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) bar=bar\"\\033[32m■\\033[0m\"; else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
+      "text": "dev=$(lsblk -dno NAME,TYPE | awk '$2==\"disk\" && $1!~/(loop|zram|ram)/ {print $1}' | sed -n '4p'); if [ -n \"$dev\" ]; then tB=$(lsblk -bno SIZE \"/dev/$dev\" | head -n1); uK=$(df -k | grep \"/dev/$dev\" | awk '{s+=$3} END {print s}'); [ -z \"$uK\" ] && uK=0; vendor=$(cat /sys/class/block/\"$dev\"/device/vendor 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); model=$(cat /sys/class/block/\"$dev\"/device/model 2>/dev/null | sed 's/^[ \t]*//;s/[ \t]*$//'); [ -z \"$model\" ] && model=$(lsblk -dno MODEL \"/dev/$dev\" | sed 's/^[ \t]*//;s/[ \t]*$//'); full_mdl=\"\"; if [ -n \"$vendor\" ] && [ -n \"$model\" ] && [ \"$vendor\" != \"$model\" ]; then full_mdl=\"$vendor $model\"; else full_mdl=\"${model:-$vendor}\"; fi; [ -z \"$full_mdl\" ] && full_mdl=\"Generic Drive\"; awk -v u=\"$uK\" -v t=\"$tB\" -v mdl=\"$full_mdl\" -v d=\"/dev/$dev\" 'BEGIN {uG=u/1024/1024; tG=t/1024/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) {if(i<5) col=\"\\033[92m\"; else if(i<8) col=\"\\033[93m\"; else col=\"\\033[91m\"; bar=bar col \"■\\033[0m\"} else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%) - %s - %s\", bar, uG, tG, pct, mdl, d}'; fi"
+    },
+    {
+      "type": "command",
+      "key": "Swap",
+      "text": "awk '/SwapTotal:/ {t=$2} /SwapFree:/ {f=$2} END {u=t-f; uG=u/1024/1024; tG=t/1024/1024; pct=(tG>0)?int((uG/tG)*100):0; b=int(pct/10); bar=\"\"; for(i=0;i<10;i++) {if(i<b) {if(i<5) col=\"\\033[92m\"; else if(i<8) col=\"\\033[93m\"; else col=\"\\033[91m\"; bar=bar col \"■\\033[0m\"} else bar=bar\"·\"}; printf \"[%s] %.2f GiB / %.2f GiB (%d%%)\", bar, uG, tG, pct}' /proc/meminfo"
     },
 
     // --- Connectivity ---
@@ -155,6 +152,11 @@
       "type": "command",
       "key": "IP (Local * Gateway * Public)",
       "text": "LOC_IPS=$(ip -br addr | awk '$2==\"UP\" && $1!=\"lo\" {split($3,a,\"/ \"); print a[1]}' | paste -sd '*' - | sed 's/\\*/ * /g'); GW=$(ip route show default | awk '{print $3}' | head -n1); PIP=$(curl -s --connect-timeout 2 ifconfig.me); echo \"$LOC_IPS * $GW * $PIP\""
+    },
+    {
+      "type": "command",
+      "key": "Listening",
+      "text": "ports=$(ss -tlpn 2>/dev/null | awk 'NR>1 {split($4,a,\":\"); print a[length(a)]}' | sort -n -u | paste -sd ', ' -); [ -n \"$ports\" ] && echo \"TCP: $ports\""
     },
     "break",
 
