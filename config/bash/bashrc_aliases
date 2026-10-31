@@ -38,7 +38,7 @@ alias angryoxide='sudo angryoxide -i wlp113s0'                  # update specifi
 alias apt='sudo apt'
 alias bashrc='source "$HOME/.bashrc"'                           # reload bash configuration
 alias cls='clear'                                               # for muscle memory from DOS
-alias comfyui='cd "$HOME/Dev/Git/ComfyUI" && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py'
+alias comfyui='cd "$HOME/Dev/Git/ComfyUI" && source venv/bin/activate && CUDA_VISIBLE_DEVICES=0 python main.py && cd && read -n 1 -s -r -p "Press any key to exit..."'
 alias edit-git-files='vim -p \
                       "$HOME/Dev/Git/dotfiles/config/bash/bashrc" \
                       "$HOME/Dev/Git/dotfiles/config/bash/bashrc_aliases" \
