@@ -156,7 +156,7 @@
     {
       "type": "command",
       "key": "Listening",
-      "text": "ports=$(ss -tlpn 2>/dev/null | awk 'NR>1 {split($4,a,\":\"); print a[length(a)]}' | sort -n -u | paste -sd ', ' -); [ -n \"$ports\" ] && echo \"TCP: $ports\""
+      "text": "ss -tlpn 2>/dev/null | awk 'NR>1 {split($4,a,\":\"); p=a[length(a)]; if(p ~ /^[0-9]+$/) seen[p]=1} END {n=asorti(seen, sorted, \"@val_num_asc\"); out=\"\"; for(i=1;i<=n;i++) out=(out==\"\" ? sorted[i] : out \", \" sorted[i]); if(out!=\"\") print \"TCP: \" out}'"
     },
     "break",
 
