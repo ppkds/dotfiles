@@ -66,7 +66,8 @@ let g:lightline = {
     \           },
     \ 'component': {
     \   'lineinfo': "%{printf('%2d/%-d : %2d', line('.'), line('$'), col('.'))}",
-    \   'filename': '%<%.40f'
+    \   'filename': '%<%.40f',
+    \   'modified': '%{&modified ? "*" : ""}',
     \   },
     \ 'component_function': {
     \   'num_chrwrd': 'LightlineWordCount',
