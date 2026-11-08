@@ -67,7 +67,8 @@ let g:lightline = {
     \ 'component': {
     \   'lineinfo': "%{printf('%2d/%-d : %2d', line('.'), line('$'), col('.'))}",
     \   'filename': '%<%.40f',
-    \   'modified': '%{&modified ? "*" : ""}',
+    \   'modified': '%{&modified ? " " : ""}',
+    \   'readonly': '%{(&readonly || (filereadable(expand("%")) && !filewritable(expand("%")))) && &filetype !=# "help" ? " " : ""}',
     \   },
     \ 'component_function': {
     \   'num_chrwrd': 'LightlineWordCount',
@@ -75,6 +76,7 @@ let g:lightline = {
     \   'gitbranch': 'Lightlinegitbranch',
     \   },
     \}
+"    \   'readonly': '%{&readonly && &filetype !=# "help" ? " " : ""}',
 
 " **** Functions ****
 " == Optimize text telemetry calculations by running wordcount metrics only once
