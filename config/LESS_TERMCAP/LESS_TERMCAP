@@ -1,11 +1,12 @@
 # Less Colors for Man Pages
-# export LESS_TERMCAP_mb=$'\E[0;103m'           # begin blinking
-export LESS_TERMCAP_md=$'\E[0;93m'              # begin bold
-export LESS_TERMCAP_me=$(tput sgr0)             # end all modes like so, us, mb, md, and mr
-export LESS_TERMCAP_se=$'\E[0m'                 # end standout-mode
-# export LESS_TERMCAP_so=$(tput bold; tput setaf 8; tput setab 3) # begin standout-mode - info box
-export LESS_TERMCAP_us=$'\E[04;32m' # begin underline
-export LESS_TERMCAP_ue=$'\E[0m' # end underline
+# Less Colors for Man Pages (Nordic Slate & Cyan)
+# export LESS_TERMCAP_mb=$'\E[0;103m' # begin blinking (commented as modern manual pages do not have a tag for blinking text)
+export LESS_TERMCAP_md=$'\E[0;93m'                              # begin bold (amber)
+export LESS_TERMCAP_so=$'\E[38;5;255;48;5;96m'                  # begin standout-mode (crisp white on deep plum)
+export LESS_TERMCAP_se=$'\E[0m'                                 # end standout-mode
+export LESS_TERMCAP_us=$'\E[04;94m'                             # begin underline (bright blue)
+export LESS_TERMCAP_ue=$'\E[0m'                                 # end underline
+export LESS_TERMCAP_me=$(tput sgr0)                             # end all modes like so, us, mb, md, and mr
 export LESS_TERMCAP_mr=$(tput rev)
 export LESS_TERMCAP_mh=$(tput dim)
 export LESS_TERMCAP_ZN=$(tput ssubm)
@@ -13,10 +14,10 @@ export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 #
-# More info: 
+# More info:
 # https://tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
-# http://unix.stackexchange.com/a/108840# 
-# 
+# http://unix.stackexchange.com/a/108840#
+#
 # termcap terminfo
 # ks      smkx      make the keypad send commands
 # ke      rmkx      make the keypad send digits

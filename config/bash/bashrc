@@ -48,6 +48,9 @@ shopt -s globstar               # Enable ** recursive globs
 
 # Pager & Less Setup
 export PAGER="less"
+export MANPAGER="less -s -M +Gg"
+export GROFF_NO_SGR=1
+
 # shellcheck disable=SC1090
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
