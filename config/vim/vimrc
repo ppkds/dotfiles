@@ -67,8 +67,8 @@ let g:lightline = {
     \ 'component': {
     \   'lineinfo': "%{printf('%2d/%-d : %2d', line('.'), line('$'), col('.'))}",
     \   'filename': '%<%.40f',
-    \   'modified': '%{&modified ? " " : ""}',
-    \   'readonly': '%{(&readonly || (filereadable(expand("%")) && !filewritable(expand("%")))) && &filetype !=# "help" ? " " : ""}',
+    \   'modified': '%{&modified ? "" : ""}',
+    \   'readonly': '%{(&readonly || (filereadable(expand("%")) && !filewritable(expand("%")))) && &filetype !=# "help" ? "" : ""}',
     \   },
     \ 'component_function': {
     \   'num_chrwrd': 'LightlineWordCount',
@@ -160,7 +160,7 @@ endfunction
     set mousemodel=popup                    " Enable popup on right click
     set noswapfile                          " Do not create swap files
     set nowritebackup                       " Do not save transient backup files
-    set number                              " Display line numbers
+    set relativenumber                      " Display relative line numbers
     set scrolloff=3                         " Keep 3 lines visible at top & bottom of screen
     set shell=/bin/bash                     " Set shell as /bin/bash
     set shiftwidth=4                        " Set shift width to 4 characters
@@ -177,7 +177,7 @@ endfunction
     set wrapscan                            " Wrap search to beginning of file
     syntax on                               " Set Syntax on
     " set cursorcolumn                      " Highlight cursor column
-    " set relativenumber                    " Display relative line numbers
+    " set number                              " Display line numbers
     " set textwidth=0                       " Wrap text at column xx (0 = default)
     " set wrapmargin=0                      " Set wrapmargin to 0
 
